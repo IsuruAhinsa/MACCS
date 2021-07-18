@@ -19,4 +19,10 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
+Route::get('login/admin', 'Auth\LoginController@showAdminLoginForm');
+Route::post('/login/admin', 'Auth\LoginController@adminLogin');
+
+Route::get('login/midwife', 'Auth\LoginController@showMidwifeLoginForm');
+Route::post('/login/midwife', 'Auth\LoginController@midwifeLogin');
+
 Route::get('/home', 'HomeController@index')->name('home');

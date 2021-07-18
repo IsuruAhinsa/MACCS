@@ -1,4 +1,4 @@
-@extends('layouts.login')
+@extends('layouts.auth')
 
 @section('content')
     <div class="bg-image" style="background-image: url({{ asset('assets/media/photos/photo6@2x.jpg') }});">
@@ -9,7 +9,10 @@
                         <!-- Sign In Block -->
                         <div class="block block-themed block-fx-shadow mb-0">
                             <div class="block-header">
-                                <h3 class="block-title">Login</h3>
+                                <h3 class="block-title">
+                                    {{ isset($url) ? ucwords($url) : '' }}
+                                    Login
+                                </h3>
                                 @if (Route::has('password.request'))
                                     <div class="block-options">
                                         <a class="btn-block-option font-size-sm" href="{{ route('password.request') }}">Forgot Password?</a>
@@ -21,13 +24,17 @@
                                     <h1 class="mb-2">{{ config('app.name') }}</h1>
                                     <p>Welcome, please login.</p>
 
-                                    <form method="POST" action="{{ route('login') }}">
+                                    @isset($url)
+                                        <form method="POST" action="{{ url("login/$url") }}">
+                                    @else
+                                        <form method="POST" action="{{ route('login') }}">
+                                    @endisset
                                         @csrf
                                         <div class="py-3">
                                             <div class="form-group">
                                                 <input
                                                     type="email"
-                                                    class="form-control form-control-alt form-control-lg @error('email') is-invalid @enderror "
+                                                    class="form-control form-control-alt form-control-lg @error('email') is-invalid @enderror"
                                                     name="email"
                                                     value="{{ old('email') }}"
                                                     placeholder="Email"
