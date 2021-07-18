@@ -23,4 +23,16 @@ Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Route::get('login/midwife', 'Auth\LoginController@showMidwifeLoginForm');
 Route::post('/login/midwife', 'Auth\LoginController@midwifeLogin');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+Route::middleware('auth:admin')->group(function () {
+    //Route::get('/admin', 'AdminController@index')->name('home');
+    Route::view('/admin', 'admin');
+});
+
+Route::middleware('auth:midwife')->group(function () {
+    //Route::get('/midwife', 'MidwifeController@index')->name('home');
+    Route::view('/midwife', 'midwife');
+});

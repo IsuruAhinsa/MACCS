@@ -29,7 +29,9 @@
                                     @else
                                         <form method="POST" action="{{ route('login') }}">
                                     @endisset
+
                                         @csrf
+
                                         <div class="py-3">
                                             <div class="form-group">
                                                 <input
