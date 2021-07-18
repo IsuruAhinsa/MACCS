@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth:admin')->group(function () {
     //Route::get('/admin', 'AdminController@index')->name('home');
     Route::view('/admin', 'admin.index');
+
+    Route::resource('midwives', 'Admin\MidwifeController');
+
 });
 
 Route::middleware('auth:midwife')->group(function () {
