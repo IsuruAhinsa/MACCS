@@ -82,4 +82,25 @@ class LoginController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
+
+    public function logout(Request $request)
+    {
+        if (Auth::guard('admin')->check()) {
+
+            Auth::guard('admin')->logout();
+            return redirect()->route('admin.login');
+
+        } elseif (Auth::guard('midwife')->check()) {
+
+            Auth::guard('midwife')->logout();
+            return redirect()->route('midwife.login');
+
+        } else {
+
+            $this->guard()->logout();
+            $request->session()->invalidate();
+            return $this->loggedOut($request) ?: redirect('/');
+
+        }
+    }
 }
