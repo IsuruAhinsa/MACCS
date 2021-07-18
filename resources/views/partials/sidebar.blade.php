@@ -20,54 +20,69 @@
                     <span class="nav-main-link-name">Dashboard</span>
                 </a>
             </li>
+
             <li class="nav-main-heading">Main</li>
-            <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                    <i class="nav-main-link-icon si si-energy"></i>
-                    <span class="nav-main-link-name">Children</span>
-                </a>
-                <ul class="nav-main-submenu">
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">All Children</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">Create Child</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">Disable Children</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                    <i class="nav-main-link-icon si si-badge"></i>
-                    <span class="nav-main-link-name">Midwives</span>
-                </a>
-                <ul class="nav-main-submenu">
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">All Midwives</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">Create Midwife</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">Disabled Midwives</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-main-item">
+
+            @if(Auth::guard('admin')->check())
+
+                <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="nav-main-link-icon si si-badge"></i>
+                        <span class="nav-main-link-name">Midwives</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="#">
+                                <span class="nav-main-link-name">All Midwives</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="#">
+                                <span class="nav-main-link-name">Create Midwife</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="#">
+                                <span class="nav-main-link-name">Disabled Midwives</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            @elseif(Auth::guard('midwife')->check())
+
+
+
+            @else
+
+                {{--<li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="nav-main-link-icon si si-energy"></i>
+                        <span class="nav-main-link-name">Children</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="#">
+                                <span class="nav-main-link-name">All Children</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="#">
+                                <span class="nav-main-link-name">Create Child</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="#">
+                                <span class="nav-main-link-name">Disable Children</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>--}}
+
+            @endisset
+
+
+            {{--<li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                     <i class="nav-main-link-icon si si-badge"></i>
                     <span class="nav-main-link-name">MOHs</span>
@@ -113,7 +128,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>--}}
         </ul>
     </div>
     <!-- END Side Navigation -->
