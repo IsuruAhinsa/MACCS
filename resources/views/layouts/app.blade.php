@@ -17,7 +17,7 @@
 
 <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed">
 
-    @yield('content')
+    @yield('main')
 
 </div>
 
