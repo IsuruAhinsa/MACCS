@@ -38,4 +38,6 @@ Route::middleware('auth:admin')->group(function () {
 Route::middleware('auth:midwife')->group(function () {
     //Route::get('/midwife', 'MidwifeController@index')->name('home');
     Route::view('/midwife', 'midwife.index');
+
+    Route::resource('users', 'Midwife\UserController');
 });
