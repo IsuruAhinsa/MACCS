@@ -38,7 +38,7 @@
                         @if(Auth::guard('admin')->check())
                             {{ Auth::guard('admin')->user()->name }}
                         @elseif(Auth::guard('midwife')->check())
-                            {{ Auth::guard('midwife')->user()->name }}
+                            {{ Auth::guard('midwife')->user()->first_name }}
                         @else
                             {{ Auth::user()->name }}
                         @endisset

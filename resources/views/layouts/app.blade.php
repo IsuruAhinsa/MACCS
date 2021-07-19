@@ -17,7 +17,16 @@
 
 <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed">
 
-    @yield('main')
+    @include('partials.sidebar')
+    @include('partials.header')
+
+    <main id="main-container">
+
+        @yield('content')
+
+    </main>
+
+    @include('partials.footer')
 
 </div>
 
