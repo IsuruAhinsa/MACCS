@@ -16,7 +16,9 @@ class MidwifeController extends Controller
      */
     public function index()
     {
-        return view('admin.midwives.index');
+        $recorders = Midwife::all();
+        return view('admin.midwives.index')->with(compact('recorders'));
+
     }
 
     /**

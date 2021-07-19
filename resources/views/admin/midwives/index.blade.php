@@ -10,9 +10,11 @@
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
-                        <li class="breadcrumb-item">Dashboard</li>
+                        <li class="breadcrumb-item">
+                            <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
+                        </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            <a class="link-fx" href="">Midwives</a>
+                             Midwives
                         </li>
                     </ol>
                 </nav>
@@ -24,70 +26,86 @@
 
         <div class="row">
             <div class="col-sm-12">
+                <div class="row row-deck">
+                    <!-- Latest Customers -->
+                    <div class="col-lg-12">
+                        <div class="block block-mode-loading-oneui">
+                            <div class="block-header border-bottom">
+                                <h3 class="block-title">All Midwives</h3>
+                                <div class="block-options">
+                                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                                        <i class="si si-refresh"></i>
+                                    </button>
+                                    <button type="button" class="btn-block-option">
+                                        <i class="si si-settings"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="block-content block-content-full">
+                                <table class="table table-striped table-hover table-borderless table-vcenter font-size-sm mb-0">
+                                    <thead class="thead-dark">
+                                    <tr class="text-uppercase">
+                                        <th class="font-w700" style="width: 80px;">ID</th>
+                                        <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 100px;">Photo</th>
+                                        <th class="font-w700">First Name</th>
+                                        <th class="font-w700">Last Name</th>
+                                        <th class="font-w700">Phone</th>
+                                        <th class="font-w700">Email</th>
+                                        <th class="font-w700">Created At</th>
+                                        <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 80px;">Cases</th>
+                                        <th class="font-w700 text-center" style="width: 60px;">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($recorders as $midwife)
+                                    <tr>
+                                        <td>
+                                            <span class="font-w600">#</span>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell text-center">
+                                            <img class="img-avatar img-avatar32" src="assets/media/avatars/avatar15.jpg" alt="">
+                                        </td>
+                                        <td class="font-w600">
+                                            {{$midwife->first_name}}
+                                        </td>
+                                        <td class="font-w600">
+                                            {{$midwife->last_name}}
+                                        </td>
+                                        <td class="font-w600">
+                                            {{$midwife->phone}}
+                                        </td>
+                                        <td class="font-w600">
+                                            {{$midwife->email}}
+                                        </td>
+                                        <td class="font-w600">
+                                            {{$midwife->created_at}}
+                                        </td>
+                                        <td class="d-none d-sm-table-cell text-center">
+                                            <a class="link-fx font-w600" href="javascript:void(0)">{{$midwife->cases}}</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="left" title="Edit">
+                                                <i class="fa fa-fw fa-pencil-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
 
-                <div class="block">
-                    <div class="block-header">
-                        <h3 class="block-title">All Midwives</h3>
-                        <div class="block-options">
-                            <div class="block-options-item">
-                                <code>.table-hover</code>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="block-content">
-                        <table class="table table-hover table-vcenter">
-                            <thead>
-                            <tr>
-                                <th class="text-center" style="width: 50px;">ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>NIC</th>
-                                <th>Address</th>
-                                <th>Cases</th>
-                                <th>Password</th>
-                                <th>Created At</th>
-                                <th>Updated At</th>
-                               {{-- <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>--}}
-                                <th class="text-center" style="width: 100px;">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th class="text-center" scope="row">1</th>
-                                <td class="font-w600 font-size-sm">Justin Hunt</td>
-                                <td class="font-w600 font-size-sm">Last Name</td>
-                                <td class="font-w600 font-size-sm">Phone</td>
-                                <td class="font-w600 font-size-sm">Email</td>
-                                <td class="font-w600 font-size-sm">NIC</td>
-                                <td class="font-w600 font-size-sm">Address</td>
-                                <td class="font-w600 font-size-sm">Cases</td>
-                                <td class="font-w600 font-size-sm">Password</td>
-                                <td class="font-w600 font-size-sm">Created At</td>
-                                <td class="font-w600 font-size-sm">Updated At</td>
-                                {{--<td class="d-none d-sm-table-cell">
-                                    <span class="badge badge-danger">Disabled</span>
-                                </td>--}}
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip" title="Edit Client">
-                                            <i class="fa fa-fw fa-pencil-alt"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip" title="Remove Client">
-                                            <i class="fa fa-fw fa-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <!-- END Latest Customers -->
                 </div>
 
             </div>
         </div>
 
     </div>
+
+
+
+
 
 @endsection
