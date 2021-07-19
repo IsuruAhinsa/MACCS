@@ -21,16 +21,17 @@
     </div>
 
     <div class="content">
-        <!-- Your Block -->
+
         <div class="block block-themed">
             <div class="block-header">
                 <h3 class="block-title">
                     Create Midwife
                 </h3>
             </div>
+
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="#" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('midwives.store') }}" method="POST">
 
                     @csrf
 
@@ -61,24 +62,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="contact" class="col-form-label">Contact No</label>
+                                <label for="phone" class="col-form-label">Phone</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="contact"
-                                    placeholder="Enter Contact No"
-                                    name="contact"
-                                >
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password" class="col-form-label">Password</label>
-                                <input
-                                    type="password"
-                                    class="form-control form-control-alt"
-                                    id="password"
-                                    placeholder="Enter Address "
-                                    name="password"
+                                    id="phone"
+                                    placeholder="Enter Phone"
+                                    name="phone"
                                 >
                             </div>
 
@@ -98,24 +88,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="address" class="col-form-label">Address</label>
+                                <label for="cases" class="col-form-label">Assigned Cases</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="address"
-                                    placeholder="Enter Address "
-                                    name="address"
-                                >
-                            </div>
-
-                            <div class="form-group">
-                                <label for="assigned_cases" class="col-form-label">Assigned Cases</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="assigned_cases"
+                                    id="cases"
                                     placeholder="Enter Assigned Cases"
-                                    name="assigned_cases"
+                                    name="cases"
                                 >
                             </div>
 
@@ -124,14 +103,14 @@
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Create'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Create Midwife'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>
 
             </div>
         </div>
-        <!-- END Your Block -->
+
     </div>
 
 @endsection
