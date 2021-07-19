@@ -37,7 +37,7 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
+                            <a class="nav-main-link" href="{{ route('midwives.create') }}">
                                 <span class="nav-main-link-name">Create Midwife</span>
                             </a>
                         </li>
@@ -51,60 +51,38 @@
 
             @elseif(Auth::guard('midwife')->check())
 
-
-
-            @else
-
-                {{--<li class="nav-main-item">
+                <li class="nav-main-item">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                        <i class="nav-main-link-icon si si-energy"></i>
-                        <span class="nav-main-link-name">Children</span>
+                        <i class="nav-main-link-icon si si-users"></i>
+                        <span class="nav-main-link-name">Parents</span>
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
-                                <span class="nav-main-link-name">All Children</span>
+                            <a class="nav-main-link" href="{{ route('users.index') }}">
+                                <span class="nav-main-link-name">All Parents</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('users.create') }}">
+                                <span class="nav-main-link-name">Create Parent</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="#">
-                                <span class="nav-main-link-name">Create Child</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
-                                <span class="nav-main-link-name">Disable Children</span>
+                                <span class="nav-main-link-name">Disabled Parents</span>
                             </a>
                         </li>
                     </ul>
-                </li>--}}
+                </li>
+
+            @else
+
+
 
             @endisset
 
 
-            {{--<li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                    <i class="nav-main-link-icon si si-badge"></i>
-                    <span class="nav-main-link-name">MOHs</span>
-                </a>
-                <ul class="nav-main-submenu">
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">All MOHs</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">Create MOH</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">Disabled MOHs</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            {{--
             <li class="nav-main-heading">Settings</li>
             <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
