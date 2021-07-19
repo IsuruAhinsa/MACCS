@@ -8,16 +8,12 @@
                 <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center mt-5 mb-2 text-center text-sm-left">
                     <div class="flex-sm-fill">
                         <h1 class="font-w600 text-white mb-0 invisible" data-toggle="appear">{{ config('app.name') }} Dashboard</h1>
-                        <h2 class="h4 font-w400 text-white-75 mb-0 invisible" data-toggle="appear" data-timeout="250">Welcome Administrator</h2>
+                        <h2 class="h4 font-w400 text-white-75 mb-0 invisible" data-toggle="appear" data-timeout="250">Welcome Midwife</h2>
                     </div>
                     <div class="flex-sm-00-auto mt-3 mt-sm-0 ml-sm-3">
                         <span class="d-inline-block invisible" data-toggle="appear" data-timeout="350">
-                            <a class="btn btn-primary px-4 py-2" data-toggle="click-ripple" href="{{ route('midwives.create') }}">
-                                <i class="fa fa-plus mr-1"></i> New Midwife
-                            </a>
-
-                            <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="#">
-                                <i class="fa fa-plus mr-1"></i> New Child
+                            <a class="btn btn-primary px-4 py-2" data-toggle="click-ripple" href="{{ route('users.create') }}">
+                                <i class="fa fa-plus mr-1"></i> Create Parent
                             </a>
                         </span>
                     </div>
