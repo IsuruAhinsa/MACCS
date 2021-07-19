@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Midwife;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class MidwifeController extends Controller
 {
@@ -29,12 +31,26 @@ class MidwifeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $midwife = new Midwife();
+        $midwife->first_name = $request->input('first_name');
+        // email and password need to be handled specially because the need to respect config values on an edit.
+        $midwife->email = e($request->input('email'));
+        $midwife->phone = $request->input('phone');
+
+        // generate random password
+        $password = Str::random(8);
+        $hashed_password = Hash::make($password);
+
+        $midwife->password = $hashed_password;
+        $midwife->nic = $request->input('nic');
+        $midwife->cases = $request->input('cases');
+        $midwife->save();
+
+        return redirect()->back()->with('password', $password);
+
     }
 
     /**
