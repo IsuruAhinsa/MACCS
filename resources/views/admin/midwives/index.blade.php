@@ -50,7 +50,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($recorders as $midwife)
+                                        @foreach($records as $midwife)
                                             <tr>
                                                 <td>
                                                     <span class="font-w600">
