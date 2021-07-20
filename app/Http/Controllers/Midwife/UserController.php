@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $records = User::all();
+        return view('midwife.users.index')->with(compact('records'));
     }
 
     /**
