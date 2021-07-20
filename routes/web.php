@@ -27,17 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::view('/', 'index');
 });
 
-Route::middleware('auth:admin')->group(function () {
-    //Route::get('/admin', 'AdminController@index')->name('home');
-    Route::view('/admin', 'admin.index');
-
+Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::view('/', 'admin.index');
     Route::resource('midwives', 'Admin\MidwifeController');
-
 });
 
-Route::middleware('auth:midwife')->group(function () {
-    //Route::get('/midwife', 'MidwifeController@index')->name('home');
+Route::middleware('auth:midwife')->prefix('midwife')->name('midwife.')->group(function () {
     Route::view('/midwife', 'midwife.index');
-
     Route::resource('users', 'Midwife\UserController');
 });

@@ -33,7 +33,7 @@
 
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="{{ route('midwives.store') }}" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('admin.midwives.store') }}" method="POST">
 
                     @csrf
 

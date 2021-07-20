@@ -37,7 +37,7 @@
                     {{ Session::get('password') }}
                 @endif
 
-                <form class="form-horizontal p-4" action="{{ route('midwives.store') }}" method="POST">
+                <form class="form-horizontal p-4" action="#" method="POST">
 
                     @csrf
 

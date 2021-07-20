@@ -32,12 +32,12 @@
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('midwives.index') }}">
+                            <a class="nav-main-link" href="{{ route('admin.midwives.index') }}">
                                 <span class="nav-main-link-name">All Midwives</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('midwives.create') }}">
+                            <a class="nav-main-link" href="{{ route('admin.midwives.create') }}">
                                 <span class="nav-main-link-name">Create Midwife</span>
                             </a>
                         </li>
