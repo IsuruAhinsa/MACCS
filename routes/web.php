@@ -32,6 +32,7 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('midwives', 'Admin\MidwifeController');
+        Route::resource('admins', 'Admin\AdminController');
     });
 });
 
