@@ -41,13 +41,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="parent_type" class="col-form-label">Parent Type</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="parent_type"
-                                    placeholder="Enter Parent Type"
-                                    name="parent_type"
-                                >
+                                <select class="custom-select form-control form-control-alt" id="parent_type" name="parent_type">
+                                    <option selected disabled>Select Parent Type</option>
+                                    <option value="1">Father</option>
+                                    <option value="2">Mother</option>
+
+                                </select>
                             </div>
 
                             <div class="form-group">
