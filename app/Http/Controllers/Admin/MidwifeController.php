@@ -16,9 +16,8 @@ class MidwifeController extends Controller
      */
     public function index()
     {
-        $recorders = Midwife::all();
-        return view('admin.midwives.index')->with(compact('recorders'));
-
+        $records = Midwife::all();
+        return view('admin.midwives.index')->with(compact('records'));
     }
 
     /**
@@ -69,20 +68,15 @@ class MidwifeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Midwife  $midwife
-     * @return \Illuminate\Http\Response
      */
     public function edit(Midwife $midwife)
     {
-        //
+        return view('admin.midwives.edit')->with(compact('midwife'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Midwife  $midwife
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Midwife $midwife)
     {
@@ -92,8 +86,6 @@ class MidwifeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Midwife  $midwife
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Midwife $midwife)
     {
