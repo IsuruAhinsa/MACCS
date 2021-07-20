@@ -15,10 +15,6 @@
                             <a class="btn btn-primary px-4 py-2" data-toggle="click-ripple" href="{{ route('midwives.create') }}">
                                 <i class="fa fa-plus mr-1"></i> New Midwife
                             </a>
-
-                            <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="#">
-                                <i class="fa fa-plus mr-1"></i> New Child
-                            </a>
                         </span>
                     </div>
                 </div>
