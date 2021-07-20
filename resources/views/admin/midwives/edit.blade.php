@@ -37,9 +37,10 @@
                     {{ Session::get('password') }}
                 @endif
 
-                <form class="form-horizontal p-4" action="#" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('admin.midwives.update', $midwife->id) }}" method="POST">
 
                     @csrf
+                    @method('PUT')
 
                     <div class="row">
 
@@ -126,7 +127,7 @@
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Create Midwife'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Update Midwife'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>

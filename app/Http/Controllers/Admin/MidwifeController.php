@@ -86,7 +86,15 @@ class MidwifeController extends Controller
      */
     public function update(Request $request, Midwife $midwife)
     {
-        //
+        $midwife->first_name = $request->input('first_name');
+        $midwife->last_name = $request->input('last_name');
+        $midwife->email = e($request->input('email'));
+        $midwife->phone = $request->input('phone');
+        $midwife->nic = $request->input('nic');
+        $midwife->cases = $request->input('cases');
+        $midwife->save();
+
+        return redirect()->route('admin.midwives.index')->with('success', 'Midwife Updated Successfully!');
     }
 
     /**
