@@ -1,3 +1,19 @@
+@php
+
+if (Auth::guard('admin')->check()) {
+    $username = Auth::guard('admin')->user()->name;
+    $profileRoute = route('admin.profile');
+} elseif (Auth::guard('midwife')->check()) {
+    $username = Auth::guard('midwife')->user()->first_name;
+    $profileRoute = null;
+} else {
+    $username = Auth::user()->name;
+    $profileRoute = null;
+}
+
+@endphp
+
+
 <header id="page-header">
 
     <div class="content-header">
@@ -35,13 +51,7 @@
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded" src="{{ asset('assets/media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 18px;">
                     <span class="d-none d-sm-inline-block ml-1">
-                        @if(Auth::guard('admin')->check())
-                            {{ Auth::guard('admin')->user()->name }}
-                        @elseif(Auth::guard('midwife')->check())
-                            {{ Auth::guard('midwife')->user()->first_name }}
-                        @else
-                            {{ Auth::user()->name }}
-                        @endisset
+                        {{ $username }}
                     </span>
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
                 </button>
@@ -51,7 +61,11 @@
                     </div>
                     <div class="p-2">
                         <h5 class="dropdown-header text-uppercase">User Options</h5>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_profile.html">
+
+                        <a
+                            class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="{{ $profileRoute }}"
+                        >
                             <span>Profile</span>
                             <span>
                                 <i class="si si-user ml-1"></i>
