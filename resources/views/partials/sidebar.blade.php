@@ -53,18 +53,13 @@
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('users.index') }}">
+                            <a class="nav-main-link" href="{{ route('midwife.users.index') }}">
                                 <span class="nav-main-link-name">All Parents</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('users.create') }}">
+                            <a class="nav-main-link" href="{{ route('midwife.users.create') }}">
                                 <span class="nav-main-link-name">Create Parent</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
-                                <span class="nav-main-link-name">Disabled Parents</span>
                             </a>
                         </li>
                     </ul>

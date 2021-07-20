@@ -12,7 +12,7 @@
                     </div>
                     <div class="flex-sm-00-auto mt-3 mt-sm-0 ml-sm-3">
                         <span class="d-inline-block invisible" data-toggle="appear" data-timeout="350">
-                            <a class="btn btn-primary px-4 py-2" data-toggle="click-ripple" href="{{ route('users.create') }}">
+                            <a class="btn btn-primary px-4 py-2" data-toggle="click-ripple" href="{{ route('midwife.users.create') }}">
                                 <i class="fa fa-plus mr-1"></i> Create Parent
                             </a>
                         </span>
