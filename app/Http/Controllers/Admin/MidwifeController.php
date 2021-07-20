@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveMidwifeRequest;
 use App\Mail\MidwifeAccountCreated;
 use App\Midwife;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class MidwifeController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store(Request $request)
+    public function store(SaveMidwifeRequest $request)
     {
         $midwife = new Midwife();
         $midwife->first_name = $request->input('first_name');
@@ -84,7 +85,7 @@ class MidwifeController extends Controller
      * Update the specified resource in storage.
      *
      */
-    public function update(Request $request, Midwife $midwife)
+    public function update(SaveMidwifeRequest $request, Midwife $midwife)
     {
         $midwife->first_name = $request->input('first_name');
         $midwife->last_name = $request->input('last_name');
