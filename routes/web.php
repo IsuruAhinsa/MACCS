@@ -28,10 +28,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth:admin')->group(function () {
-    Route::view('/admin', 'admin.index');
+    Route::get('/admin', 'Admin\AdminDashboardController@index');
+    Route::get('/admin/profile', 'Admin\AdminDashboardController@showProfile')->name('admin.profile');
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('midwives', 'Admin\MidwifeController');
+        Route::resource('admins', 'Admin\AdminController');
     });
 });
 
