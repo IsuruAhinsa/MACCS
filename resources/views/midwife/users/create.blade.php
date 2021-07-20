@@ -6,13 +6,15 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Blank (Block) <small class="d-block d-sm-inline-block mt-2 mt-sm-0 font-size-base font-w400 text-muted">That feeling of delight when you start your awesome new project!</small>
+                   Create Parents
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
-                        <li class="breadcrumb-item">Generic</li>
+                        <li class="breadcrumb-item">
+                            <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
+                        </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            <a class="link-fx" href="">Blank (Block)</a>
+                            Create Parents
                         </li>
                     </ol>
                 </nav>
@@ -25,7 +27,7 @@
         <div class="block block-themed">
             <div class="block-header bg-amethyst">
                 <h3 class="block-title">
-                    Block Title
+                    Create Parents
                 </h3>
             </div>
             <div class="block-content">
@@ -37,6 +39,16 @@
                     <div class="row">
 
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="parent_type" class="col-form-label">Parent Type</label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-alt"
+                                    id="parent_type"
+                                    placeholder="Enter Parent Type"
+                                    name="parent_type"
+                                >
+                            </div>
 
                             <div class="form-group">
                                 <label for="first_name" class="col-form-label">First Name</label>
@@ -61,13 +73,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="contact" class="col-form-label">Contact No</label>
+                                <label for="phone" class="col-form-label">Contact No</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="contact"
+                                    id="phone"
                                     placeholder="Enter Contact No"
-                                    name="contact"
+                                    name="phone"
                                 >
                             </div>
 
@@ -82,49 +94,50 @@
                                 >
                             </div>
 
-
                         </div>
 
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email</label>
+                                <input
+                                    type="email"
+                                    class="form-control form-control-alt"
+                                    id="email"
+                                    placeholder="Enter Email"
+                                    name="email"
+                                >
+                            </div>
 
                             <div class="form-group">
-                                <label for="address_line1" class="col-form-label">Address Line1</label>
+                                <label for="address" class="col-form-label">Address </label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="address_line1"
-                                    placeholder="Enter Address Line1"
-                                    name="address_line1"
+                                    id="address"
+                                    placeholder="Enter Address"
+                                    name="address"
                                 >
                             </div>
+
                             <div class="form-group">
-                                <label for="address_line2" class="col-form-label">Address Line2</label>
+                                <label for="age" class="col-form-label">Age</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="address_line2"
-                                    placeholder="Enter Address Line2"
-                                    name="address_line2"
+                                    id="age"
+                                    placeholder="Enter Age"
+                                    name="age"
                                 >
                             </div>
+
                             <div class="form-group">
-                                <label for="address_line3" class="col-form-label">Address Line3</label>
+                                <label for="age" class="col-form-label">No of Children</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="address_line3"
-                                    placeholder="Enter Address Line3"
-                                    name="address_line3"
-                                >
-                            </div>
-                            <div class="form-group">
-                                <label for="assigned_cases" class="col-form-label">Assigned Cases</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="assigned_cases"
-                                    placeholder="Enter Assigned Cases"
-                                    name="assigned_cases"
+                                    id="age"
+                                    placeholder="Enter No of Children"
+                                    name="age"
                                 >
                             </div>
 
