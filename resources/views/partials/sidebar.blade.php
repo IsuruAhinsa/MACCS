@@ -41,11 +41,6 @@
                                 <span class="nav-main-link-name">Create Midwife</span>
                             </a>
                         </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
-                                <span class="nav-main-link-name">Disabled Midwives</span>
-                            </a>
-                        </li>
                     </ul>
                 </li>
 
