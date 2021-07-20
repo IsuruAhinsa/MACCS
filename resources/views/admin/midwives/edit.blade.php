@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Create Midwife
+                   Edit Midwife
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -14,7 +14,7 @@
                             <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Create Midwife
+                            Edit Midwife
                         </li>
                     </ol>
                 </nav>
@@ -27,7 +27,7 @@
         <div class="block block-themed">
             <div class="block-header">
                 <h3 class="block-title">
-                    Create Midwife
+                    Edit Midwife
                 </h3>
             </div>
 
@@ -53,6 +53,7 @@
                                     id="first_name"
                                     placeholder="Enter First Name"
                                     name="first_name"
+                                    value="{{$midwife->first_name}}"
                                 >
                             </div>
 
@@ -64,6 +65,7 @@
                                     id="last_name"
                                     placeholder="Enter Last Name"
                                     name="last_name"
+                                    value="{{$midwife->last_name}}"
                                 >
                             </div>
 
@@ -75,6 +77,7 @@
                                     id="email"
                                     placeholder="Enter Email"
                                     name="email"
+                                    value="{{$midwife->email}}"
                                 >
                             </div>
 
@@ -90,6 +93,7 @@
                                     id="phone"
                                     placeholder="Enter Phone"
                                     name="phone"
+                                    value="{{$midwife->phone}}"
                                 >
                             </div>
 
@@ -101,6 +105,7 @@
                                     id="nic"
                                     placeholder="Enter NIC No"
                                     name="nic"
+                                    value="{{$midwife->nic}}"
                                 >
                             </div>
 
@@ -112,6 +117,7 @@
                                     id="cases"
                                     placeholder="Enter Assigned Cases"
                                     name="cases"
+                                    value="{{$midwife->cases}}"
                                 >
                             </div>
 

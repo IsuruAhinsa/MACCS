@@ -131,13 +131,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="age" class="col-form-label">No of Children</label>
+                                <label for="no_of_children" class="col-form-label">No of Children</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="age"
+                                    id="no_of_children"
                                     placeholder="Enter No of Children"
-                                    name="age"
+                                    name="no_of_children"
                                 >
                             </div>
 
