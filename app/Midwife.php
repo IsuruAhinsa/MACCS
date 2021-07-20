@@ -31,4 +31,5 @@ class Midwife extends Authenticatable
         }
 
     }
+
 }
