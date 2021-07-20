@@ -18,4 +18,17 @@ class Midwife extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    /**
+     * Get the midwife's full name.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute() {
+
+        if (isset($this->first_name) || isset($this->last_name)) {
+            return "{$this->first_name} {$this->last_name}";
+        }
+
+    }
 }
