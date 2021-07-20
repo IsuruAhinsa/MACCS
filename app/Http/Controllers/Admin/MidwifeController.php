@@ -56,7 +56,7 @@ class MidwifeController extends Controller
         // sending account created mail
         Mail::to($request->input('email'))->send(new MidwifeAccountCreated($midwife, $password));
 
-        return redirect()->route('midwives.index')->with('success', 'Midwife Created Successfully!');
+        return redirect()->route('admin.midwives.index')->with('success', 'Midwife Created Successfully!');
 
     }
 
@@ -95,6 +95,7 @@ class MidwifeController extends Controller
      */
     public function destroy(Midwife $midwife)
     {
-        //
+        $midwife->delete();
+        return back()->with('success', 'Midwife Deleted!');
     }
 }
