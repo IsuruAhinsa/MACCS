@@ -26,13 +26,19 @@
 
         <div class="row">
             <div class="col-sm-12">
+
+                @if(Session::has('success'))
+                    <x-Alert type="success" :message="Session::get('success')"></x-Alert>
+                @endif
+
                 <div class="row row-deck">
-                    <!-- Latest Customers -->
+
                     <div class="col-lg-12">
                         <div class="block block-mode-loading-oneui block-themed">
                             <div class="block-header border-bottom">
                                 <h3 class="block-title">All Midwives</h3>
                             </div>
+
                             <div class="block-content block-content-full">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover table-borderless table-vcenter font-size-sm mb-0">

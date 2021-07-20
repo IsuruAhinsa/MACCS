@@ -50,7 +50,7 @@ class MidwifeController extends Controller
         $midwife->cases = $request->input('cases');
         $midwife->save();
 
-        return redirect()->back()->with('password', $password);
+        return redirect()->route('midwives.index')->with('success', 'Midwife Created Successfully!');
 
     }
 

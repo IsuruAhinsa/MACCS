@@ -4,11 +4,11 @@
     </button>
     <h3 class="alert-heading font-w300 my-2">
         @if($type == 'success')
-            {{ ucfirst($type) }}!
+            {{ ucfirst($type) }}
         @elseif($type == 'danger')
-            {{ ucfirst('error') }}!
+            {{ ucfirst('error') }}
         @elseif($type == 'warning')
-            {{ ucfirst($type) }}!
+            {{ ucfirst($type) }}
         @endif
     </h3>
     <p class="mb-0">{{ $message }}</p>
