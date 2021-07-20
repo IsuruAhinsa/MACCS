@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\MidwifeAccountCreated;
 use App\Midwife;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class MidwifeController extends Controller
@@ -37,6 +39,7 @@ class MidwifeController extends Controller
     {
         $midwife = new Midwife();
         $midwife->first_name = $request->input('first_name');
+        $midwife->last_name = $request->input('last_name');
         // email and password need to be handled specially because the need to respect config values on an edit.
         $midwife->email = e($request->input('email'));
         $midwife->phone = $request->input('phone');
@@ -49,6 +52,9 @@ class MidwifeController extends Controller
         $midwife->nic = $request->input('nic');
         $midwife->cases = $request->input('cases');
         $midwife->save();
+
+        // sending account created mail
+        Mail::to($request->input('email'))->send(new MidwifeAccountCreated($midwife, $password));
 
         return redirect()->route('midwives.index')->with('success', 'Midwife Created Successfully!');
 
