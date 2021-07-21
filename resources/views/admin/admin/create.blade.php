@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Create Midwife
+                    Create Admin
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -14,7 +14,7 @@
                             <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Create Midwife
+                            Create Admin
                         </li>
                     </ol>
                 </nav>
@@ -27,7 +27,7 @@
         <div class="block block-themed">
             <div class="block-header">
                 <h3 class="block-title">
-                    Create Midwife
+                    Create Admin
                 </h3>
             </div>
 
@@ -42,37 +42,36 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="first_name" class="col-form-label">First Name</label>
+                                <label for="name" class="col-form-label"> Name</label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt @error('first_name') is-invalid @enderror"
-                                    id="first_name"
-                                    placeholder="Enter First Name"
-                                    name="first_name"
+                                    class="form-control form-control-alt @error('name') is-invalid @enderror"
+                                    id="name"
+                                    placeholder="Enter Name"
+                                    name="name"
                                 >
-                                @error('first_name')
+                                @error('name')
                                 <small class="invalid-feedback">
                                     {{ $message }}
                                 </small>
                                 @enderror
 
                             </div>
-
                             <div class="form-group">
-                                <label for="last_name" class="col-form-label">Last Name</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('last_name') is-invalid @enderror"
-                                    id="last_name"
-                                    placeholder="Enter Last Name"
-                                    name="last_name"
-                                >
-                                @error('last_name')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
+                                <label for="admin_type" class="col-form-label">Admin Type</label>
+                                <select class="custom-select form-control form-control-alt" id="admin_type" name="admin_type">
+                                    <option selected disabled>Select Admin Type</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Super Admin</option>
+
+                                </select>
                             </div>
+
+
+
+                        </div>
+
+                        <div class="col-md-6">
 
                             <div class="form-group">
                                 <label for="email" class="col-form-label">Email</label>
@@ -90,64 +89,14 @@
                                 @enderror
                             </div>
 
-                        </div>
 
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="phone" class="col-form-label">Phone</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('phone') is-invalid @enderror"
-                                    id="phone"
-                                    placeholder="Enter Phone"
-                                    name="phone"
-                                >
-                                @error('phone')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="nic" class="col-form-label">NIC No</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('nic') is-invalid @enderror"
-                                    id="nic"
-                                    placeholder="Enter NIC No"
-                                    name="nic"
-                                >
-                                @error('nic')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="cases" class="col-form-label">Assigned Cases</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('cases') is-invalid @enderror"
-                                    id="cases"
-                                    placeholder="Enter Assigned Cases"
-                                    name="cases"
-                                >
-                                @error('cases')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
 
                         </div>
 
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Create Midwife'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Create Admin'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>

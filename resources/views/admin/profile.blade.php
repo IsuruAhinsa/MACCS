@@ -64,7 +64,81 @@
                             </div>
                             <div class="block-content">
 
-                                {{-- Information Form --}}
+                                <form class="form-horizontal p-4" action="#" method="POST">
+
+                                    @csrf
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="name" class="col-form-label"> Name</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('name') is-invalid @enderror"
+                                                    id="name"
+                                                    placeholder="Enter Name"
+                                                    name="name"
+                                                >
+                                                @error('name')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="admin_type" class="col-form-label">Admin Type</label>
+                                                <select class="custom-select form-control form-control-alt" id="admin_type" name="admin_type">
+                                                    <option selected disabled>Select Admin Type</option>
+                                                    <option value="1">Admin</option>
+                                                    <option value="2">Super Admin</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="email" class="col-form-label">Email</label>
+                                                <input
+                                                    type="email"
+                                                    class="form-control form-control-alt @error('email') is-invalid @enderror"
+                                                    id="email"
+                                                    placeholder="Enter Email"
+                                                    name="email"
+                                                >
+                                                @error('email')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="image" class="col-form-label">Admin Image</label>
+                                                <div class="custom-file">
+                                                    <input
+                                                        type="file"
+                                                        class="custom-file-input "
+                                                        data-toggle="custom-file-input"
+                                                        id="image"
+                                                        name="image">
+                                                    <label class="custom-file-label" for="image">Choose file</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <x-SubmitButton :btnText="'Create Admin'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                                    </div>
+
+                                </form>
 
                             </div>
                         </div>
@@ -84,7 +158,66 @@
                             </div>
                             <div class="block-content block-content-full">
 
-                                {{-- change password form --}}
+                                <form class="form-horizontal p-4" action="#" method="POST">
+                                    @csrf
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+
+                                            <div class="form-group">
+                                                <label for="name" class="col-form-label">Current Password</label>
+                                                <input
+                                                    type="password"
+                                                    class="form-control form-control-alt @error('current_password') is-invalid @enderror"
+                                                    id="current_password"
+                                                    placeholder="Enter Current Password"
+                                                    name="current_password"
+                                                >
+                                                @error('current_password')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password" class="col-form-label">New Password</label>
+                                                <input
+                                                    type="password"
+                                                    class="form-control form-control-alt @error('password') is-invalid @enderror"
+                                                    id="password"
+                                                    placeholder="Enter New Password"
+                                                    name="password"
+                                                >
+                                                @error('password')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password_confirmation" class="col-form-label">Re enter your new password</label>
+                                                <input
+                                                    type="password"
+                                                    class="form-control form-control-alt @error('password_confirmation') is-invalid @enderror"
+                                                    id="password_confirmation"
+                                                    placeholder="Re enter your new password"
+                                                    name="password_confirmation"
+                                                >
+                                                @error('password_confirmation')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <x-SubmitButton :btnText="'Update Password'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                                    </div>
+
+                                </form>
 
 
                             </div>
