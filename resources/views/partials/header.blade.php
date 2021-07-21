@@ -5,7 +5,7 @@ if (Auth::guard('admin')->check()) {
     $profileRoute = route('admin.profile');
 } elseif (Auth::guard('midwife')->check()) {
     $username = Auth::guard('midwife')->user()->first_name;
-    $profileRoute = null;
+    $profileRoute = route('midwife.profile');
 } else {
     $username = Auth::user()->name;
     $profileRoute = null;

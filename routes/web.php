@@ -38,7 +38,8 @@ Route::middleware('auth:admin')->group(function () {
 });
 
 Route::middleware('auth:midwife')->group(function () {
-    Route::view('/midwife', 'midwife.index');
+    Route::get('/midwife', 'Midwife\MidwifeDashboardController@index');
+    Route::get('/midwife/profile', 'Midwife\MidwifeDashboardController@showProfile')->name('midwife.profile');
 
     Route::prefix('midwife')->name('midwife.')->group(function () {
         Route::resource('users', 'Midwife\UserController');
