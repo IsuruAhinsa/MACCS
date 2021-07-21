@@ -24,6 +24,10 @@
 
     <div class="content">
 
+        @if(Session::has('success'))
+            <x-Alert type="success" :message="Session::get('success')"></x-Alert>
+        @endif
+
         <div class="block block-themed">
             <div class="block-header">
                 <h3 class="block-title">
@@ -33,7 +37,7 @@
 
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="{{ route('admin.midwives.store') }}" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('admin.admins.store') }}" method="POST">
 
                     @csrf
 
@@ -42,7 +46,7 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="name" class="col-form-label"> Name</label>
+                                <label for="name" class="col-form-label">Name</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt @error('name') is-invalid @enderror"
@@ -58,11 +62,11 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="admin_type" class="col-form-label">Admin Type</label>
-                                <select class="custom-select form-control form-control-alt" id="admin_type" name="admin_type">
+                                <label for="type" class="col-form-label">Admin Type</label>
+                                <select class="custom-select form-control form-control-alt" id="type" name="type">
                                     <option selected disabled>Select Admin Type</option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">Super Admin</option>
+                                    <option value="administrator">Administrator</option>
+                                    <option value="super administrator">Super Administrator</option>
 
                                 </select>
                             </div>
@@ -88,8 +92,6 @@
                                 </small>
                                 @enderror
                             </div>
-
-
 
                         </div>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -30,12 +32,29 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $admin = new Admin();
+        $admin->name = $request->input('name');
+        $admin->email = $request->input('email');
+
+        // generating password
+        $password = Str::random(8);
+        $hashed_password = Hash::make($password);
+
+        $admin->password = $hashed_password;
+
+        if ($request->input('type') == 'super administrator') {
+            $admin->is_super = true;
+        } else {
+            $admin->is_super = false;
+        }
+
+        $admin->save();
+
+        return redirect()->back()->with('success', 'Admin Created Successfully!');
+
     }
 
     /**
