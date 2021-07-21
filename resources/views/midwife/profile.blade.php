@@ -8,7 +8,7 @@
                 <div class="my-3">
                     <img class="img-avatar img-avatar-thumb" src="{{ asset('assets/media/avatars/avatar13.jpg') }}" alt="">
                 </div>
-                <h1 class="h2 text-white mb-0">John Parker</h1>
+                <h1 class="h2 text-white mb-0">Midwife</h1>
                 <span class="text-white-75">UI Designer</span>
             </div>
         </div>
@@ -73,33 +73,37 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="name" class="col-form-label"> Name</label>
+                                                <label for="first_name" class="col-form-label">First Name</label>
                                                 <input
                                                     type="text"
-                                                    class="form-control form-control-alt @error('name') is-invalid @enderror"
-                                                    id="name"
-                                                    placeholder="Enter Name"
-                                                    name="name"
+                                                    class="form-control form-control-alt @error('first_name') is-invalid @enderror"
+                                                    id="first_name"
+                                                    placeholder="Enter First Name"
+                                                    name="first_name"
                                                 >
-                                                @error('name')
+                                                @error('first_name')
                                                 <small class="invalid-feedback">
                                                     {{ $message }}
                                                 </small>
                                                 @enderror
 
                                             </div>
+
                                             <div class="form-group">
-                                                <label for="admin_type" class="col-form-label">Admin Type</label>
-                                                <select class="custom-select form-control form-control-alt" id="admin_type" name="admin_type">
-                                                    <option selected disabled>Select Admin Type</option>
-                                                    <option value="1">Admin</option>
-                                                    <option value="2">Super Admin</option>
-
-                                                </select>
+                                                <label for="last_name" class="col-form-label">Last Name</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('last_name') is-invalid @enderror"
+                                                    id="last_name"
+                                                    placeholder="Enter Last Name"
+                                                    name="last_name"
+                                                >
+                                                @error('last_name')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
                                             </div>
-                                        </div>
-
-                                        <div class="col-md-6">
 
                                             <div class="form-group">
                                                 <label for="email" class="col-form-label">Email</label>
@@ -109,6 +113,7 @@
                                                     id="email"
                                                     placeholder="Enter Email"
                                                     name="email"
+
                                                 >
                                                 @error('email')
                                                 <small class="invalid-feedback">
@@ -117,17 +122,56 @@
                                                 @enderror
                                             </div>
 
+                                        </div>
+
+                                        <div class="col-md-6">
+
                                             <div class="form-group">
-                                                <label for="image" class="col-form-label">Admin Image</label>
-                                                <div class="custom-file">
-                                                    <input
-                                                        type="file"
-                                                        class="custom-file-input "
-                                                        data-toggle="custom-file-input"
-                                                        id="image"
-                                                        name="image">
-                                                    <label class="custom-file-label" for="image">Choose file</label>
-                                                </div>
+                                                <label for="phone" class="col-form-label">Phone</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('phone') is-invalid @enderror"
+                                                    id="phone"
+                                                    placeholder="Enter Phone"
+                                                    name="phone"
+                                                >
+                                                @error('phone')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="nic" class="col-form-label">NIC No</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('nic') is-invalid @enderror"
+                                                    id="nic"
+                                                    placeholder="Enter NIC No"
+                                                    name="nic"
+                                                >
+                                                @error('nic')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="cases" class="col-form-label">Assigned Cases</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('cases') is-invalid @enderror"
+                                                    id="cases"
+                                                    placeholder="Enter Assigned Cases"
+                                                    name="cases"
+                                                >
+                                                @error('cases')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
                                             </div>
 
                                         </div>
@@ -135,7 +179,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <x-SubmitButton :btnText="'Create Admin'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                                        <x-SubmitButton :btnText="'Update Midwife'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                                     </div>
 
                                 </form>
