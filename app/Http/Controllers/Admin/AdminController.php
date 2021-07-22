@@ -77,12 +77,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
      */
     public function edit(Admin $admin)
     {
-        //
+        return view('admin.admin.edit')->with(compact('admin'));
     }
 
     /**
