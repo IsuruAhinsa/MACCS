@@ -16,4 +16,9 @@ class AdminDashboardController extends Controller
     {
         return view('admin.profile');
     }
+
+    public function updatePassword(Request $request)
+    {
+        dd($request->all());
+    }
 }

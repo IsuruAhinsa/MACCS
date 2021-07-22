@@ -158,7 +158,7 @@
                             </div>
                             <div class="block-content block-content-full">
 
-                                <form class="form-horizontal p-4" action="#" method="POST">
+                                <form class="form-horizontal p-4" action="{{ route('admin.update.password') }}" method="POST">
                                     @csrf
                                     <div class="row">
 

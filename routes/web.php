@@ -29,11 +29,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin', 'Admin\AdminDashboardController@index');
-    Route::get('/admin/profile', 'Admin\AdminDashboardController@showProfile')->name('admin.profile');
 
-    Route::prefix('admin')->name('admin.')->group(function () {
-        Route::resource('midwives', 'Admin\MidwifeController');
-        Route::resource('admins', 'Admin\AdminController');
+    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+        Route::resource('midwives', 'MidwifeController');
+        Route::resource('admins', 'AdminController');
+        Route::get('profile', 'AdminDashboardController@showProfile')->name('profile');
+        Route::post('change/password', 'AdminDashboardController@updatePassword')->name('update.password');
     });
 });
 
