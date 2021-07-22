@@ -19,6 +19,10 @@ class Midwife extends Authenticatable
         'password', 'remember_token'
     ];
 
+    public static function id()
+    {
+    }
+
     /**
      * Get the midwife's full name.
      *

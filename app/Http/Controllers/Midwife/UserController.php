@@ -3,8 +3,15 @@
 namespace App\Http\Controllers\Midwife;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminAccountCreated;
+use App\Mail\UserAccountCreated;
+use App\Midwife;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -33,7 +40,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->midwife_id = Auth::id();
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->address = $request->input('address');
+        $user->city = $request->input('city');
+        $user->province = $request->input('province');
+        $user->postal = $request->input('postal');
+        $user->birthday = $request->input('birthday');
+        $user->nic = $request->input('nic');
+        $user->type = $request->input('type');
+        $user->children = $request->input('children');
+        // generating password
+        $password = Str::random(8);
+        $hashed_password = Hash::make($password);
+        $user->password = $hashed_password;
+        // sending mail
+        Mail::to($request->input('email'))->send(new UserAccountCreated($user, $password));
+
+        return redirect()->back()->with('success', 'User Created Successfully!');
+
+        $user->save();
     }
 
     /**

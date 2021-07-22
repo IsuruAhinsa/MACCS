@@ -23,6 +23,9 @@
     </div>
 
     <div class="content">
+        @if(Session::has('success'))
+            <x-Alert type="success" :message="Session::get('success')"></x-Alert>
+    @endif
         <!-- Your Block -->
         <div class="block block-themed">
             <div class="block-header bg-amethyst">
@@ -32,7 +35,7 @@
             </div>
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="#" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('midwife.users.store') }}" method="POST">
 
                     @csrf
 
@@ -83,20 +86,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="nic" class="col-form-label">NIC No</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="nic"
-                                    placeholder="Enter NIC No"
-                                    name="nic"
-                                >
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 <label for="email" class="col-form-label">Email</label>
                                 <input
                                     type="email"
@@ -107,6 +96,31 @@
                                 >
                             </div>
 
+
+                            <div class="form-group">
+                                <label for="nic" class="col-form-label">NIC No</label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-alt"
+                                    id="nic"
+                                    placeholder="Enter NIC No"
+                                    name="nic"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="birthday" class="col-form-label">Birthday</label>
+                                <input
+                                    type="date"
+                                    class="form-control form-control-alt"
+                                    id="birthday"
+                                    placeholder="Enter Birthday"
+                                    name="birthday"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="address" class="col-form-label">Address </label>
                                 <input
@@ -117,15 +131,34 @@
                                     name="address"
                                 >
                             </div>
-
                             <div class="form-group">
-                                <label for="age" class="col-form-label">Age</label>
+                                <label for="city" class="col-form-label">City </label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="age"
-                                    placeholder="Enter Age"
-                                    name="age"
+                                    id="city"
+                                    placeholder="Enter City"
+                                    name="city"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="province" class="col-form-label">Province </label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-alt"
+                                    id="province"
+                                    placeholder="Enter Province"
+                                    name="province"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="postal" class="col-form-label">Postal Code</label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-alt"
+                                    id="postal"
+                                    placeholder="Enter Postal Code"
+                                    name="postal"
                                 >
                             </div>
 
