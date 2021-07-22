@@ -21,7 +21,7 @@ class UserAccountCreated extends Mailable
     {
         $this->user = $user;
         $this->password = $password;
-        $this->url = route('user.login');
+        $this->url = route('login');
     }
 
 
