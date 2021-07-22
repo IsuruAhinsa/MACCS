@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use App\Mail\AdminAccountCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class AdminController extends Controller
@@ -52,6 +54,9 @@ class AdminController extends Controller
         }
 
         $admin->save();
+
+        // sending mail
+        Mail::to($request->input('email'))->send(new AdminAccountCreated($admin, $password));
 
         return redirect()->back()->with('success', 'Admin Created Successfully!');
 
