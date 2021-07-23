@@ -21,6 +21,23 @@ class MidwifeDashboardController extends Controller
         return view('midwife.profile');
     }
 
+    public function saveProfile(Request $request)
+    {
+        $midwife = Midwife::findOrFail(Auth::guard('midwife')->id());
+
+        app('App\Http\Requests\ImageUploadRequest')->handleImages('image', 'img/midwives/', $midwife, 'image');
+
+        $midwife->first_name = $request->input('first_name');
+        $midwife->last_name = $request->input('last_name');
+        $midwife->email = e($request->input('email'));
+        $midwife->phone = $request->input('phone');
+        $midwife->nic = $request->input('nic');
+        $midwife->cases = $request->input('cases');
+        $midwife->save();
+
+        return redirect()->back()->with('success', 'Profile Saved!');
+    }
+
     public function updatePassword(UpdatePasswordRequest $request)
     {
         // check if the hash passwords are match

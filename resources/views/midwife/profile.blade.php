@@ -6,10 +6,10 @@
         <div class="bg-black-50">
             <div class="content content-full text-center">
                 <div class="my-3">
-                    <img class="img-avatar img-avatar-thumb" src="{{ asset('assets/media/avatars/avatar13.jpg') }}" alt="">
+                    <img class="img-avatar img-avatar-thumb" src="{{ isset(Auth::guard('midwife')->user()->image) ? asset('uploads/img/midwives/' . Auth::guard('midwife')->user()->image) : asset('assets/media/avatars/avatar13.jpg') }}" alt="">
                 </div>
-                <h1 class="h2 text-white mb-0">Midwife</h1>
-                <span class="text-white-75">UI Designer</span>
+                <h1 class="h2 text-white mb-0">{{ Auth::guard('midwife')->user()->full_name }}</h1>
+                <span class="text-white-75">Midwife</span>
             </div>
         </div>
     </div>
@@ -30,17 +30,13 @@
                         <div class="timeline-event-block block invisible" data-toggle="appear">
                             <div class="block-header">
                                 <h3 class="block-title">Information</h3>
-                                <div class="block-options">
-                                    <div class="timeline-event-time block-options-item font-size-sm">
-                                        just now
-                                    </div>
-                                </div>
                             </div>
                             <div class="block-content">
 
-                                <form class="form-horizontal p-4" action="#" method="POST">
+                                <form class="form-horizontal p-4" action="{{ route('midwife.profile.save') }}" method="POST" enctype="multipart/form-data">
 
                                     @csrf
+                                    @method('PUT')
 
                                     <div class="row">
 
@@ -54,6 +50,7 @@
                                                     id="first_name"
                                                     placeholder="Enter First Name"
                                                     name="first_name"
+                                                    value="{{ Auth::guard('midwife')->user()->first_name }}"
                                                 >
                                                 @error('first_name')
                                                 <small class="invalid-feedback">
@@ -71,6 +68,7 @@
                                                     id="last_name"
                                                     placeholder="Enter Last Name"
                                                     name="last_name"
+                                                    value="{{ Auth::guard('midwife')->user()->last_name }}"
                                                 >
                                                 @error('last_name')
                                                 <small class="invalid-feedback">
@@ -87,6 +85,7 @@
                                                     id="email"
                                                     placeholder="Enter Email"
                                                     name="email"
+                                                    value="{{ Auth::guard('midwife')->user()->email }}"
 
                                                 >
                                                 @error('email')
@@ -100,12 +99,16 @@
                                                 <div class="custom-file">
                                                     <input
                                                         type="file"
-                                                        class="custom-file-input "
+                                                        class="custom-file-input @error('image') is-invalid @enderror"
                                                         data-toggle="custom-file-input"
                                                         id="image"
                                                         name="image">
                                                     <label class="custom-file-label" for="image">Choose file</label>
-
+                                                    @error('image')
+                                                    <small class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </small>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -121,6 +124,7 @@
                                                     id="phone"
                                                     placeholder="Enter Phone"
                                                     name="phone"
+                                                    value="{{ Auth::guard('midwife')->user()->phone }}"
                                                 >
                                                 @error('phone')
                                                 <small class="invalid-feedback">
@@ -137,6 +141,7 @@
                                                     id="nic"
                                                     placeholder="Enter NIC No"
                                                     name="nic"
+                                                    value="{{ Auth::guard('midwife')->user()->nic }}"
                                                 >
                                                 @error('nic')
                                                 <small class="invalid-feedback">
@@ -153,6 +158,7 @@
                                                     id="cases"
                                                     placeholder="Enter Assigned Cases"
                                                     name="cases"
+                                                    value="{{ Auth::guard('midwife')->user()->cases }}"
                                                 >
                                                 @error('cases')
                                                 <small class="invalid-feedback">
