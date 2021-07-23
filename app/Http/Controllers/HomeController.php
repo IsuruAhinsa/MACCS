@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Child;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        return view('users.index', [
+            'children' => $this->getChildren()
+        ]);
+    }
+
+    protected function getChildren()
+    {
+        return Child::where('user_id', Auth::id())->get();
     }
 }

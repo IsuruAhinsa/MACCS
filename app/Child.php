@@ -9,4 +9,17 @@ class Child extends Model
     protected $fillable = [
         'first_name', 'last_name', 'birthday', 'date_of_registration', 'birth_weight', 'health_status'
     ];
+
+    /**
+     * Get the child's full name.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute() {
+
+        if (isset($this->first_name) && isset($this->last_name)) {
+            return "{$this->first_name} {$this->last_name}";
+        }
+
+    }
 }
