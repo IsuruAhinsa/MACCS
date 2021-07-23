@@ -51,7 +51,7 @@ class ChildController extends Controller
      */
     public function show(Child $child)
     {
-        //
+        return view('users.children.show')->with(compact('child'));
     }
 
     /**

@@ -64,7 +64,7 @@
                         <div class="block-content">
                             <ul class="nav-items font-size-sm">
                                 <li>
-                                    <a class="media py-2" href="javascript:void(0)">
+                                    <a class="media py-2" href="{{ route('children.show', $child->id) }}">
                                         <div class="mr-3 ml-2 overlay-container overlay-bottom">
                                             <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar1.jpg') }}" alt="">
                                             <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>
@@ -76,9 +76,6 @@
                                     </a>
                                 </li>
                             </ul>
-                            <div class="text-center push">
-                                <button type="button" class="btn btn-sm btn-light">Load More..</button>
-                            </div>
                         </div>
                     </div>
 
