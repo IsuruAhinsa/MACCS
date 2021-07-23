@@ -95,6 +95,19 @@
                                                 </small>
                                                 @enderror
                                             </div>
+                                            <div class="form-group">
+                                                <label for="image" class="col-form-label">Image</label>
+                                                <div class="custom-file">
+                                                    <input
+                                                        type="file"
+                                                        class="custom-file-input "
+                                                        data-toggle="custom-file-input"
+                                                        id="image"
+                                                        name="image">
+                                                    <label class="custom-file-label" for="image">Choose file</label>
+
+                                                </div>
+                                            </div>
 
                                         </div>
 
@@ -153,7 +166,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <x-SubmitButton :btnText="'Update Midwife'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                                        <x-SubmitButton :btnText="'Save Midwife'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                                     </div>
 
                                 </form>
