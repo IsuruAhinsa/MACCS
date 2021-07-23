@@ -37,7 +37,7 @@
             </div>
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="{{ route('midwife.users.store') }}" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('children.store') }}" method="POST">
 
                     @csrf
 
@@ -127,7 +127,7 @@
 
             </div>
         </div>
-        <!-- END Your Block -->
+
     </div>
 
 @endsection
