@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Child;
-use Illuminate\Http\Request;
+use App\Http\Requests\SaveChildRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ChildController extends Controller
@@ -21,7 +21,7 @@ class ChildController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store(Request $request)
+    public function store(SaveChildRequest $request)
     {
         $child = new Child();
         $child->user_id = Auth::id();
@@ -58,7 +58,7 @@ class ChildController extends Controller
      * Update the specified resource in storage.
      *
      */
-    public function update(Request $request, Child $child)
+    public function update(SaveChildRequest $request, Child $child)
     {
         $child->user_id = Auth::id();
         $child->first_name = $request->input('first_name');

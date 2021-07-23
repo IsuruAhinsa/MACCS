@@ -45,36 +45,51 @@
                                 <label for="first_name" class="col-form-label">First Name</label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt"
+                                    class="form-control form-control-alt @error('first_name') is-invalid @enderror"
                                     id="first_name"
                                     placeholder="Enter First Name"
                                     name="first_name"
                                     value="{{$child->first_name}}"
                                 >
+                                @error('first_name')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="last_name" class="col-form-label">Last Name</label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt"
+                                    class="form-control form-control-alt @error('last_name') is-invalid @enderror"
                                     id="last_name"
                                     placeholder="Enter Last Name"
                                     name="last_name"
                                     value="{{$child->last_name}}"
                                 >
+                                @error('last_name')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="birthday" class="col-form-label">Birthday</label>
                                 <input
                                     type="date"
-                                    class="form-control form-control-alt"
+                                    class="form-control form-control-alt @error('birthday') is-invalid @enderror"
                                     id="birthday"
                                     placeholder="Enter Birthday"
                                     name="birthday"
                                     value="{{$child->birthday}}"
                                 >
+                                @error('birthday')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
                             </div>
 
                         </div>
@@ -85,36 +100,51 @@
                                 <label for="date_of registration" class="col-form-label">Date of Registration</label>
                                 <input
                                     type="date"
-                                    class="form-control form-control-alt"
+                                    class="form-control form-control-alt @error('date_of_registration') is-invalid @enderror"
                                     id="date_of registration"
                                     placeholder="Enter Date of Registration"
                                     name="date_of registration"
                                     value="{{$child->date_of_registration}}"
                                 >
+                                @error('date_of_registration')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="birth_weight" class="col-form-label">Birth Weight</label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt"
+                                    class="form-control form-control-alt @error('birth_weight') is-invalid @enderror"
                                     id="birth_weight"
                                     placeholder="Enter Birth Weight"
                                     name="birth_weight"
                                     value="{{$child->birth_weight}}"
                                 >
+                                @error('birth_weight')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="health_status" class="col-form-label">Health Status</label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt"
+                                    class="form-control form-control-alt @error('health_status') is-invalid @enderror"
                                     id="health_status"
                                     placeholder="Enter Health Status"
                                     name="health_status"
                                     value="{{$child->health_status}}"
                                 >
+                                @error('health_status')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
                             </div>
 
                         </div>
