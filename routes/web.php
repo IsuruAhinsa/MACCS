@@ -34,6 +34,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::resource('midwives', 'MidwifeController');
         Route::resource('admins', 'AdminController');
         Route::get('profile', 'AdminDashboardController@showProfile')->name('profile');
+        Route::put('profile/save', 'AdminDashboardController@saveProfile')->name('profile.save');
         Route::post('change/password', 'AdminDashboardController@updatePassword')->name('update.password');
     });
 });

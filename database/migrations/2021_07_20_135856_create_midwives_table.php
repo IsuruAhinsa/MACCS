@@ -23,6 +23,7 @@ class CreateMidwivesTable extends Migration
             $table->string('nic')->nullable();
             $table->string('address')->nullable();
             $table->integer('cases')->nullable();
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
