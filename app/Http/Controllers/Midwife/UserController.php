@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Midwife;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveUserRequest;
 use App\Mail\AdminAccountCreated;
 use App\Mail\UserAccountCreated;
 use App\Midwife;
@@ -38,7 +39,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store(Request $request)
+    public function store(SaveUserRequest $request)
     {
         $user = new User();
         $user->midwife_id = Auth::guard('midwife')->id();
@@ -53,7 +54,6 @@ class UserController extends Controller
         $user->postal = $request->input('postal');
         $user->birthday = $request->input('birthday');
         $user->nic = $request->input('nic');
-        $user->type = $request->input('type');
         // generating password
         $password = Str::random(8);
         $hashed_password = Hash::make($password);

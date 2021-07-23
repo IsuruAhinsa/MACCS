@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SaveUserRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class SaveUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,56 @@ class SaveUserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+
+        switch ($this->method()) {
+            case 'POST':
+            {
+                return [
+                    'type' => ['required', 'string'],
+                    'first_name' => ['required', 'string', 'max:100'],
+                    'last_name' => ['nullable', 'string', 'max:100'],
+                    'email' => ['required', 'string', 'email', 'max:70', 'unique:midwives,email'],
+                    'phone' => ['nullable', 'string', 'unique:midwives,phone'],
+                    'address'=> ['nullable', 'string'],
+                    'city'=> ['nullable', 'string'],
+                    'province'=> ['nullable', 'string'],
+                    'postal'=> ['nullable', 'string'],
+                    'birthday'=> ['nullable', 'string'],
+                    'nic' => ['nullable', 'string'],
+                    'children' => ['nullable', 'integer'],
+                ];
+                break;
+            }
+            case 'PUT':
+            {
+                return [
+                    'type' => ['required', 'string'],
+                    'first_name' => ['required', 'string', 'max:100'],
+                    'last_name' => ['nullable', 'string', 'max:100'],
+                    'email' => [
+                        'required',
+                        'string',
+                        'email',
+                        'max:70',
+                        Rule::unique('midwives', 'email')->ignore($this->route('midwife')->id),
+                    ],
+                    'phone' => [
+                        'nullable',
+                        'string',
+                        Rule::unique('midwives', 'phone')->ignore($this->route('midwife')->id),
+                    ],
+                    'address'=> ['nullable', 'string'],
+                    'city'=> ['nullable', 'string'],
+                    'province'=> ['nullable', 'string'],
+                    'postal'=> ['nullable', 'string'],
+                    'birthday'=> ['nullable', 'string'],
+                    'nic' => ['nullable', 'string'],
+                    'children' => ['nullable', 'integer'],
+
+                ];
+                break;
+            }
+            default: break;
+        }
     }
 }
