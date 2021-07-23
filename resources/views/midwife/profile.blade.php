@@ -187,11 +187,6 @@
                         <div class="timeline-event-block block invisible" data-toggle="appear">
                             <div class="block-header">
                                 <h3 class="block-title">Change Password</h3>
-                                <div class="block-options">
-                                    <div class="timeline-event-time block-options-item font-size-sm">
-                                        4 hrs ago
-                                    </div>
-                                </div>
                             </div>
                             <div class="block-content block-content-full">
 

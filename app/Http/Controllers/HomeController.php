@@ -39,7 +39,24 @@ class HomeController extends Controller
 
     public function saveProfile(Request $request)
     {
+        $user = User::findOrFail(Auth::id());
 
+        app('App\Http\Requests\ImageUploadRequest')->handleImages('image', 'img/users/', $user, 'image');
+
+        $user->type = $request->input('type');
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->address = $request->input('address');
+        $user->city = $request->input('city');
+        $user->province = $request->input('province');
+        $user->postal = $request->input('postal');
+        $user->birthday = $request->input('birthday');
+        $user->nic = $request->input('nic');
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile Saved!');
     }
 
     public function updatePassword(UpdatePasswordRequest $request)

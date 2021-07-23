@@ -6,10 +6,10 @@
         <div class="bg-black-50">
             <div class="content content-full text-center">
                 <div class="my-3">
-                    <img class="img-avatar img-avatar-thumb" src="{{ asset('assets/media/avatars/avatar13.jpg') }}" alt="">
+                    <img class="img-avatar img-avatar-thumb" src="{{ isset(Auth::user()->image) ? asset('uploads/img/users/' . Auth::user()->image) : asset('assets/media/avatars/avatar13.jpg') }}" alt="">
                 </div>
-                <h1 class="h2 text-white mb-0">Parent</h1>
-                <span class="text-white-75">UI Designer</span>
+                <h1 class="h2 text-white mb-0">{{ Auth::user()->full_name }}</h1>
+                <span class="text-white-75">{{ Auth::user()->type }}</span>
             </div>
         </div>
     </div>
@@ -30,17 +30,13 @@
                         <div class="timeline-event-block block invisible" data-toggle="appear">
                             <div class="block-header">
                                 <h3 class="block-title">Information</h3>
-                                <div class="block-options">
-                                    <div class="timeline-event-time block-options-item font-size-sm">
-                                        just now
-                                    </div>
-                                </div>
                             </div>
                             <div class="block-content">
 
-                                <form class="form-horizontal p-4" action="#" method="POST">
+                                <form class="form-horizontal p-4" action="{{ route('profile.save') }}" method="POST" enctype="multipart/form-data">
 
                                     @csrf
+                                    @method('PUT')
 
                                     <div class="row">
 
@@ -49,8 +45,8 @@
                                                 <label for="type" class="col-form-label">Parent Type</label>
                                                 <select class="custom-select form-control form-control-alt @error('type') is-invalid @enderror" id="type" name="type">
                                                     <option selected disabled>Select Parent Type</option>
-                                                    <option value="Mother">Mother</option>
-                                                    <option value="Father">Father</option>
+                                                    <option value="Mother" {{ Auth::user()->type == 'Mother' ? 'selected' : '' }}>Mother</option>
+                                                    <option value="Father" {{ Auth::user()->type == 'Father' ? 'selected' : '' }}>Father</option>
 
                                                 </select>
                                                 @error('type')
@@ -68,6 +64,7 @@
                                                     id="first_name"
                                                     placeholder="Enter First Name"
                                                     name="first_name"
+                                                    value="{{ Auth::user()->first_name }}"
                                                 >
                                                 @error('first_name')
                                                 <small class="invalid-feedback">
@@ -84,6 +81,7 @@
                                                     id="last_name"
                                                     placeholder="Enter Last Name"
                                                     name="last_name"
+                                                    value="{{ Auth::user()->last_name }}"
                                                 >
                                                 @error('last_name')
                                                 <small class="invalid-feedback">
@@ -100,6 +98,7 @@
                                                     id="phone"
                                                     placeholder="Enter Phone"
                                                     name="phone"
+                                                    value="{{ Auth::user()->phone }}"
                                                 >
                                                 @error('phone')
                                                 <small class="invalid-feedback">
@@ -116,6 +115,7 @@
                                                     id="email"
                                                     placeholder="Enter Email"
                                                     name="email"
+                                                    value="{{ Auth::user()->email }}"
                                                 >
                                                 @error('email')
                                                 <small class="invalid-feedback">
@@ -133,6 +133,7 @@
                                                     id="birthday"
                                                     placeholder="Enter Birthday"
                                                     name="birthday"
+                                                    value="{{ Auth::user()->birthday }}"
                                                 >
                                                 @error('birthday')
                                                 <small class="invalid-feedback">
@@ -153,6 +154,7 @@
                                                     id="nic"
                                                     placeholder="Enter NIC No"
                                                     name="nic"
+                                                    value="{{ Auth::user()->nic }}"
                                                 >
                                                 @error('nic')
                                                 <small class="invalid-feedback">
@@ -169,6 +171,7 @@
                                                     id="address"
                                                     placeholder="Enter Address"
                                                     name="address"
+                                                    value="{{ Auth::user()->address }}"
                                                 >
                                                 @error('address')
                                                 <small class="invalid-feedback">
@@ -184,6 +187,7 @@
                                                     id="city"
                                                     placeholder="Enter City"
                                                     name="city"
+                                                    value="{{ Auth::user()->city }}"
                                                 >
                                                 @error('city')
                                                 <small class="invalid-feedback">
@@ -199,6 +203,7 @@
                                                     id="province"
                                                     placeholder="Enter Province"
                                                     name="province"
+                                                    value="{{ Auth::user()->province }}"
                                                 >
                                                 @error('province')
                                                 <small class="invalid-feedback">
@@ -214,6 +219,7 @@
                                                     id="postal"
                                                     placeholder="Enter Postal Code"
                                                     name="postal"
+                                                    value="{{ Auth::user()->postal }}"
                                                 >
                                                 @error('postal')
                                                 <small class="invalid-feedback">
@@ -226,12 +232,16 @@
                                                 <div class="custom-file">
                                                     <input
                                                         type="file"
-                                                        class="custom-file-input "
+                                                        class="custom-file-input @error('image') is-invalid @enderror"
                                                         data-toggle="custom-file-input"
                                                         id="image"
                                                         name="image">
                                                     <label class="custom-file-label" for="image">Choose file</label>
-
+                                                    @error('image')
+                                                    <small class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </small>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -240,7 +250,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <x-SubmitButton :btnText="'Save Parent'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                                        <x-SubmitButton :btnText="'Save'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                                     </div>
 
                                 </form>
@@ -255,11 +265,6 @@
                         <div class="timeline-event-block block invisible" data-toggle="appear">
                             <div class="block-header">
                                 <h3 class="block-title">Change Password</h3>
-                                <div class="block-options">
-                                    <div class="timeline-event-time block-options-item font-size-sm">
-                                        4 hrs ago
-                                    </div>
-                                </div>
                             </div>
                             <div class="block-content block-content-full">
 
