@@ -24,7 +24,7 @@ Route::get('login/midwife', 'Auth\LoginController@showMidwifeLoginForm')->name('
 Route::post('/login/midwife', 'Auth\LoginController@midwifeLogin');
 
 Route::middleware('auth')->group(function () {
-    Route::view('/', 'index');
+    Route::get('/', 'HomeController@index');
 });
 
 Route::middleware('auth:admin')->group(function () {

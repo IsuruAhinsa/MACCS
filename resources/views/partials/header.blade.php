@@ -9,7 +9,7 @@ if (Auth::guard('admin')->check()) {
     $profileRoute = route('midwife.profile');
     $avatar = isset(Auth::guard('midwife')->user()->image) ? asset('uploads/img/midwives/' .Auth::guard('midwife')->user()->image) : asset('assets/media/avatars/avatar10.jpg');
 } else {
-    $username = Auth::user()->name;
+    $username = Auth::user()->fullname;
     $profileRoute = null;
     $avatar = isset(Auth::user()->image) ? asset('uploads/img/users/' .Auth::user()->image) : asset('assets/media/avatars/avatar10.jpg');
 }
