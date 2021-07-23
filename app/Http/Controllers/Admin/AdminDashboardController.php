@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminDashboardController extends Controller
 {
@@ -41,6 +43,20 @@ class AdminDashboardController extends Controller
 
     public function updatePassword(Request $request)
     {
+        $current_Password = $request->current_password;
+
+        if (Hash::check($current_Password, Auth::user()->password)){
+            $new_password = $request->password_confirmation;
+
+            $hashed_password = Hash::make($new_password);
+
+            Admin::where('id', Auth::id())->update([
+                'password' => $hashed_password,
+            ]);
+
+            return back()->with('success', 'Your Password has been updated');
+
+        }
 
     }
 }
