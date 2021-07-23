@@ -60,7 +60,7 @@ class ChildController extends Controller
      */
     public function edit(Child $child)
     {
-        //
+        return view('users.children.edit')->with(compact('child'));
     }
 
     /**
