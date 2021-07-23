@@ -92,7 +92,17 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        //
+        $admin->name = $request->input('name');
+        $admin->email = $request->input('email');
+        if ($request->input('type') == 'super administrator') {
+            $admin->is_super = true;
+        } else {
+            $admin->is_super = false;
+        }
+
+        $admin->save();
+        return redirect()->route('admin.admins.index')->with('success', 'Admin Updated Successfully!');
+
     }
 
     /**
@@ -103,6 +113,7 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
+        $admin->delete();
+        return back()->with('success', 'Admin Deleted!');
     }
 }
