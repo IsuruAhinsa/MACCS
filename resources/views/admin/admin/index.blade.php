@@ -67,7 +67,7 @@
                                                     </span>
                                                 </td>
                                                 <td class="d-none d-sm-table-cell text-center">
-                                                    <img class="img-avatar img-avatar32" src="{{ isset(Auth::guard('admin')->user()->image) ? asset('uploads/img/admins/' . Auth::guard('admin')->user()->image) : asset('assets/media/avatars/avatar13.jpg') }}" alt="">
+                                                    <img class="img-avatar img-avatar32" src="{{ isset($admin->image) ? asset('uploads/img/admins/' . $admin->image) : asset('assets/media/avatars/avatar13.jpg') }}" alt="">
                                                 </td>
                                                 <td class="font-w600">
                                                     {{$admin->name}}
