@@ -8,7 +8,7 @@
                 <div class="my-3">
                     <img class="img-avatar img-avatar-thumb" src="{{ asset('assets/media/avatars/avatar13.jpg') }}" alt="">
                 </div>
-                <h1 class="h2 text-white mb-0">Midwife</h1>
+                <h1 class="h2 text-white mb-0">Parent</h1>
                 <span class="text-white-75">UI Designer</span>
             </div>
         </div>
@@ -45,6 +45,20 @@
                                     <div class="row">
 
                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="type" class="col-form-label">Parent Type</label>
+                                                <select class="custom-select form-control form-control-alt @error('type') is-invalid @enderror" id="type" name="type">
+                                                    <option selected disabled>Select Parent Type</option>
+                                                    <option value="Mother">Mother</option>
+                                                    <option value="Father">Father</option>
+
+                                                </select>
+                                                @error('type')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
 
                                             <div class="form-group">
                                                 <label for="first_name" class="col-form-label">First Name</label>
@@ -60,7 +74,6 @@
                                                     {{ $message }}
                                                 </small>
                                                 @enderror
-
                                             </div>
 
                                             <div class="form-group">
@@ -80,6 +93,22 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label for="phone" class="col-form-label">Phone</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('phone') is-invalid @enderror"
+                                                    id="phone"
+                                                    placeholder="Enter Phone"
+                                                    name="phone"
+                                                >
+                                                @error('phone')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label for="email" class="col-form-label">Email</label>
                                                 <input
                                                     type="email"
@@ -87,9 +116,106 @@
                                                     id="email"
                                                     placeholder="Enter Email"
                                                     name="email"
-
                                                 >
                                                 @error('email')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="birthday" class="col-form-label">Birthday</label>
+                                                <input
+                                                    type="date"
+                                                    class="form-control form-control-alt @error('birthday') is-invalid @enderror"
+                                                    id="birthday"
+                                                    placeholder="Enter Birthday"
+                                                    name="birthday"
+                                                >
+                                                @error('birthday')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="nic" class="col-form-label">NIC No</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('nic') is-invalid @enderror"
+                                                    id="nic"
+                                                    placeholder="Enter NIC No"
+                                                    name="nic"
+                                                >
+                                                @error('nic')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="address" class="col-form-label">Address </label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('address') is-invalid @enderror"
+                                                    id="address"
+                                                    placeholder="Enter Address"
+                                                    name="address"
+                                                >
+                                                @error('address')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="city" class="col-form-label">City </label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('city') is-invalid @enderror"
+                                                    id="city"
+                                                    placeholder="Enter City"
+                                                    name="city"
+                                                >
+                                                @error('city')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="province" class="col-form-label">Province </label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('province') is-invalid @enderror"
+                                                    id="province"
+                                                    placeholder="Enter Province"
+                                                    name="province"
+                                                >
+                                                @error('province')
+                                                <small class="invalid-feedback">
+                                                    {{ $message }}
+                                                </small>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="postal" class="col-form-label">Postal Code</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control form-control-alt @error('postal') is-invalid @enderror"
+                                                    id="postal"
+                                                    placeholder="Enter Postal Code"
+                                                    name="postal"
+                                                >
+                                                @error('postal')
                                                 <small class="invalid-feedback">
                                                     {{ $message }}
                                                 </small>
@@ -111,62 +237,10 @@
 
                                         </div>
 
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <label for="phone" class="col-form-label">Phone</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control form-control-alt @error('phone') is-invalid @enderror"
-                                                    id="phone"
-                                                    placeholder="Enter Phone"
-                                                    name="phone"
-                                                >
-                                                @error('phone')
-                                                <small class="invalid-feedback">
-                                                    {{ $message }}
-                                                </small>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="nic" class="col-form-label">NIC No</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control form-control-alt @error('nic') is-invalid @enderror"
-                                                    id="nic"
-                                                    placeholder="Enter NIC No"
-                                                    name="nic"
-                                                >
-                                                @error('nic')
-                                                <small class="invalid-feedback">
-                                                    {{ $message }}
-                                                </small>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="cases" class="col-form-label">Assigned Cases</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control form-control-alt @error('cases') is-invalid @enderror"
-                                                    id="cases"
-                                                    placeholder="Enter Assigned Cases"
-                                                    name="cases"
-                                                >
-                                                @error('cases')
-                                                <small class="invalid-feedback">
-                                                    {{ $message }}
-                                                </small>
-                                                @enderror
-                                            </div>
-
-                                        </div>
-
                                     </div>
 
                                     <div class="form-group">
-                                        <x-SubmitButton :btnText="'Save Midwife'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                                        <x-SubmitButton :btnText="'Save Parent'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                                     </div>
 
                                 </form>
