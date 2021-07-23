@@ -91,7 +91,6 @@ class UserController extends Controller
      */
     public function update(SaveUserRequest $request, User $user)
     {
-
         $user->midwife_id = Auth::guard('midwife')->id();
         $user->type = $request->input('type');
         $user->first_name = $request->input('first_name');
@@ -105,7 +104,8 @@ class UserController extends Controller
         $user->birthday = $request->input('birthday');
         $user->nic = $request->input('nic');
         $user->save();
-        return redirect()->back()->with('success', 'User Updated Successfully!');
+
+        return redirect()->route('midwife.users.index')->with('success', 'Parent Updated Successfully!');
 
     }
 

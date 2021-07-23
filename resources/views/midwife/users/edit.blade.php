@@ -27,11 +27,6 @@
 
     <div class="content">
 
-        @if(Session::has('success'))
-            <x-Alert type="success" :message="Session::get('success')"></x-Alert>
-        @endif
-
-        <!-- Your Block -->
         <div class="block block-themed">
             <div class="block-header bg-amethyst">
                 <h3 class="block-title">
@@ -40,9 +35,10 @@
             </div>
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="{{ route('midwife.users.store') }}" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('midwife.users.update', $user->id) }}" method="POST">
 
                     @csrf
+                    @method('PUT')
 
                     <div class="row">
 

@@ -29,9 +29,9 @@ class SaveUserRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'type' => ['required', 'string'],
-                    'first_name' => ['required', 'string', 'max:100'],
-                    'last_name' => ['nullable', 'string', 'max:100'],
+                    'type' => ['required'],
+                    'first_name' => ['required', 'string', 'max:70'],
+                    'last_name' => ['nullable', 'string', 'max:70'],
                     'email' => ['required', 'string', 'email', 'max:70', 'unique:users,email'],
                     'phone' => ['nullable', 'string', 'unique:users,phone'],
                     'address'=> ['nullable', 'string'],
@@ -40,27 +40,26 @@ class SaveUserRequest extends FormRequest
                     'postal'=> ['nullable', 'string'],
                     'birthday'=> ['nullable', 'string'],
                     'nic' => ['nullable', 'string'],
-                    'children' => ['nullable', 'integer'],
                 ];
                 break;
             }
             case 'PUT':
             {
                 return [
-                    'type' => ['required', 'string'],
-                    'first_name' => ['required', 'string', 'max:100'],
-                    'last_name' => ['nullable', 'string', 'max:100'],
+                    'type' => ['required'],
+                    'first_name' => ['required', 'string', 'max:70'],
+                    'last_name' => ['nullable', 'string', 'max:70'],
                     'email' => [
                         'required',
                         'string',
                         'email',
                         'max:70',
-                        Rule::unique('users', 'email')->ignore($this->route('users')->id),
+                        Rule::unique('users', 'email')->ignore($this->route('user')->id),
                     ],
                     'phone' => [
                         'nullable',
                         'string',
-                        Rule::unique('users', 'phone')->ignore($this->route('users')->id),
+                        Rule::unique('users', 'phone')->ignore($this->route('user')->id),
                     ],
                     'address'=> ['nullable', 'string'],
                     'city'=> ['nullable', 'string'],
@@ -68,7 +67,6 @@ class SaveUserRequest extends FormRequest
                     'postal'=> ['nullable', 'string'],
                     'birthday'=> ['nullable', 'string'],
                     'nic' => ['nullable', 'string'],
-                    'children' => ['nullable', 'integer'],
 
                 ];
                 break;
