@@ -42,10 +42,11 @@ Route::middleware('auth:admin')->group(function () {
 
 Route::middleware('auth:midwife')->group(function () {
     Route::get('/midwife', 'Midwife\MidwifeDashboardController@index');
-    Route::get('/midwife/profile', 'Midwife\MidwifeDashboardController@showProfile')->name('midwife.profile');
 
-    Route::prefix('midwife')->name('midwife.')->group(function () {
-        Route::resource('users', 'Midwife\UserController');
+    Route::prefix('midwife')->name('midwife.')->namespace('Midwife')->group(function () {
+        Route::resource('users', 'UserController');
+        Route::get('profile', 'MidwifeDashboardController@showProfile')->name('profile');
+        Route::post('change/password', 'MidwifeDashboardController@updatePassword')->name('update.password');
     });
 
 });

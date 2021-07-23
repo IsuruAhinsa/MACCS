@@ -14,39 +14,13 @@
         </div>
     </div>
 
-    <div class="bg-white border-bottom">
-        <div class="content content-boxed">
-            <div class="row items-push text-center">
-                <div class="col-6 col-md-3">
-                    <div class="font-size-sm font-w600 text-muted text-uppercase">Sales</div>
-                    <a class="link-fx font-size-h3" href="javascript:void(0)">17980</a>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="font-size-sm font-w600 text-muted text-uppercase">Products</div>
-                    <a class="link-fx font-size-h3" href="javascript:void(0)">27</a>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="font-size-sm font-w600 text-muted text-uppercase">Followers</div>
-                    <a class="link-fx font-size-h3" href="javascript:void(0)">1360</a>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="font-size-sm font-w600 text-muted text-uppercase mb-2">739 Ratings</div>
-                    <span class="text-warning">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half"></i>
-                                </span>
-                    <span class="font-size-sm text-muted">(4.9)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="content content-boxed">
         <div class="row">
             <div class="col-sm-12">
+
+                @if(Session::has('success'))
+                    <x-Alert type="success" :message="Session::get('success')"></x-Alert>
+                @endif
 
                 <ul class="timeline timeline-alt py-0">
                     <li class="timeline-event">
@@ -202,14 +176,14 @@
                             </div>
                             <div class="block-content block-content-full">
 
-                                <form class="form-horizontal p-4" action="#" method="POST">
+                                <form class="form-horizontal p-4" action="{{ route('midwife.update.password') }}" method="POST">
                                     @csrf
                                     <div class="row">
 
                                         <div class="col-md-12">
 
                                             <div class="form-group">
-                                                <label for="name" class="col-form-label">Current Password</label>
+                                                <label for="current_password" class="col-form-label">Current Password</label>
                                                 <input
                                                     type="password"
                                                     class="form-control form-control-alt @error('current_password') is-invalid @enderror"
@@ -243,16 +217,11 @@
                                                 <label for="password_confirmation" class="col-form-label">Re enter your new password</label>
                                                 <input
                                                     type="password"
-                                                    class="form-control form-control-alt @error('password_confirmation') is-invalid @enderror"
+                                                    class="form-control form-control-alt"
                                                     id="password_confirmation"
                                                     placeholder="Re enter your new password"
                                                     name="password_confirmation"
                                                 >
-                                                @error('password_confirmation')
-                                                <small class="invalid-feedback">
-                                                    {{ $message }}
-                                                </small>
-                                                @enderror
                                             </div>
                                         </div>
                                     </div>
