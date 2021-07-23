@@ -26,6 +26,9 @@ Route::post('/login/midwife', 'Auth\LoginController@midwifeLogin');
 Route::middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::resource('children', 'ChildController')->except(['index']);
+    Route::get('profile', 'HomeController@showProfile')->name('profile');
+    Route::put('profile/save', 'HomeController@saveProfile')->name('profile.save');
+    Route::post('change/password', 'HomeController@updatePassword')->name('update.password');
 });
 
 Route::middleware('auth:admin')->group(function () {

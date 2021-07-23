@@ -29,6 +29,21 @@ class HomeController extends Controller
         ]);
     }
 
+    public function showProfile()
+    {
+        return view('users.profile');
+    }
+
+    public function saveProfile(Request $request)
+    {
+
+    }
+
+    public function updatePassword(Request $request)
+    {
+
+    }
+
     protected function getChildren()
     {
         return Child::where('user_id', Auth::id())->get();
