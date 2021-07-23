@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    All Midwives
+                    All Admins
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -14,7 +14,7 @@
                             <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                             Midwives
+                             All Admins
                         </li>
                     </ol>
                 </nav>
@@ -36,7 +36,7 @@
                     <div class="col-lg-12">
                         <div class="block block-mode-loading-oneui block-themed">
                             <div class="block-header border-bottom">
-                                <h3 class="block-title">All Midwives</h3>
+                                <h3 class="block-title">All Admins</h3>
                             </div>
 
                             <div class="block-content block-content-full">
@@ -47,15 +47,15 @@
                                             <th class="font-w700" style="width: 80px;">ID</th>
                                             <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 100px;">Photo</th>
                                             <th class="font-w700">Full Name</th>
-                                            <th class="font-w700">Phone</th>
+                                            <th class="font-w700">Admin Type</th>
                                             <th class="font-w700">Email</th>
                                             <th class="font-w700">Created At</th>
-                                            <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 80px;">Cases</th>
+
                                             <th class="font-w700 text-center" style="width: 60px;">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($records as $midwife)
+                                        @foreach($records as $admin)
                                             <tr>
                                                 <td>
                                                     <span class="font-w600">
@@ -66,37 +66,35 @@
                                                     <img class="img-avatar img-avatar32" src="{{ asset('assets/media/avatars/avatar15.jpg') }}" alt="">
                                                 </td>
                                                 <td class="font-w600">
-                                                    {{$midwife->fullname}}
+                                                    {{$admin->name}}
                                                 </td>
                                                 <td class="font-w600">
-                                                    {{$midwife->phone}}
+                                                    {{$admin->is_super}}
                                                 </td>
                                                 <td class="font-w600">
-                                                    {{$midwife->email}}
+                                                    {{$admin->email}}
                                                 </td>
                                                 <td class="font-w600">
-                                                    {{$midwife->created_at}}
+                                                    {{$admin->created_at}}
                                                 </td>
-                                                <td class="font-w600 text-center">
-                                                    {{$midwife->cases}}
-                                                </td>
+
                                                 <td class="text-center">
 
                                                     <div class="btn-group">
                                                         <a
-                                                            href="{{ route('admin.midwives.edit', [$midwife->id]) }}"
+                                                            href="{{ route('admin.admins.edit', [$admin->id]) }}"
                                                             class="btn btn-sm btn-light"
                                                             data-toggle="tooltip"
                                                             data-placement="left"
-                                                            title="Edit {{ $midwife->fullname }}"
+                                                            title="Edit {{ $admin->name }}"
                                                         >
                                                             <i class="fa fa-fw fa-pencil-alt"></i>
                                                         </a>
 
                                                         <form
-                                                            action="{{ route('admin.midwives.destroy', $midwife->id) }}"
+                                                            action="{{ route('admin.admins.destroy', $admin->id) }}"
                                                             method="POST"
-                                                            onsubmit="return confirm('Do you want to delete {{ $midwife->full_name }}?')"
+                                                            onsubmit="return confirm('Do you want to delete {{ $admin->name }}?')"
                                                         >
                                                             @csrf
                                                             @method('DELETE')
@@ -105,7 +103,7 @@
                                                                 class="btn btn-sm btn-light"
                                                                 data-toggle="tooltip"
                                                                 data-placement="left"
-                                                                title="Delete {{ $midwife->full_name }}"
+                                                                title="Delete {{ $admin->name }}"
                                                             >
                                                                 <i class="fa fa-fw fa-times"></i>
                                                             </button>
