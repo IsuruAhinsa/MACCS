@@ -63,7 +63,7 @@
                                                     </span>
                                                 </td>
                                                 <td class="d-none d-sm-table-cell text-center">
-                                                    <img class="img-avatar img-avatar32" src="{{ asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+                                                    <img class="img-avatar img-avatar32" src="{{ isset(Auth::guard('midwife')->user()->image) ? asset('uploads/img/midwives/' . Auth::guard('midwife')->user()->image) : asset('assets/media/avatars/avatar15.jpg.jpg') }}" alt="">
                                                 </td>
                                                 <td class="font-w600">
                                                     {{$midwife->fullname}}
