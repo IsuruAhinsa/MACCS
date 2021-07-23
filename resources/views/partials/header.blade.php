@@ -3,12 +3,15 @@
 if (Auth::guard('admin')->check()) {
     $username = Auth::guard('admin')->user()->name;
     $profileRoute = route('admin.profile');
+    $avatar = isset(Auth::guard('admin')->user()->image) ? asset('uploads/img/admins/' .Auth::guard('admin')->user()->image) : asset('assets/media/avatars/avatar10.jpg');
 } elseif (Auth::guard('midwife')->check()) {
     $username = Auth::guard('midwife')->user()->first_name;
     $profileRoute = route('midwife.profile');
+    $avatar = isset(Auth::guard('midwife')->user()->image) ? asset('uploads/img/midwives/' .Auth::guard('midwife')->user()->image) : asset('assets/media/avatars/avatar10.jpg');
 } else {
     $username = Auth::user()->name;
     $profileRoute = null;
+    $avatar = isset(Auth::user()->image) ? asset('uploads/img/users/' .Auth::user()->image) : asset('assets/media/avatars/avatar10.jpg');
 }
 
 @endphp
@@ -49,7 +52,7 @@ if (Auth::guard('admin')->check()) {
 
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded" src="{{ asset('assets/media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 18px;">
+                    <img class="rounded" src="{{ $avatar }}" alt="Header Avatar" style="width: 18px;">
                     <span class="d-none d-sm-inline-block ml-1">
                         {{ $username }}
                     </span>
@@ -57,7 +60,7 @@ if (Auth::guard('admin')->check()) {
                 </button>
                 <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-primary">
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('assets/media/avatars/avatar10.jpg') }}" alt="">
+                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ $avatar }}" alt="">
                     </div>
                     <div class="p-2">
                         <h5 class="dropdown-header text-uppercase">User Options</h5>
