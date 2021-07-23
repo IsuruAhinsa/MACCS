@@ -150,7 +150,7 @@
                                         <div class="col-md-12">
 
                                             <div class="form-group">
-                                                <label for="name" class="col-form-label">Current Password</label>
+                                                <label for="current_password" class="col-form-label">Current Password</label>
                                                 <input
                                                     type="password"
                                                     class="form-control form-control-alt @error('current_password') is-invalid @enderror"
@@ -184,16 +184,11 @@
                                                 <label for="password_confirmation" class="col-form-label">Re enter your new password</label>
                                                 <input
                                                     type="password"
-                                                    class="form-control form-control-alt @error('password_confirmation') is-invalid @enderror"
+                                                    class="form-control form-control-alt"
                                                     id="password_confirmation"
                                                     placeholder="Re enter your new password"
                                                     name="password_confirmation"
                                                 >
-                                                @error('password_confirmation')
-                                                <small class="invalid-feedback">
-                                                    {{ $message }}
-                                                </small>
-                                                @enderror
                                             </div>
                                         </div>
                                     </div>

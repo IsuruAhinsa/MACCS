@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,21 +42,20 @@ class AdminDashboardController extends Controller
         return redirect()->back()->with('success', 'Profile Saved!');
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(UpdatePasswordRequest $request)
     {
-        $current_Password = $request->current_password;
-
-        if (Hash::check($current_Password, Auth::user()->password)){
-            $new_password = $request->password_confirmation;
-
-            $hashed_password = Hash::make($new_password);
-
-            Admin::where('id', Auth::id())->update([
+        // check if the hash passwords are match
+        if (Hash::check($request->current_password, Auth::guard('admin')->user()->password)) {
+            // hashing the new password
+            $hashed_password = Hash::make($request->password_confirmation);
+            // update password
+            Admin::where('id', Auth::guard('admin')->id())->update([
                 'password' => $hashed_password,
             ]);
-
-            return back()->with('success', 'Your Password has been updated');
-
+            // return redirect to back with success message
+            return back()->with('success', 'Your Password has been updated!');
+        } else {
+            return back()->withErrors(['current_password' => 'Your current password is not valid. Please enter your valid password.']);
         }
 
     }
