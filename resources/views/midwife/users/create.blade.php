@@ -23,9 +23,11 @@
     </div>
 
     <div class="content">
+
         @if(Session::has('success'))
             <x-Alert type="success" :message="Session::get('success')"></x-Alert>
-    @endif
+        @endif
+
         <!-- Your Block -->
         <div class="block block-themed">
             <div class="block-header bg-amethyst">
@@ -43,11 +45,11 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="parent_type" class="col-form-label">Parent Type</label>
-                                <select class="custom-select form-control form-control-alt" id="parent_type" name="parent_type">
+                                <label for="type" class="col-form-label">Parent Type</label>
+                                <select class="custom-select form-control form-control-alt" id="type" name="type">
                                     <option selected disabled>Select Parent Type</option>
-                                    <option value="1">Father</option>
-                                    <option value="2">Mother</option>
+                                    <option value="Father">Father</option>
+                                    <option value="Mother">Mother</option>
 
                                 </select>
                             </div>
@@ -75,12 +77,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="phone" class="col-form-label">Contact No</label>
+                                <label for="phone" class="col-form-label">Phone</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
                                     id="phone"
-                                    placeholder="Enter Contact No"
+                                    placeholder="Enter Phone"
                                     name="phone"
                                 >
                             </div>
@@ -98,16 +100,6 @@
 
 
                             <div class="form-group">
-                                <label for="nic" class="col-form-label">NIC No</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="nic"
-                                    placeholder="Enter NIC No"
-                                    name="nic"
-                                >
-                            </div>
-                            <div class="form-group">
                                 <label for="birthday" class="col-form-label">Birthday</label>
                                 <input
                                     type="date"
@@ -121,6 +113,18 @@
                         </div>
 
                         <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="nic" class="col-form-label">NIC No</label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-alt"
+                                    id="nic"
+                                    placeholder="Enter NIC No"
+                                    name="nic"
+                                >
+                            </div>
+
                             <div class="form-group">
                                 <label for="address" class="col-form-label">Address </label>
                                 <input
@@ -162,23 +166,12 @@
                                 >
                             </div>
 
-                            <div class="form-group">
-                                <label for="no_of_children" class="col-form-label">No of Children</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="no_of_children"
-                                    placeholder="Enter No of Children"
-                                    name="no_of_children"
-                                >
-                            </div>
-
                         </div>
 
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Create'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Create Parent'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>

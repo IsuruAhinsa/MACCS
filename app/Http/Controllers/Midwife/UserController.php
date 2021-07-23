@@ -41,7 +41,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        $user->midwife_id = Auth::id();
+        $user->midwife_id = Auth::guard('midwife')->id();
+        $user->type = $request->input('type');
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
@@ -53,17 +54,17 @@ class UserController extends Controller
         $user->birthday = $request->input('birthday');
         $user->nic = $request->input('nic');
         $user->type = $request->input('type');
-        $user->children = $request->input('children');
         // generating password
         $password = Str::random(8);
         $hashed_password = Hash::make($password);
         $user->password = $hashed_password;
+
+        $user->save();
+
         // sending mail
         Mail::to($request->input('email'))->send(new UserAccountCreated($user, $password));
 
         return redirect()->back()->with('success', 'User Created Successfully!');
-
-        $user->save();
     }
 
     /**
