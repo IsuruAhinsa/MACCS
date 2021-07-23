@@ -67,13 +67,13 @@
                                                     </span>
                                                 </td>
                                                 <td class="d-none d-sm-table-cell text-center">
-                                                    <img class="img-avatar img-avatar32" src="{{ asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+                                                    <img class="img-avatar img-avatar32" src="{{ isset(Auth::guard('admin')->user()->image) ? asset('uploads/img/admins/' . Auth::guard('admin')->user()->image) : asset('assets/media/avatars/avatar13.jpg') }}" alt="">
                                                 </td>
                                                 <td class="font-w600">
                                                     {{$admin->name}}
                                                 </td>
                                                 <td class="font-w600">
-                                                    {{$admin->is_super}}
+                                                    {{$admin->is_super == true ? 'Super Administrator' : 'Administrator'}}
                                                 </td>
                                                 <td class="font-w600">
                                                     {{$admin->email}}
