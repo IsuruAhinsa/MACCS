@@ -66,8 +66,8 @@
                                 <label for="type" class="col-form-label">Admin Type</label>
                                 <select class="custom-select form-control form-control-alt @error('type') is-invalid @enderror" id="type" name="type">
                                     <option selected disabled>Select Admin Type</option>
-                                    <option value="administrator" {{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->is_super == false ? 'selected' : '' }}>Administrator</option>
-                                    <option value="super administrator" {{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->is_super == true ? 'selected' : '' }}>Super Administrator</option>
+                                    <option value="administrator" {{ $admin->is_super == false ? 'selected' : '' }}>Administrator</option>
+                                    <option value="super administrator" {{ $admin->is_super == true ? 'selected' : '' }}>Super Administrator</option>
 
                                 </select>
                                 @error('type')
