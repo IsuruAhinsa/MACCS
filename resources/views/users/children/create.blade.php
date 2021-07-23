@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                   Create Parents
+                   Add Child
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -14,7 +14,7 @@
                             <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Create Parents
+                            Add Child
                         </li>
                     </ol>
                 </nav>
@@ -30,9 +30,9 @@
 
         <!-- Your Block -->
         <div class="block block-themed">
-            <div class="block-header bg-amethyst">
+            <div class="block-header bg-smooth">
                 <h3 class="block-title">
-                    Create Parents
+                    Add Child
                 </h3>
             </div>
             <div class="block-content">
@@ -44,15 +44,6 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="type" class="col-form-label">Parent Type</label>
-                                <select class="custom-select form-control form-control-alt" id="type" name="type">
-                                    <option selected disabled>Select Parent Type</option>
-                                    <option value="Father">Father</option>
-                                    <option value="Mother">Mother</option>
-
-                                </select>
-                            </div>
 
                             <div class="form-group">
                                 <label for="first_name" class="col-form-label">First Name</label>
@@ -77,29 +68,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="phone" class="col-form-label">Phone</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="phone"
-                                    placeholder="Enter Phone"
-                                    name="phone"
-                                >
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-form-label">Email</label>
-                                <input
-                                    type="email"
-                                    class="form-control form-control-alt"
-                                    id="email"
-                                    placeholder="Enter Email"
-                                    name="email"
-                                >
-                            </div>
-
-
-                            <div class="form-group">
                                 <label for="birthday" class="col-form-label">Birthday</label>
                                 <input
                                     type="date"
@@ -112,57 +80,38 @@
 
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
 
                             <div class="form-group">
-                                <label for="nic" class="col-form-label">NIC No</label>
+                                <label for="date_of registration" class="col-form-label">Date of Registration</label>
                                 <input
-                                    type="text"
+                                    type="date"
                                     class="form-control form-control-alt"
-                                    id="nic"
-                                    placeholder="Enter NIC No"
-                                    name="nic"
+                                    id="date_of registration"
+                                    placeholder="Enter Date of Registration"
+                                    name="date_of registration"
                                 >
                             </div>
 
                             <div class="form-group">
-                                <label for="address" class="col-form-label">Address </label>
+                                <label for="birth_weight" class="col-form-label">Birth Weight</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="address"
-                                    placeholder="Enter Address"
-                                    name="address"
+                                    id="birth_weight"
+                                    placeholder="Enter Birth Weight"
+                                    name="birth_weight"
                                 >
                             </div>
+
                             <div class="form-group">
-                                <label for="city" class="col-form-label">City </label>
+                                <label for="health_status" class="col-form-label">Health Status</label>
                                 <input
                                     type="text"
                                     class="form-control form-control-alt"
-                                    id="city"
-                                    placeholder="Enter City"
-                                    name="city"
-                                >
-                            </div>
-                            <div class="form-group">
-                                <label for="province" class="col-form-label">Province </label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="province"
-                                    placeholder="Enter Province"
-                                    name="province"
-                                >
-                            </div>
-                            <div class="form-group">
-                                <label for="postal" class="col-form-label">Postal Code</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt"
-                                    id="postal"
-                                    placeholder="Enter Postal Code"
-                                    name="postal"
+                                    id="health_status"
+                                    placeholder="Enter Health Status"
+                                    name="health_status"
                                 >
                             </div>
 
@@ -171,7 +120,7 @@
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Create Parent'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Add My Child'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>
