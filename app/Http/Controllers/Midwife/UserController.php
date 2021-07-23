@@ -89,9 +89,24 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      */
-    public function update(Request $request, User $user)
+    public function update(SaveUserRequest $request, User $user)
     {
-        //
+
+        $user->midwife_id = Auth::guard('midwife')->id();
+        $user->type = $request->input('type');
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->address = $request->input('address');
+        $user->city = $request->input('city');
+        $user->province = $request->input('province');
+        $user->postal = $request->input('postal');
+        $user->birthday = $request->input('birthday');
+        $user->nic = $request->input('nic');
+        $user->save();
+        return redirect()->back()->with('success', 'User Updated Successfully!');
+
     }
 
     /**
