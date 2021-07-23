@@ -63,7 +63,7 @@
                                                     </span>
                                                 </td>
                                                 <td class="d-none d-sm-table-cell text-center">
-                                                    <img class="img-avatar img-avatar32" src="{{ isset($midwife->image) ? asset('uploads/img/midwives/' . $midwife->image) : asset('assets/media/avatars/avatar15.jpg.jpg') }}" alt="">
+                                                    <img class="img-avatar img-avatar32" src="{{ isset($midwife->image) ? asset('uploads/img/midwives/' . $midwife->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
                                                 </td>
                                                 <td class="font-w600">
                                                     {{$midwife->fullname}}
