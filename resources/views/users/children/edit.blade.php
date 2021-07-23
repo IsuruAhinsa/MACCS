@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                   Add Child
+                   Edit Child
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -14,7 +14,7 @@
                             <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Add Child
+                            Edit Child
                         </li>
                     </ol>
                 </nav>
@@ -32,12 +32,12 @@
         <div class="block block-themed">
             <div class="block-header bg-smooth">
                 <h3 class="block-title">
-                    Add Child
+                    Edit Child
                 </h3>
             </div>
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="{{ route('children.store') }}" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('children.update', $child->id) }}" method="POST">
 
                     @csrf
 
@@ -53,6 +53,7 @@
                                     id="first_name"
                                     placeholder="Enter First Name"
                                     name="first_name"
+                                    value="{{$child->first_name}}"
                                 >
                             </div>
 
@@ -64,6 +65,7 @@
                                     id="last_name"
                                     placeholder="Enter Last Name"
                                     name="last_name"
+                                    value="{{$child->last_name}}"
                                 >
                             </div>
 
@@ -75,6 +77,7 @@
                                     id="birthday"
                                     placeholder="Enter Birthday"
                                     name="birthday"
+                                    value="{{$child->birthday}}"
                                 >
                             </div>
 
@@ -90,6 +93,7 @@
                                     id="date_of registration"
                                     placeholder="Enter Date of Registration"
                                     name="date_of registration"
+                                    value="{{$child->date_of_registration}}"
                                 >
                             </div>
 
@@ -101,6 +105,7 @@
                                     id="birth_weight"
                                     placeholder="Enter Birth Weight"
                                     name="birth_weight"
+                                    value="{{$child->birth_weight}}"
                                 >
                             </div>
 
@@ -112,6 +117,7 @@
                                     id="health_status"
                                     placeholder="Enter Health Status"
                                     name="health_status"
+                                    value="{{$child->health_status}}"
                                 >
                             </div>
 
