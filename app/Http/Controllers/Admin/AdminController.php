@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SaveAdminRequest;
 use App\Mail\AdminAccountCreated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -86,14 +87,12 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Admin $admin)
     {
         $admin->name = $request->input('name');
         $admin->email = $request->input('email');
+
         if ($request->input('type') == 'super administrator') {
             $admin->is_super = true;
         } else {
@@ -108,11 +107,14 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Admin $admin)
     {
+        // check if we are not trying to delete ourselves
+        if ($admin->id === Auth::guard('admin')->id()) {
+            return back()->withErrors('We would feel really bad if you deleted yourself, please reconsider.');
+        }
+
         $admin->delete();
         return back()->with('success', 'Admin Deleted!');
     }

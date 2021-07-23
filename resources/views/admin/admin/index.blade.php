@@ -31,6 +31,10 @@
                     <x-Alert type="success" :message="Session::get('success')"></x-Alert>
                 @endif
 
+                @if($errors->any())
+                    <x-Alert type="danger" :message="$errors->first()"></x-Alert>
+                @endif
+
                 <div class="row row-deck">
 
                     <div class="col-lg-12">
