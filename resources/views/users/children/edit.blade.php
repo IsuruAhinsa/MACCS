@@ -24,11 +24,6 @@
 
     <div class="content">
 
-        @if(Session::has('success'))
-            <x-Alert type="success" :message="Session::get('success')"></x-Alert>
-        @endif
-
-        <!-- Your Block -->
         <div class="block block-themed">
             <div class="block-header bg-smooth">
                 <h3 class="block-title">
@@ -40,6 +35,7 @@
                 <form class="form-horizontal p-4" action="{{ route('children.update', $child->id) }}" method="POST">
 
                     @csrf
+                    @method('PUT')
 
                     <div class="row">
 
@@ -126,7 +122,7 @@
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Add My Child'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Update My Child'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>

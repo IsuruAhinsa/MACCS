@@ -9,15 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class ChildController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      */
@@ -69,7 +60,16 @@ class ChildController extends Controller
      */
     public function update(Request $request, Child $child)
     {
-        //
+        $child->user_id = Auth::id();
+        $child->first_name = $request->input('first_name');
+        $child->last_name = $request->input('last_name');
+        $child->birthday = $request->input('birthday');
+        $child->date_of_registration = $request->input('date_of_registration');
+        $child->birth_weight = $request->input('birth_weight');
+        $child->health_status = $request->input('health_status');
+        $child->save();
+
+        return redirect(url('/'))->with('Your child updated successfully!');
     }
 
     /**
@@ -78,6 +78,7 @@ class ChildController extends Controller
      */
     public function destroy(Child $child)
     {
-        //
+        $child->delete();
+        return back()->with('success', 'Child Deleted!');
     }
 }

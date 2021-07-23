@@ -25,7 +25,7 @@ Route::post('/login/midwife', 'Auth\LoginController@midwifeLogin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index');
-    Route::resource('children', 'ChildController');
+    Route::resource('children', 'ChildController')->except(['index']);
 });
 
 Route::middleware('auth:admin')->group(function () {
