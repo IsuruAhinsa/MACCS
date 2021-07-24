@@ -47,53 +47,11 @@
             </div>
             <div class="col-md-5 col-xl-4">
 
-                <div class="block">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">
-                            <i class="fa fa-briefcase text-muted mr-1"></i> Child Weight
-                        </h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                <i class="si si-refresh"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="block-content">
+                @include('users.children.partials.weight')
 
-                    </div>
-                </div>
+                @include('users.children.partials.height')
 
-                <div class="block">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">
-                            <i class="fa fa-pencil-alt text-muted mr-1"></i> Child Height
-                        </h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                <i class="si si-refresh"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="block-content">
-
-                    </div>
-                </div>
-
-                <div class="block">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">
-                            <i class="fa fa-share-alt text-muted mr-1"></i> Head Circumference Measurement
-                        </h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                <i class="si si-refresh"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="block-content">
-
-                    </div>
-                </div>
+                @include('users.children.partials.head_circumference')
 
             </div>
         </div>
