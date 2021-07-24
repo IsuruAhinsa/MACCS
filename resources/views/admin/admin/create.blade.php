@@ -53,6 +53,7 @@
                                     id="name"
                                     placeholder="Enter Name"
                                     name="name"
+                                    value="{{old('name')}}"
                                 >
                                 @error('name')
                                 <small class="invalid-feedback">
@@ -65,8 +66,8 @@
                                 <label for="type" class="col-form-label">Admin Type</label>
                                 <select class="custom-select form-control form-control-alt @error('type') is-invalid @enderror" id="type" name="type">
                                     <option selected disabled>Select Admin Type</option>
-                                    <option value="administrator">Administrator</option>
-                                    <option value="super administrator">Super Administrator</option>
+                                    <option value="administrator" {{ old('type') == "administrator" ? 'selected' : '' }}>Administrator</option>
+                                    <option value="super administrator" {{ old('type') == "super administrator" ? 'selected' : '' }}>Super Administrator</option>
 
                                 </select>
                                 @error('type')
