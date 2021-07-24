@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
     <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/oneui.min.css') }}">
     @stack('css')
+    @livewireStyles
 </head>
 <body>
 
@@ -35,5 +36,6 @@
 <script src="{{ asset('assets/js/plugins/chart.js/Chart.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/pages/be_pages_dashboard.min.js') }}"></script>
 @stack('js')
+@livewireScripts
 </body>
 </html>
