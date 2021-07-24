@@ -40,14 +40,12 @@
 
     <div class="content content-boxed">
         <div class="row">
-            <div class="col-md-7 col-xl-8">
-
-
-
-            </div>
-            <div class="col-md-5 col-xl-4">
+            <div class="col-md-6 col-xl-6">
 
                 @livewire('modal.weight.create', ['child_id' => $child->id])
+
+            </div>
+            <div class="col-md-6 col-xl-6">
 
                 @include('users.children.partials.height')
 
