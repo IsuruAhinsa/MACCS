@@ -48,8 +48,8 @@
                                 <label for="type" class="col-form-label">Parent Type</label>
                                 <select class="custom-select form-control form-control-alt @error('type') is-invalid @enderror" id="type" name="type">
                                     <option selected disabled>Select Parent Type</option>
-                                    <option value="Mother">Mother</option>
-                                    <option value="Father">Father</option>
+                                    <option value="Mother" {{ old('type') == "Mother" ? 'selected' : '' }}>Mother</option>
+                                    <option value="Father" {{ old('type') == "Father" ? 'selected' : '' }}>Father</option>
 
                                 </select>
                                 @error('type')
@@ -67,6 +67,7 @@
                                     id="first_name"
                                     placeholder="Enter First Name"
                                     name="first_name"
+                                    value="{{old('first_name')}}"
                                 >
                                 @error('first_name')
                                 <small class="invalid-feedback">
@@ -83,6 +84,7 @@
                                     id="last_name"
                                     placeholder="Enter Last Name"
                                     name="last_name"
+                                      value="{{old('last_name')}}"
                                 >
                                 @error('last_name')
                                 <small class="invalid-feedback">
@@ -99,6 +101,7 @@
                                     id="phone"
                                     placeholder="Enter Phone"
                                     name="phone"
+                                      value="{{old('phone')}}"
                                 >
                                  @error('phone')
                                 <small class="invalid-feedback">
@@ -115,6 +118,7 @@
                                     id="email"
                                     placeholder="Enter Email"
                                     name="email"
+                                      value="{{old('email')}}"
                                 >
                                  @error('email')
                                 <small class="invalid-feedback">
@@ -132,6 +136,7 @@
                                     id="birthday"
                                     placeholder="Enter Birthday"
                                     name="birthday"
+                                      value="{{old('birthday')}}"
                                 >
                                  @error('birthday')
                                 <small class="invalid-feedback">
@@ -152,6 +157,7 @@
                                     id="nic"
                                     placeholder="Enter NIC No"
                                     name="nic"
+                                      value="{{old('nic')}}"
                                 >
                                  @error('nic')
                                 <small class="invalid-feedback">
@@ -168,6 +174,7 @@
                                     id="address"
                                     placeholder="Enter Address"
                                     name="address"
+                                      value="{{old('address')}}"
                                 >
                                  @error('address')
                                 <small class="invalid-feedback">
@@ -183,6 +190,7 @@
                                     id="city"
                                     placeholder="Enter City"
                                     name="city"
+                                      value="{{old('city')}}"
                                 >
                                  @error('city')
                                 <small class="invalid-feedback">
@@ -198,6 +206,7 @@
                                     id="province"
                                     placeholder="Enter Province"
                                     name="province"
+                                      value="{{old('province')}}"
                                 >
                                  @error('province')
                                 <small class="invalid-feedback">
@@ -213,6 +222,7 @@
                                     id="postal"
                                     placeholder="Enter Postal Code"
                                     name="postal"
+                                      value="{{old('postal')}}"
                                 >
                                  @error('postal')
                                 <small class="invalid-feedback">
