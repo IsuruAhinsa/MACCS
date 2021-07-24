@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class SaveUserRequest extends FormRequest
@@ -31,14 +32,14 @@ class SaveUserRequest extends FormRequest
                     'type' => ['required'],
                     'first_name' => ['required', 'string', 'max:70'],
                     'last_name' => ['nullable', 'string', 'max:70'],
-                    'email' => ['required', 'string', 'email', 'max:70', 'unique:users,email'],
-                    'phone' => ['nullable', 'string', 'unique:users,phone'],
+                    'email' => ['required', 'string', 'email', 'max:70', 'unique:users,email',Rule::unique('users', 'email')->ignore(Auth::id()),],
+                    'phone' => ['nullable', 'string', 'unique:users,phone','regex:/^[0-9]{10}/'],
                     'address'=> ['nullable', 'string'],
                     'city'=> ['nullable', 'string'],
                     'province'=> ['nullable', 'string'],
                     'postal'=> ['nullable', 'string'],
-                    'birthday'=> ['nullable', 'string'],
-                    'nic' => ['nullable', 'string'],
+                    'birthday'=> ['nullable', 'date'],
+                    'nic' => ['nullable', 'string','regex:/([0-9]{9}[x|X|v|V]|[0-9]{12})/'],
                 ];
                 break;
             }
@@ -59,13 +60,14 @@ class SaveUserRequest extends FormRequest
                         'nullable',
                         'string',
                         Rule::unique('users', 'phone')->ignore($this->route('user')->id),
+                        'regex:/^[0-9]{10}/'
                     ],
                     'address'=> ['nullable', 'string'],
                     'city'=> ['nullable', 'string'],
                     'province'=> ['nullable', 'string'],
                     'postal'=> ['nullable', 'string'],
-                    'birthday'=> ['nullable', 'string'],
-                    'nic' => ['nullable', 'string'],
+                    'birthday'=> ['nullable', 'date'],
+                    'nic' => ['nullable', 'string','regex:/([0-9]{9}[x|X|v|V]|[0-9]{12})/'],
 
                 ];
                 break;
