@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class SaveMidwifeRequest extends FormRequest
@@ -30,9 +31,9 @@ class SaveMidwifeRequest extends FormRequest
                 return [
                     'first_name' => ['required', 'string', 'max:100'],
                     'last_name' => ['nullable', 'string', 'max:100'],
-                    'email' => ['required', 'string', 'email', 'max:70', 'unique:midwives,email'],
-                    'phone' => ['nullable', 'string', 'unique:midwives,phone'],
-                    'nic' => ['nullable', 'string'],
+                    'email' => ['required', 'string', 'email', 'max:70', 'unique:midwives,email',Rule::unique('users', 'email')->ignore(Auth::id()),],
+                    'phone' => ['nullable', 'string', 'unique:midwives,phone','regex:/^[0-9]{10}/'],
+                    'nic' => ['nullable', 'string','regex:/([0-9]{9}[x|X|v|V]|[0-9]{12})/'],
                     'cases' => ['nullable', 'integer'],
                 ];
                 break;
