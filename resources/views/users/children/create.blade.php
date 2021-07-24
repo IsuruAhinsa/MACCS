@@ -53,6 +53,7 @@
                                     id="first_name"
                                     placeholder="Enter First Name"
                                     name="first_name"
+                                    value="{{ old('first_name') }}"
                                 >
                                 @error('first_name')
                                 <small class="invalid-feedback">
@@ -69,6 +70,7 @@
                                     id="last_name"
                                     placeholder="Enter Last Name"
                                     name="last_name"
+                                    value="{{ old('last_name') }}"
                                 >
                                 @error('last_name')
                                 <small class="invalid-feedback">
@@ -85,6 +87,7 @@
                                     id="birthday"
                                     placeholder="Enter Birthday"
                                     name="birthday"
+                                    value="{{ old('birthday') }}"
                                 >
                                 @error('birthday')
                                 <small class="invalid-feedback">
@@ -105,6 +108,7 @@
                                     id="date_of_registration"
                                     placeholder="Enter Date of Registration"
                                     name="date_of_registration"
+                                    value="{{ old('date_of_registration') }}"
                                 >
                                 @error('date_of_registration')
                                 <small class="invalid-feedback">
@@ -121,6 +125,7 @@
                                     id="birth_weight"
                                     placeholder="Enter Birth Weight"
                                     name="birth_weight"
+                                    value="{{ old('birth_weight') }}"
                                 >
                                 @error('birth_weight')
                                 <small class="invalid-feedback">
@@ -137,6 +142,7 @@
                                     id="health_status"
                                     placeholder="Enter Health Status"
                                     name="health_status"
+                                    value="{{ old('health_status') }}"
                                 >
                                 @error('health_status')
                                 <small class="invalid-feedback">
