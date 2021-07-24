@@ -49,6 +49,7 @@
                                     id="first_name"
                                     placeholder="Enter First Name"
                                     name="first_name"
+                                    value="{{ old('first_name') }}"
                                 >
                                 @error('first_name')
                                 <small class="invalid-feedback">
@@ -66,6 +67,7 @@
                                     id="last_name"
                                     placeholder="Enter Last Name"
                                     name="last_name"
+                                     value="{{ old('last_name') }}"
                                 >
                                 @error('last_name')
                                 <small class="invalid-feedback">
@@ -82,6 +84,7 @@
                                     id="email"
                                     placeholder="Enter Email"
                                     name="email"
+                                     value="{{ old('email') }}"
                                 >
                                 @error('email')
                                 <small class="invalid-feedback">
@@ -102,6 +105,7 @@
                                     id="phone"
                                     placeholder="Enter Phone"
                                     name="phone"
+                                     value="{{ old('phone') }}"
                                 >
                                 @error('phone')
                                 <small class="invalid-feedback">
@@ -118,6 +122,7 @@
                                     id="nic"
                                     placeholder="Enter NIC No"
                                     name="nic"
+                                     value="{{ old('nic') }}"
                                 >
                                 @error('nic')
                                 <small class="invalid-feedback">
@@ -134,6 +139,7 @@
                                     id="cases"
                                     placeholder="Enter Assigned Cases"
                                     name="cases"
+                                     value="{{ old('cases') }}"
                                 >
                                 @error('cases')
                                 <small class="invalid-feedback">
