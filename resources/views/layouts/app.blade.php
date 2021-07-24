@@ -37,5 +37,10 @@
 <script src="{{ asset('assets/js/pages/be_pages_dashboard.min.js') }}"></script>
 @stack('js')
 @livewireScripts
+<script>
+    window.addEventListener('closeCreateWeightModal', event => {
+        $("#modal-create-weight").modal('hide');
+    });
+</script>
 </body>
 </html>

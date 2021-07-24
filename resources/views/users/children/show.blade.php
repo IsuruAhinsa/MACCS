@@ -47,7 +47,7 @@
             </div>
             <div class="col-md-5 col-xl-4">
 
-                @include('users.children.partials.weight')
+                @livewire('modal.weight.create', ['child_id' => $child->id])
 
                 @include('users.children.partials.height')
 
