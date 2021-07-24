@@ -54,8 +54,9 @@ class SaveMidwifeRequest extends FormRequest
                         'nullable',
                         'string',
                         Rule::unique('midwives', 'phone')->ignore($this->route('midwife')->id),
+                        'regex:/^[0-9]{10}/'
                     ],
-                    'nic' => ['nullable', 'string'],
+                    'nic' => ['nullable', 'string','regex:/([0-9]{9}[x|X|v|V]|[0-9]{12})/'],
                     'cases' => ['nullable', 'integer'],
                 ];
                 break;
