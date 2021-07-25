@@ -49,4 +49,12 @@ class User extends Authenticatable
         }
 
     }
+
+    /**
+     * Get the children for the parent.
+     */
+    public function children()
+    {
+        return $this->hasMany(Child::class, 'user_id');
+    }
 }
