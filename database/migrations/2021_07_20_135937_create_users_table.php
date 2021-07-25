@@ -31,7 +31,6 @@ class CreateUsersTable extends Migration
             $table->date('birthday')->nullable();
             $table->string('nic')->nullable();
             $table->string('type')->nullable();
-            $table->integer('children')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
