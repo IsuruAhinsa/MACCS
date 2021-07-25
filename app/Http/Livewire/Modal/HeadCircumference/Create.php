@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Livewire\Modal\HeadCircumference;
+
+use Illuminate\Support\Facades\DB;
+use Livewire\Component;
+
+class Create extends Component
+{
+    public $child_id;
+
+    protected $listeners = ['refreshCreateHeadCircumferenceParent' => '$refresh'];
+
+    public function render()
+    {
+        return view('livewire.modal.head-circumference.create', [
+            'child_id' => $this->child_id,
+            'records' => DB::table('head_measurements')
+                ->orderBy('updated_at', 'asc')
+                ->get()
+        ]);
+    }
+}

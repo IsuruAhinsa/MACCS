@@ -44,6 +44,9 @@
     window.addEventListener('closeCreateHeightModal', event => {
         $("#modal-create-height").modal('hide');
     });
+    window.addEventListener('closeCreateHeadCircumferenceModal', event => {
+        $("#modal-create-head-circumference").modal('hide');
+    });
 </script>
 </body>
 </html>

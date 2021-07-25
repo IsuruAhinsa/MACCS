@@ -49,7 +49,7 @@
 
                 @livewire('modal.height.create', ['child_id' => $child->id])
 
-                @include('users.children.partials.head_circumference')
+                @livewire('modal.head-circumference.create', ['child_id' => $child->id])
 
             </div>
         </div>
