@@ -13,6 +13,12 @@ class Create extends Component
 
     protected $listeners = ['refreshCreateWeightParent' => '$refresh'];
 
+    public function delete($id)
+    {
+        Weight::find($id)->delete();
+        $this->emit('refreshCreateWeightParent');
+    }
+
     public function render()
     {
         return view('livewire.modal.weight.create', [

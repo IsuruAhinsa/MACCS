@@ -26,7 +26,7 @@
                                 {{ $key }}
                             </div>
                         </td>
-                        <td class="font-w600 font-size-sm">
+                        <td class="font-w600 font-size-sm" colspan="2">
                             <div class="py-1">
                                 {{ $loop->index + 1 }} Year
                             </div>
@@ -40,8 +40,15 @@
                                 <td><i class="fa fa-weight"></i></td>
                                 <td class="text-center">{{ \Carbon\Carbon::parse($rec->updated_at)->format('F') }}</td>
                                 <td class="font-w600 font-size-sm">{{ number_format($rec->weight, 1) }} KGs</td>
-                                <td colspan="2">
+                                <td>
                                     {{ \Carbon\Carbon::parse($rec->updated_at)->format('Y-m-d') }}
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <button wire:click="delete({{ $rec->id }})" type="button" class="btn btn-sm btn-light">
+                                            <i class="fa fa-fw fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
