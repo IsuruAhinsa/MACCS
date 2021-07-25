@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Modal\HeadCircumference;
 
+use App\HeadMeasurement;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -10,6 +11,12 @@ class Create extends Component
     public $child_id;
 
     protected $listeners = ['refreshCreateHeadCircumferenceParent' => '$refresh'];
+
+    public function delete($id)
+    {
+        HeadMeasurement::find($id)->delete();
+        $this->emit('refreshCreateHeadCircumferenceParent');
+    }
 
     public function render()
     {

@@ -29,7 +29,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-light">
+                                <button wire:click="delete({{ $record->id }})" type="button" class="btn btn-sm btn-light">
                                     <i class="fa fa-fw fa-trash"></i>
                                 </button>
                             </div>
