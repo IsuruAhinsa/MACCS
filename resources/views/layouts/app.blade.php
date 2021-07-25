@@ -41,6 +41,9 @@
     window.addEventListener('closeCreateWeightModal', event => {
         $("#modal-create-weight").modal('hide');
     });
+    window.addEventListener('closeCreateHeightModal', event => {
+        $("#modal-create-height").modal('hide');
+    });
 </script>
 </body>
 </html>

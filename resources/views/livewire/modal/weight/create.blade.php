@@ -14,14 +14,6 @@
         <div class="block-content">
 
             <table class="js-table-sections table table-hover table-vcenter">
-                {{--<thead>
-                <tr>
-                    <th style="width: 30px;"></th>
-                    <th>Name</th>
-                    <th style="width: 15%;">Access</th>
-                    <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
-                </tr>
-                </thead>--}}
 
                 @foreach($records as $key => $record)
                     <tbody class="js-table-sections-header">
@@ -58,21 +50,6 @@
                 @endforeach
 
             </table>
-
-            {{--<ul>
-                @foreach($records as $key => $record)
-                    <li>{{ $key }}</li>
-                    <ul>
-                        @foreach($record as $rec)
-                            <li>
-                                {{ $rec->id }}
-                            </li>
-                        @endforeach
-                    </ul>
-
-                @endforeach
-            </ul>--}}
-
 
         </div>
     </div>

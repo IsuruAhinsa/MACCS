@@ -47,7 +47,7 @@
             </div>
             <div class="col-md-6 col-xl-6">
 
-                @include('users.children.partials.height')
+                @livewire('modal.height.create', ['child_id' => $child->id])
 
                 @include('users.children.partials.head_circumference')
 
