@@ -40,10 +40,13 @@
                             </div>
 
                             <div class="block-content block-content-full">
+
                                 <div class="table-responsive">
-                                    <table class="table table-hover table-vcenter font-size-sm mb-0">
+
+                                    <table class="js-table-sections table table-hover table-vcenter">
                                         <thead>
-                                        <tr class="text-uppercase">
+                                        <tr>
+                                            <th style="width: 30px;"></th>
                                             <th class="font-w700" style="width: 80px;">ID</th>
                                             <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 100px;">Photo</th>
                                             <th class="font-w700">Full Name</th>
@@ -53,69 +56,94 @@
                                             <th class="font-w700 text-center" style="width: 60px;">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+
                                         @foreach($records as $user)
-                                            <tr>
-                                                <td>
-                                                    <span class="font-w600">
-                                                        {{ $loop->index + 1 }}
-                                                    </span>
-                                                </td>
-                                                <td class="d-none d-sm-table-cell text-center">
-                                                    <img class="img-avatar img-avatar32" src="{{ isset($user->image) ? asset('uploads/img/users/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
-                                                </td>
-                                                <td class="font-w600">
-                                                    {{$user->fullname}}
-                                                </td>
-                                                <td class="font-w600">
-                                                    {{$user->phone}}
-                                                </td>
-                                                <td class="font-w600">
-                                                    {{$user->email}}
-                                                </td>
-                                                <td class="font-w600 text-center">
-                                                    {{$user->type}}
-                                                </td>
-                                                <td class="text-center">
+                                            <tbody class="js-table-sections-header">
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <i class="fa fa-angle-right text-muted"></i>
+                                                    </td>
+                                                    <td>
+                                                        <span class="font-w600">
+                                                            {{ $loop->index + 1 }}
+                                                        </span>
+                                                    </td>
+                                                    <td class="d-none d-sm-table-cell text-center">
+                                                        <img class="img-avatar img-avatar32" src="{{ isset($user->image) ? asset('uploads/img/users/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+                                                    </td>
+                                                    <td class="font-w600">
+                                                        {{$user->fullname}}
+                                                    </td>
+                                                    <td class="font-w600">
+                                                        {{$user->phone}}
+                                                    </td>
+                                                    <td class="font-w600">
+                                                        {{$user->email}}
+                                                    </td>
+                                                    <td class="font-w600 text-center">
+                                                        {{$user->type}}
+                                                    </td>
+                                                    <td class="text-center">
 
-                                                    <div class="btn-group">
-                                                        <a
-                                                            href="{{ route('midwife.users.edit', [$user->id]) }}"
-                                                            class="btn btn-sm btn-light"
-                                                            data-toggle="tooltip"
-                                                            data-placement="left"
-                                                            title="Edit {{ $user->fullname }}"
-                                                        >
-                                                            <i class="fa fa-fw fa-pencil-alt"></i>
-                                                        </a>
-
-                                                        <form
-                                                            action="{{ route('midwife.users.destroy', $user->id) }}"
-                                                            method="POST"
-                                                            onsubmit="return confirm('Do you want to delete {{ $user->full_name }}?')"
-                                                        >
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button
-                                                                type="submit"
+                                                        <div class="btn-group">
+                                                            <a
+                                                                href="{{ route('midwife.users.edit', [$user->id]) }}"
                                                                 class="btn btn-sm btn-light"
                                                                 data-toggle="tooltip"
                                                                 data-placement="left"
-                                                                title="Delete {{ $user->full_name }}"
+                                                                title="Edit {{ $user->fullname }}"
                                                             >
-                                                                <i class="fa fa-fw fa-times"></i>
-                                                            </button>
-                                                        </form>
+                                                                <i class="fa fa-fw fa-pencil-alt"></i>
+                                                            </a>
 
-                                                    </div>
+                                                            <form
+                                                                action="{{ route('midwife.users.destroy', $user->id) }}"
+                                                                method="POST"
+                                                                onsubmit="return confirm('Do you want to delete {{ $user->full_name }}?')"
+                                                            >
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button
+                                                                    type="submit"
+                                                                    class="btn btn-sm btn-light"
+                                                                    data-toggle="tooltip"
+                                                                    data-placement="left"
+                                                                    title="Delete {{ $user->full_name }}"
+                                                                >
+                                                                    <i class="fa fa-fw fa-times"></i>
+                                                                </button>
+                                                            </form>
 
-                                                </td>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody class="font-size-sm">
+                                            <tr class="table-primary">
+                                                <td class="text-center">ID</td>
+                                                <td colspan="2">Full Name</td>
+                                                <td>Birthday</td>
+                                                <td>Date of Registration</td>
+                                                <td>Birth Weight</td>
+                                                <td colspan="2">Health Status</td>
                                             </tr>
+                                                @foreach($user->children as $child)
+                                                    <tr>
+                                                        <td class="text-center">{{ $loop->index + 1 }}</td>
+                                                        <td colspan="2">{{ $child->full_name }}</td>
+                                                        <td>{{ $child->birthday }}</td>
+                                                        <td>{{ $child->date_of_registration }}</td>
+                                                        <td>{{ $child->birth_weight }} KGs</td>
+                                                        <td colspan="2">{{ $child->health_status }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
                                         @endforeach
-
-                                        </tbody>
                                     </table>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -128,3 +156,7 @@
     </div>
 
 @endsection
+
+@push('js')
+    <script>jQuery(function(){ One.helpers(['table-tools-sections']); });</script>
+@endpush
