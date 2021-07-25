@@ -27,7 +27,7 @@ class SaveChildRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:70'],
             'last_name' => ['nullable', 'string', 'max:70'],
-            'birthday'=> ['nullable', 'date'],
+            'birthday'=> ['required', 'date', 'before_or_equal: today', 'after_or_equal: today - 5 years'],
             'date_of_registration'=> ['nullable', 'date'],
             'birth_weight'=> ['numeric', 'between:0,99.99'],
             'health_status'=> ['nullable', 'string'],
