@@ -24,6 +24,7 @@ class Create extends Component
         return view('livewire.modal.weight.create', [
             'child_id' => $this->child_id,
             'records' => DB::table('weights')
+                ->where('child_id', $this->child_id)
                 ->orderBy('updated_at', 'asc')
                 ->get()
                 ->groupBy(function ($date) {

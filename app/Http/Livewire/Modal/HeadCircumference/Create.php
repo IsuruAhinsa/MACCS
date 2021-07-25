@@ -23,6 +23,7 @@ class Create extends Component
         return view('livewire.modal.head-circumference.create', [
             'child_id' => $this->child_id,
             'records' => DB::table('head_measurements')
+                ->where('child_id', $this->child_id)
                 ->orderBy('updated_at', 'asc')
                 ->get()
         ]);
