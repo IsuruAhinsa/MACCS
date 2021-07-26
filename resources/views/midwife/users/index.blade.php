@@ -133,7 +133,11 @@
                                                 @foreach($user->children as $child)
                                                     <tr>
                                                         <td class="text-center">{{ $loop->index + 1 }}</td>
-                                                        <td colspan="2">{{ $child->full_name }}</td>
+                                                        <td colspan="2">
+                                                            <a href="{{ route('midwife.show.child', $child->id) }}">
+                                                                {{ $child->full_name }}
+                                                            </a>
+                                                        </td>
                                                         <td>{{ $child->birthday }}</td>
                                                         <td>{{ $child->date_of_registration }}</td>
                                                         <td>{{ $child->birth_weight }} KGs</td>

@@ -48,6 +48,7 @@ Route::middleware('auth:midwife')->group(function () {
 
     Route::prefix('midwife')->name('midwife.')->namespace('Midwife')->group(function () {
         Route::resource('users', 'UserController');
+        Route::get('users/child/{child}', 'UserController@showChild')->name('show.child');
         Route::get('profile', 'MidwifeDashboardController@showProfile')->name('profile');
         Route::put('profile/save', 'MidwifeDashboardController@saveProfile')->name('profile.save');
         Route::post('change/password', 'MidwifeDashboardController@updatePassword')->name('update.password');

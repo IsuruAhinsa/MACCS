@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Midwife;
 
+use App\Child;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveUserRequest;
 use App\Mail\AdminAccountCreated;
@@ -117,5 +118,10 @@ class UserController extends Controller
     {
         $user->delete();
         return back()->with('success', 'User Deleted!');
+    }
+
+    public function showChild(Child $child)
+    {
+        return view('midwife.users.child')->with(compact('child'));
     }
 }
