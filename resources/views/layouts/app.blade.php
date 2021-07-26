@@ -33,8 +33,6 @@
 
 <script src="{{ asset('assets/js/oneui.core.min.js') }}"></script>
 <script src="{{ asset('assets/js/oneui.app.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugins/chart.js/Chart.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/be_pages_dashboard.min.js') }}"></script>
 @stack('js')
 @livewireScripts
 <script>

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\WeightChart;
 use App\Child;
 use App\Http\Requests\SaveChildRequest;
+use App\Weight;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ChildController extends Controller
 {
@@ -42,7 +46,30 @@ class ChildController extends Controller
      */
     public function show(Child $child)
     {
-        return view('users.children.show')->with(compact('child'));
+       /* $years = Weight::where('child_id', $child->id)
+            ->select(DB::raw('YEAR(updated_at) as year'))
+            ->orderBy('updated_at', 'asc')
+            ->distinct()
+            ->get();*/
+
+        /*foreach ($years as $item) {
+
+        }*/
+
+        /*return Weight::where('child_id', $child->id)
+            ->where(DB::raw('YEAR(updated_at)'), 2020)
+            ->select('weight')
+            ->orderBy('updated_at', 'asc')
+            ->get();*/
+
+
+        /*$chart = new WeightChart;
+        $chart->labels($dates->values());
+        $chart->dataset('Weight', 'bar', $weights->values());*/
+
+        return view('users.children.show', [
+            'child' => $child,
+        ]);
     }
 
     /**
