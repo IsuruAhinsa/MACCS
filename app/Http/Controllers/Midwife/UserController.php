@@ -73,7 +73,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('midwife.users.show')->with(compact('user'));
     }
 
     /**

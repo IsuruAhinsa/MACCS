@@ -36,7 +36,7 @@
                     <div class="col-lg-12">
                         <div class="block block-mode-loading-oneui block-themed">
                             <div class="block-header bg-amethyst">
-                                <h3 class="block-title">All Parents</h3>
+                                <h3 class="block-title">All Parents & Children</h3>
                             </div>
 
                             <div class="block-content block-content-full">
@@ -72,7 +72,9 @@
                                                         <img class="img-avatar img-avatar32" src="{{ isset($user->image) ? asset('uploads/img/users/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
                                                     </td>
                                                     <td class="font-w600">
-                                                        {{$user->fullname}}
+                                                        <a href="{{ route('midwife.users.show', $user->id) }}">
+                                                            {{$user->fullname}}
+                                                        </a>
                                                     </td>
                                                     <td class="font-w600">
                                                         {{$user->phone}}
