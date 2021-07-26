@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Child extends Model
 {
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'children';
+
     protected $fillable = [
         'first_name', 'last_name', 'birthday', 'date_of_registration', 'birth_weight', 'health_status'
     ];
