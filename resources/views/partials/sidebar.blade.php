@@ -1,17 +1,15 @@
 <nav id="sidebar" aria-label="Main Navigation">
-    <!-- Side Header -->
+
     <div class="content-header bg-white-5">
-        <!-- Logo -->
+
         <a class="font-w600 text-dual" href="{{ url('/') }}">
             <span class="smini-hide">
                 <span class="font-w700 font-size-h5">{{ config('app.name') }}</span>
             </span>
         </a>
-        <!-- END Logo -->
-    </div>
-    <!-- END Side Header -->
 
-    <!-- Side Navigation -->
+    </div>
+
     <div class="content-side content-side-full">
         <ul class="nav-main">
             <li class="nav-main-item">
@@ -84,12 +82,40 @@
                     </ul>
                 </li>
 
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="#">
+                        <i class="nav-main-link-icon si si-envelope"></i>
+                        <span class="nav-main-link-name">My Appointments</span>
+                    </a>
+                </li>
+
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="#">
+                        <i class="nav-main-link-icon si si-calendar"></i>
+                        <span class="nav-main-link-name">Create Appointment</span>
+                    </a>
+                </li>
+
             @else
 
                 <li class="nav-main-item">
                     <a class="nav-main-link" href="{{ route('children.create') }}">
                         <i class="nav-main-link-icon si si-user-follow"></i>
                         <span class="nav-main-link-name">Create Children</span>
+                    </a>
+                </li>
+
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="#">
+                        <i class="nav-main-link-icon si si-envelope"></i>
+                        <span class="nav-main-link-name">My Appointments</span>
+                    </a>
+                </li>
+
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('appointments.create') }}">
+                        <i class="nav-main-link-icon si si-calendar"></i>
+                        <span class="nav-main-link-name">Create Appointment</span>
                     </a>
                 </li>
 
