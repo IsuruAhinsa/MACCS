@@ -31,6 +31,24 @@
 
                 <ul class="timeline timeline-alt py-0">
                     <li class="timeline-event">
+                        <div class="timeline-event-icon bg-city">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="timeline-event-block block invisible" data-toggle="appear">
+                            <div class="block-header">
+                                <h3 class="block-title">Newborn Health Record</h3>
+                            </div>
+                            <div class="block-content">
+
+                                <a href="#" class="btn btn-outline-success mr-1 mb-3">
+                                    <i class="fa fa-fw fa-plus mr-1"></i>
+                                    Add Newborn Health Record
+                                </a>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-event">
                         <div class="timeline-event-icon bg-smooth">
                             <i class="fas fa-child"></i>
                         </div>
