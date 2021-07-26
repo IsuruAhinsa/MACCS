@@ -124,4 +124,14 @@ class UserController extends Controller
     {
         return view('midwife.users.child')->with(compact('child'));
     }
+
+    public function createNewborn(Child $child)
+    {
+        return view('midwife.users.newborn')->with(compact('child'));
+    }
+
+    public function storeNewborn(Request $request, Child $child)
+    {
+
+    }
 }

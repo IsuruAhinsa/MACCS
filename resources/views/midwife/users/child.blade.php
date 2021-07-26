@@ -40,7 +40,7 @@
                             </div>
                             <div class="block-content">
 
-                                <a href="#" class="btn btn-outline-success mr-1 mb-3">
+                                <a href="{{ route('midwife.create.newborn', $child->id) }}" class="btn btn-outline-success mr-1 mb-3">
                                     <i class="fa fa-fw fa-plus mr-1"></i>
                                     Add Newborn Health Record
                                 </a>

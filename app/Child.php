@@ -29,4 +29,12 @@ class Child extends Model
         }
 
     }
+
+    /**
+     * Get the newborn record associated with the child.
+     */
+    public function newborn()
+    {
+        return $this->hasOne(Newborn::class, 'child_id');
+    }
 }

@@ -44,6 +44,17 @@
 
                 @livewire('modal.weight.create', ['child_id' => $child->id])
 
+                <div class="block block-themed">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">
+                            <i class="fa fa-child mr-1"></i> Newborn Health Records
+                        </h3>
+                    </div>
+                    <div class="block-content">
+
+                    </div>
+                </div>
+
             </div>
             <div class="col-md-6 col-xl-6">
 
