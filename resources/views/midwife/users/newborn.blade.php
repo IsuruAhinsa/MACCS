@@ -13,8 +13,11 @@
                         <li class="breadcrumb-item">
                             <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
                         </li>
+                        <li class="breadcrumb-item">
+                            <a class="link-fx" href="{{ route('midwife.users.index') }}">All Parents & Children</a>
+                        </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Create Parents
+                            Create Newborn Health Record
                         </li>
                     </ol>
                 </nav>
@@ -32,7 +35,7 @@
         <div class="block block-themed">
             <div class="block-header bg-amethyst">
                 <h3 class="block-title">
-                    Create Parents
+                    Create Newborn Health Record
                 </h3>
             </div>
             <div class="block-content">
@@ -44,94 +47,12 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="type" class="col-form-label">Parent Type</label>
-                                <select class="custom-select form-control form-control-alt @error('type') is-invalid @enderror" id="type" name="type">
-                                    <option selected disabled>Select Parent Type</option>
-                                    <option value="Mother" {{ old('type') == "Mother" ? 'selected' : '' }}>Mother</option>
-                                    <option value="Father" {{ old('type') == "Father" ? 'selected' : '' }}>Father</option>
 
-                                </select>
-                                @error('type')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
 
                             <div class="form-group">
-                                <label for="first_name" class="col-form-label">First Name</label>
+                                <label for="birthday" class="col-form-label"> Birthday</label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt @error('first_name') is-invalid @enderror"
-                                    id="first_name"
-                                    placeholder="Enter First Name"
-                                    name="first_name"
-                                    value="{{old('first_name')}}"
-                                >
-                                @error('first_name')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="last_name" class="col-form-label">Last Name</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('last_name') is-invalid @enderror"
-                                    id="last_name"
-                                    placeholder="Enter Last Name"
-                                    name="last_name"
-                                    value="{{old('last_name')}}"
-                                >
-                                @error('last_name')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone" class="col-form-label">Phone</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('phone') is-invalid @enderror"
-                                    id="phone"
-                                    placeholder="Enter Phone"
-                                    name="phone"
-                                    value="{{old('phone')}}"
-                                >
-                                @error('phone')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-form-label">Email</label>
-                                <input
-                                    type="email"
-                                    class="form-control form-control-alt @error('email') is-invalid @enderror"
-                                    id="email"
-                                    placeholder="Enter Email"
-                                    name="email"
-                                    value="{{old('email')}}"
-                                >
-                                @error('email')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="birthday" class="col-form-label">Birthday</label>
-                                <input
-                                    type="date"
                                     class="form-control form-control-alt @error('birthday') is-invalid @enderror"
                                     id="birthday"
                                     placeholder="Enter Birthday"
@@ -145,86 +66,139 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
+                                <label for="apgar_score" class="col-form-label">Apgar Score</label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-alt @error('apgar_score') is-invalid @enderror"
+                                    id="apgar_score"
+                                    placeholder="Enter Apgar_score"
+                                    name="apgar_score"
+                                    value="{{old('apgar Score')}}"
+                                >
+                                @error('apgar_score')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="birth_weight" class="col-form-label">Birth Weight</label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-alt @error('birth_weight') is-invalid @enderror"
+                                    id="birth_weight"
+                                    placeholder="Enter birth Weight"
+                                    name="birth_weight"
+                                    value="{{old('birth_weight')}}"
+                                >
+                                @error('birth_weight')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="birth_height" class="col-form-label">Birth Height</label>
+                                <input
+                                    type="birth_height"
+                                    class="form-control form-control-alt @error('birth_height') is-invalid @enderror"
+                                    id="birth_height"
+                                    placeholder="Enter birth Height"
+                                    name="birth_height"
+                                    value="{{old('Birth_height')}}"
+                                >
+                                @error('birth_height')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="notes" class="col-form-label">Notes </label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-alt @error('notes') is-invalid @enderror"
+                                    id="notes"
+                                    placeholder="Enter Notes"
+                                    name="notes"
+                                    value="{{old('notes')}}"
+                                >
+                                @error('notes')
+                                <small class="invalid-feedback">
+                                    {{ $message }}
+                                </small>
+                                @enderror
+                            </div>
+
+
+
                         </div>
 
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="nic" class="col-form-label">NIC No</label>
+                                <label for="birth_hcm" class="col-form-label">Birth HCM </label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt @error('nic') is-invalid @enderror"
-                                    id="nic"
-                                    placeholder="Enter NIC No"
-                                    name="nic"
-                                    value="{{old('nic')}}"
+                                    class="form-control form-control-alt @error('birth_hcm') is-invalid @enderror"
+                                    id="birth_hcm"
+                                    placeholder="Enter Birth HCM"
+                                    name="birth_hcm"
+                                    value="{{old('birth_hcm')}}"
                                 >
-                                @error('nic')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="address" class="col-form-label">Address </label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('address') is-invalid @enderror"
-                                    id="address"
-                                    placeholder="Enter Address"
-                                    name="address"
-                                    value="{{old('address')}}"
-                                >
-                                @error('address')
+                                @error('birth_hcm')
                                 <small class="invalid-feedback">
                                     {{ $message }}
                                 </small>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="city" class="col-form-label">City </label>
+                                <label for="skin" class="col-form-label">Skin </label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt @error('city') is-invalid @enderror"
-                                    id="city"
-                                    placeholder="Enter City"
-                                    name="city"
-                                    value="{{old('city')}}"
+                                    class="form-control form-control-alt @error('skin') is-invalid @enderror"
+                                    id="skin"
+                                    placeholder="Enter Skin"
+                                    name="skin"
+                                    value="{{old('skin')}}"
                                 >
-                                @error('city')
+                                @error('skin')
                                 <small class="invalid-feedback">
                                     {{ $message }}
                                 </small>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="province" class="col-form-label">Province </label>
+                                <label for="eyes" class="col-form-label">Eyes </label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt @error('province') is-invalid @enderror"
-                                    id="province"
-                                    placeholder="Enter Province"
-                                    name="province"
-                                    value="{{old('province')}}"
+                                    class="form-control form-control-alt @error('eyes') is-invalid @enderror"
+                                    id="eyes"
+                                    placeholder="Enter Eyes"
+                                    name="eyes"
+                                    value="{{old('eyes')}}"
                                 >
-                                @error('province')
+                                @error('eyes')
                                 <small class="invalid-feedback">
                                     {{ $message }}
                                 </small>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="postal" class="col-form-label">Postal Code</label>
+                                <label for="temperature" class="col-form-label">Temperature </label>
                                 <input
                                     type="text"
-                                    class="form-control form-control-alt @error('postal') is-invalid @enderror"
-                                    id="postal"
-                                    placeholder="Enter Postal Code"
-                                    name="postal"
-                                    value="{{old('postal')}}"
+                                    class="form-control form-control-alt @error('temperature') is-invalid @enderror"
+                                    id="temperature"
+                                    placeholder="Enter temperature"
+                                    name="temperature"
+                                    value="{{old('Temperature')}}"
                                 >
-                                @error('postal')
+                                @error('temperature')
                                 <small class="invalid-feedback">
                                     {{ $message }}
                                 </small>
