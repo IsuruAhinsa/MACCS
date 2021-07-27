@@ -7,6 +7,7 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
                     {{ $user->full_name }}
+                    <span class="badge badge-pill badge-info">{{ $user->type }}</span>
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -38,13 +39,74 @@
                             <div class="block-header">
                                 <h3 class="block-title">Personal Information</h3>
                             </div>
-                            <div class="block-content">
-                                <p class="font-w600 mb-2">
-                                    + 290 Page Likes
-                                </p>
-                                <p>
-                                    This is great, keep it up!
-                                </p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                            Name
+                                        </p>
+                                        <p>
+                                            {{$user->full_name}}
+
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                            Type
+                                        </p>
+                                        <p>
+                                            {{$user->type}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                            NIC Number
+                                        </p>
+                                        <p>
+                                            {{$user->nic}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                            Birthday
+                                        </p>
+                                        <p>
+                                            {{$user->birthday}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                           Phone Number
+                                        </p>
+                                        <p>
+                                            {{$user->phone}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                            E-mail
+                                        </p>
+                                        <p>
+                                            {{$user->email}}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -56,26 +118,56 @@
                             <div class="block-header">
                                 <h3 class="block-title">Location</h3>
                             </div>
-                            <div class="block-content block-content-full">
-                                <p class="font-w600 mb-2">
-                                    3 New Products were added!
-                                </p>
-                                <div class="d-flex">
-                                    <a class="item item-rounded bg-info mr-2" href="javascript:void(0)">
-                                        <i class="si si-rocket fa-2x text-white-75"></i>
-                                    </a>
-                                    <a class="item item-rounded bg-amethyst mr-2" href="javascript:void(0)">
-                                        <i class="si si-calendar fa-2x text-white-75"></i>
-                                    </a>
-                                    <a class="item item-rounded bg-city mr-2" href="javascript:void(0)">
-                                        <i class="si si-speedometer fa-2x text-white-75"></i>
-                                    </a>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                           Province
+                                        </p>
+                                        <p>
+                                            {{$user->province}}
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                           City
+                                        </p>
+                                        <p>
+                                            {{$user->city}}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                            Address
+                                        </p>
+                                        <p>
+                                            {{$user->address}}
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="block-content">
+                                        <p class="font-w600 mb-2">
+                                            Postal Code
+                                        </p>
+                                        <p>
+                                            {{$user->postal}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </li>
                 </ul>
-
             </div>
             <div class="col-md-5 col-xl-4">
 
@@ -85,6 +177,7 @@
                             <i class="fas fa-child text-muted mr-1"></i> Children (count)
                         </h3>
                     </div>
+                    @foreach($user->children as $child)
                     <div class="block-content">
                         <ul class="nav-items font-size-sm">
                             <li>
@@ -93,38 +186,18 @@
                                         <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar1.jpg') }}" alt="">
                                         <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>
                                     </div>
+
                                     <div class="media-body">
-                                        <div class="font-w600">Judy Ford</div>
-                                        <div class="font-w400 text-muted">Copywriter</div>
+                                        <div class="font-w600">{{ $child->full_name }}</div>
+                                        <div class="font-w400 text-muted">{{ $child->birthday }}</div>
+
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a class="media py-2" href="javascript:void(0)">
-                                    <div class="mr-3 ml-2 overlay-container overlay-bottom">
-                                        <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar13.jpg') }}" alt="">
-                                        <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="font-w600">Adam McCoy</div>
-                                        <div class="font-w400 text-muted">Web Developer</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="media py-2" href="javascript:void(0)">
-                                    <div class="mr-3 ml-2 overlay-container overlay-bottom">
-                                        <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar8.jpg') }}" alt="">
-                                        <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-warning"></span>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="font-w600">Helen Jacobs</div>
-                                        <div class="font-w400 text-muted">Web Designer</div>
-                                    </div>
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
+                    @endforeach
                 </div>
 
             </div>
