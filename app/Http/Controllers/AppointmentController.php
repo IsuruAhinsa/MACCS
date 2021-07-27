@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Appointment;
+use App\Midwife;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('users.appointments.index');
     }
 
     /**
@@ -32,18 +34,13 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
-    }
+        $appointment = new Appointment();
+        $appointment->user_id = Auth::id();
+        $appointment->date = Carbon::parse($request->input('date'))->format('Y-m-d');
+        $appointment->time = $request->input('time');
+        $appointment->time = $request->input('notes');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appointment $appointment)
-    {
-        //
+        return redirect()->route('appointments.index')->with('success', 'Appointment Created!');
     }
 
     /**

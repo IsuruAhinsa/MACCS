@@ -63,6 +63,6 @@ class User extends Authenticatable
      */
     public function appointments()
     {
-        return $this->morphMany(Appointment::class, 'bookable');
+        return $this->hasMany(Appointment::class, 'user_id');
     }
 }

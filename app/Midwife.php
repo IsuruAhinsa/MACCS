@@ -44,7 +44,7 @@ class Midwife extends Authenticatable
      */
     public function appointments()
     {
-        return $this->morphMany(Appointment::class, 'bookable');
+        return $this->hasMany(Appointment::class, 'midwife_id');
     }
 
 }
