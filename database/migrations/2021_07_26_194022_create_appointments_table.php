@@ -15,16 +15,17 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            /*$table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('midwife_id');
-            $table->foreign('midwife_id')->references('id')->on('midwives')->onDelete('cascade');
+            $table->foreign('midwife_id')->references('id')->on('midwives')->onDelete('cascade');*/
+            $table->morphs('bookable');
             $table->date('date');
             $table->time('time');
             $table->string('venue');
-            $table->date('reschedule_date');
-            $table->time('reschedule_time');
-            $table->string('reschedule_venue');
+            $table->date('reschedule_date')->nullable();
+            $table->time('reschedule_time')->nullable();
+            $table->string('reschedule_venue')->nullable();
             $table->boolean('is_approve')->default(false);
             $table->text('notes')->nullable();
             $table->boolean('is_decline')->default(false);
