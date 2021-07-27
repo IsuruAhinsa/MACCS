@@ -22,6 +22,9 @@ class CreateAppointmentsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('venue');
+            $table->date('reschedule_date');
+            $table->time('reschedule_time');
+            $table->string('reschedule_venue');
             $table->boolean('is_approve')->default(false);
             $table->text('notes')->nullable();
             $table->boolean('is_decline')->default(false);
