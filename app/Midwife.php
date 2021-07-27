@@ -26,10 +26,6 @@ class Midwife extends Authenticatable
         'password', 'remember_token'
     ];
 
-    public static function id()
-    {
-    }
-
     /**
      * Get the midwife's full name.
      *
@@ -41,6 +37,14 @@ class Midwife extends Authenticatable
             return "{$this->first_name} {$this->last_name}";
         }
 
+    }
+
+    /**
+     * Get all of the midwife's appointments.
+     */
+    public function appointments()
+    {
+        return $this->morphMany(Appointment::class, 'bookable');
     }
 
 }

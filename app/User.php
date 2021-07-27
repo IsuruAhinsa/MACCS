@@ -57,4 +57,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Child::class, 'user_id');
     }
+
+    /**
+     * Get all of the user's appointments.
+     */
+    public function appointments()
+    {
+        return $this->morphMany(Appointment::class, 'bookable');
+    }
 }
