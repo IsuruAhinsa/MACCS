@@ -37,4 +37,22 @@ class Child extends Model
     {
         return $this->hasOne(Newborn::class, 'child_id');
     }
+
+    /**
+     * Get the weights for a child.
+     */
+
+    public function weights()
+    {
+        return $this->hasMany(Weight::class, 'child_id');
+    }
+    public function heights()
+    {
+        return $this->hasMany(Height::class, 'child_id');
+    }
+
+    public function headMeasurements()
+    {
+        return $this->hasMany(HeadMeasurement::class, 'child_id');
+    }
 }
