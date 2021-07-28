@@ -83,17 +83,27 @@
                 </li>
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('midwife.appointments.index') }}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                         <i class="nav-main-link-icon si si-envelope"></i>
                         <span class="nav-main-link-name">My Appointments</span>
                     </a>
-                </li>
-
-                <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('midwife.appointments.create') }}">
-                        <i class="nav-main-link-icon si si-calendar"></i>
-                        <span class="nav-main-link-name">Create Appointment</span>
-                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('midwife.appointments.create') }}">
+                                <span class="nav-main-link-name">New</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('midwife.appointments.received') }}">
+                                <span class="nav-main-link-name">Received</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('midwife.appointments.index') }}">
+                                <span class="nav-main-link-name">Sent</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
             @else
@@ -106,17 +116,27 @@
                 </li>
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('appointments.index') }}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                         <i class="nav-main-link-icon si si-envelope"></i>
                         <span class="nav-main-link-name">My Appointments</span>
                     </a>
-                </li>
-
-                <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('appointments.create') }}">
-                        <i class="nav-main-link-icon si si-calendar"></i>
-                        <span class="nav-main-link-name">Create Appointment</span>
-                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('appointments.create') }}">
+                                <span class="nav-main-link-name">New</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('appointments.received') }}">
+                                <span class="nav-main-link-name">Received</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('appointments.index') }}">
+                                <span class="nav-main-link-name">Sent</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
             @endisset
