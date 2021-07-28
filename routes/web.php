@@ -51,11 +51,12 @@ Route::middleware('auth:midwife')->group(function () {
 
     Route::prefix('midwife')->name('midwife.')->namespace('Midwife')->group(function () {
         Route::resource('users', 'UserController');
-        Route::resource('appointments', 'AppointmentController')->except(['show']);
+        Route::resource('appointments', 'AppointmentController')->except(['show', 'create']);
+        Route::get('appointments/create/{user}', 'AppointmentController@create')->name('appointments.create');
         Route::get('appointments/received', 'AppointmentController@received')->name('appointments.received');
         Route::get('users/child/{child}', 'UserController@showChild')->name('show.child');
         Route::get('child/newborn/{child}', 'UserController@createNewborn')->name('create.newborn');
-        Route::post('child/newborn/{child}', 'UserController@storeNewborn')->name('store.newborn');
+        Route::post('child/newborn', 'UserController@storeNewborn')->name('store.newborn');
 
         Route::get('profile', 'MidwifeDashboardController@showProfile')->name('profile');
         Route::put('profile/save', 'MidwifeDashboardController@saveProfile')->name('profile.save');
