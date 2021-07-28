@@ -47,4 +47,12 @@ class Midwife extends Authenticatable
         return $this->hasMany(Appointment::class, 'midwife_id');
     }
 
+    /**
+     * Get the users for the midwives.
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class, 'midwife_id');
+    }
+
 }

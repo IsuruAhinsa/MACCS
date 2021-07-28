@@ -37,37 +37,69 @@
                                 <label class="custom-control-label" for="check-all"></label>
                             </div>
                         </th>
-                        <th style="width: 30%;">Midwife</th>
-                        <th class="d-none d-sm-table-cell" style="width: 5%;">Date</th>
-                        <th class="d-none d-sm-table-cell" style="width: 5%;">Time</th>
+                        <th style="width: 25%;">Midwife</th>
+                        <th class="d-none d-sm-table-cell" style="width: 15%;">Date</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Time</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Where</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Status</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Actions</th>
+                        <th class="d-none d-sm-table-cell" style="width: 15%;">Status</th>
+                        <th class="d-none d-sm-table-cell" style="width: 15%;">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="text-center">
-                            <div class="custom-control custom-checkbox custom-control-primary d-inline-block">
-                                <input type="checkbox" class="custom-control-input" id="row_1" name="row_1">
-                                <label class="custom-control-label" for="row_1"></label>
-                            </div>
-                        </td>
-                        <td class="font-size-sm">
-                            <p class="font-w600 mb-1">
-                                <a href="be_pages_generic_profile.html">Sara Fields</a>
-                            </p>
-                            <p class="text-muted mb-0">
-                                Customer details and further information
-                            </p>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <span class="badge badge-danger">Disabled</span>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <em class="font-size-sm text-muted">November 17, 2018 08:35</em>
-                        </td>
-                    </tr>
+                        @forelse($records as $record)
+
+                            <tr>
+                                <td class="text-center">
+                                    <div class="custom-control custom-checkbox custom-control-primary d-inline-block">
+                                        <input type="checkbox" class="custom-control-input" id="row_1" name="row_1">
+                                        <label class="custom-control-label" for="row_1"></label>
+                                    </div>
+                                </td>
+                                <td class="font-size-sm">
+                                    <p class="font-w600 mb-1">
+                                        <a href="#">
+                                            {{ \App\User::find($record->user_id)->midwife->full_name }}
+                                        </a>
+                                    </p>
+                                    <p class="text-muted mb-0">
+                                        {{ $record->notes }}
+                                    </p>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="font-size-sm text-muted">
+                                        {{ $record->date }}
+                                    </em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="font-size-sm text-muted">
+                                        {{ \Carbon\Carbon::parse($record->time)->format('h:i A') }}
+                                    </em>
+                                </td>
+                                <td class="font-size-sm">
+                                    <p class="font-w600 mb-1">
+                                        {{ $record->venue }}
+                                    </p>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <span class="badge badge-warning">Pending</span>
+                                </td>
+                                <td>
+                                    <div class="btn-toolbar mb-2" role="toolbar" aria-label="Icons Toolbar with button groups">
+                                        <div class="btn-group btn-group-sm mr-2 mb-2" role="group" aria-label="Icons File group">
+                                            <a href="{{ route('appointments.edit', $record->id) }}" type="button" class="btn btn-primary">
+                                                <i class="fa fa-fw fa-clock"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-primary">
+                                                <i class="fa fa-fw fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        @empty
+
+                        @endforelse
                     </tbody>
                 </table>
             </div>

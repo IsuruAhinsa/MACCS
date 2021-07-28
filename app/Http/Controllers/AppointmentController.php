@@ -16,7 +16,11 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('users.appointments.index');
+        $records = Appointment::where('user_id', Auth::id())->get();
+
+        return view('users.appointments.index', [
+            'records' => $records
+        ]);
     }
 
     /**
@@ -38,7 +42,9 @@ class AppointmentController extends Controller
         $appointment->user_id = Auth::id();
         $appointment->date = Carbon::parse($request->input('date'))->format('Y-m-d');
         $appointment->time = $request->input('time');
-        $appointment->time = $request->input('notes');
+        $appointment->venue = $request->input('venue');
+        $appointment->notes = $request->input('notes');
+        $appointment->save();
 
         return redirect()->route('appointments.index')->with('success', 'Appointment Created!');
     }
