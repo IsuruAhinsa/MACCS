@@ -83,14 +83,14 @@
                 </li>
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
+                    <a class="nav-main-link" href="{{ route('midwife.appointments.index') }}">
                         <i class="nav-main-link-icon si si-envelope"></i>
                         <span class="nav-main-link-name">My Appointments</span>
                     </a>
                 </li>
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
+                    <a class="nav-main-link" href="{{ route('midwife.appointments.create') }}">
                         <i class="nav-main-link-icon si si-calendar"></i>
                         <span class="nav-main-link-name">Create Appointment</span>
                     </a>
