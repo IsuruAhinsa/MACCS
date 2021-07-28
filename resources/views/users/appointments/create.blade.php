@@ -39,7 +39,7 @@
                     <div class="block block-themed">
                         <div class="block-header bg-smooth">
                             <h3 class="block-title">
-                                Add Child
+                                Create Appointment
                             </h3>
                         </div>
                         <div class="block-content">

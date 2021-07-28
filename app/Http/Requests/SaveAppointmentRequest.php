@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class SaveAppointmentRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class SaveAppointmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +25,27 @@ class SaveAppointmentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch ($this->method()) {
+            case 'POST':
+            {
+                return [
+
+                    'date'=>['required','date'],
+                    'time'=>['required','string'],
+                    'venue'=>['required','string'],
+                    'notes'=>['nullable','string'],
+
+                ];
+                break;
+            }
+            case 'PUT':
+            {
+                return [
+                   //
+                ];
+
+            }
+            default: break;
+        }
     }
 }

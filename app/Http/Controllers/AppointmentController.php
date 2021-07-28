@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Appointment;
+use App\Http\Requests\SaveAppointmentRequest;
 use App\Midwife;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class AppointmentController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store(Request $request)
+    public function store(SaveAppointmentRequest $request)
     {
         $appointment = new Appointment();
         $appointment->user_id = Auth::id();
