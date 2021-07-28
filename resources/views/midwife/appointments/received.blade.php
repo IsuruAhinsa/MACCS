@@ -89,7 +89,10 @@
                                             <a href="{{ route('appointments.edit', $record->id) }}" type="button" class="btn btn-primary">
                                                 <i class="fa fa-fw fa-clock"></i>
                                             </a>
-                                            <button type="button" class="btn btn-primary">
+                                            <a href="#" type="button" class="btn btn-success">
+                                                <i class="fa fa-fw fa-check"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-danger">
                                                 <i class="fa fa-fw fa-times"></i>
                                             </button>
                                         </div>

@@ -27,7 +27,11 @@ class AppointmentController extends Controller
 
     public function received()
     {
-        return view('users.appointments.received');
+        $inbox = Appointment::where('user_id', Auth::id())->get();
+
+        return view('users.appointments.received', [
+            'records' => $inbox
+        ]);
     }
 
     /**
