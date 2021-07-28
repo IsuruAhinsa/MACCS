@@ -40,19 +40,19 @@ class Midwife extends Authenticatable
     }
 
     /**
-     * Get all of the midwife's appointments.
-     */
-    public function appointments()
-    {
-        return $this->hasMany(Appointment::class, 'midwife_id');
-    }
-
-    /**
      * Get the users for the midwives.
      */
     public function users()
     {
         return $this->hasMany(User::class, 'midwife_id');
+    }
+
+    /**
+     * Get all of the midwife's appointments.
+     */
+    public function appointments()
+    {
+        return $this->morphMany(Appointment::class, 'appointmentable');
     }
 
 }

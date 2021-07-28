@@ -19,6 +19,7 @@ class CreateAppointmentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('midwife_id')->nullable();
             $table->foreign('midwife_id')->references('id')->on('midwives')->onDelete('cascade');
+            $table->morphs('appointmentable');
             $table->date('date');
             $table->time('time');
             $table->string('venue');

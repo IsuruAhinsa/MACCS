@@ -37,7 +37,7 @@
                                 <label class="custom-control-label" for="check-all"></label>
                             </div>
                         </th>
-                        <th style="width: 25%;">Midwife</th>
+                        <th style="width: 25%;">Parent</th>
                         <th class="d-none d-sm-table-cell" style="width: 15%;">Date</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Time</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Where</th>
@@ -58,7 +58,7 @@
                                 <td class="font-size-sm">
                                     <p class="font-w600 mb-1">
                                         <a href="#">
-                                            {{ \App\User::find($record->appointmentable_id)->midwife->full_name }}
+                                           {{ $record->appointmentable->full_name }}
                                         </a>
                                     </p>
                                     <p class="text-muted mb-0">
@@ -81,13 +81,7 @@
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    @if($record->is_approve == false && $record->is_decline == false)
-                                        <span class="badge badge-warning">Pending</span>
-                                    @elseif($record->is_approve == true)
-                                        <span class="badge badge-success">Approved</span>
-                                    @elseif($record->is_decline == true)
-                                        <span class="badge badge-danger">Declined</span>
-                                    @endif
+                                    <span class="badge badge-warning">Pending</span>
                                 </td>
                                 <td>
                                     <div class="btn-toolbar mb-2" role="toolbar" aria-label="Icons Toolbar with button groups">

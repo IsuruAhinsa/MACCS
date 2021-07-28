@@ -59,18 +59,19 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the appointments for the parent.
-     */
-    public function appointments()
-    {
-        return $this->hasMany(Appointment::class, 'user_id');
-    }
-
-    /**
      * Get the midwife that owns the User.
      */
     public function midwife()
     {
         return $this->belongsTo(Midwife::class);
     }
+
+    /**
+     * Get all of the parent's appointments.
+     */
+    public function appointments()
+    {
+        return $this->morphMany(Appointment::class, 'appointmentable');
+    }
+
 }

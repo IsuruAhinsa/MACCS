@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     protected $fillable = [
+        'midwife_id',
+        'user_id',
         'date',
         'time',
         'venue',
@@ -18,4 +20,12 @@ class Appointment extends Model
         'is_decline',
         'cancellation_reason'
     ];
+
+    /**
+     * Get the owning appointmentable model.
+     */
+    public function appointmentable()
+    {
+        return $this->morphTo();
+    }
 }

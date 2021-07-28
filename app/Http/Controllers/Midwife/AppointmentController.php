@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Midwife;
 
 use App\Appointment;
-use App\Http\Requests\SaveAppointmentRequest;
+use App\Http\Controllers\Controller;
 use App\Midwife;
-use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +17,10 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $send = Auth::user()->appointments;
+        $inbox = Appointment::where('midwife_id', Auth::guard('midwife')->id())->get();
 
-        return view('users.appointments.index', [
-            'records' => $send
+        return view('midwife.appointments.index', [
+            'records' => $inbox
         ]);
     }
 
@@ -31,28 +30,16 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('users.appointments.create');
+        return view('midwife.appointments.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      */
-    public function store(SaveAppointmentRequest $request)
+    public function store(Request $request)
     {
-        $user = User::find(Auth::id());
-
-        $user->appointments()->create([
-            'midwife_id' => $user->midwife_id,
-            'date' => Carbon::parse($request->input('date'))->format('Y-m-d'),
-            'time' => $request->input('time'),
-            'venue' => $request->input('venue'),
-            'notes' => $request->input('notes'),
-        ]);
-
-        return redirect()->route('appointments.index')->with('success', 'Appointment Created!');
-
-        /*$appointment = new Appointment();
+        $appointment = new Appointment();
         $appointment->user_id = Auth::id();
         $appointment->date = Carbon::parse($request->input('date'))->format('Y-m-d');
         $appointment->time = $request->input('time');
@@ -60,7 +47,18 @@ class AppointmentController extends Controller
         $appointment->notes = $request->input('notes');
         $appointment->save();
 
-        */
+        return redirect()->route('midwife.appointments.index')->with('success', 'Appointment Created!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Appointment  $appointment
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Appointment $appointment)
+    {
+        //
     }
 
     /**
