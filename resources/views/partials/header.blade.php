@@ -5,7 +5,7 @@ if (Auth::guard('admin')->check()) {
     $profileRoute = route('admin.profile');
     $avatar = isset(Auth::guard('admin')->user()->image) ? asset('uploads/img/admins/' .Auth::guard('admin')->user()->image) : asset('assets/media/avatars/avatar10.jpg');
 } elseif (Auth::guard('midwife')->check()) {
-    $username = Auth::guard('midwife')->user()->first_name;
+    $username = Auth::guard('midwife')->user()->full_name;
     $profileRoute = route('midwife.profile');
     $avatar = isset(Auth::guard('midwife')->user()->image) ? asset('uploads/img/midwives/' .Auth::guard('midwife')->user()->image) : asset('assets/media/avatars/avatar10.jpg');
 } else {
