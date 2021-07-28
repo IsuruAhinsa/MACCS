@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::resource('children', 'ChildController')->except(['index']);
     Route::resource('appointments', 'AppointmentController')->except(['show']);
+    Route::get('appointments/received', 'AppointmentController@received')->name('appointments.received');
     Route::get('profile', 'HomeController@showProfile')->name('profile');
     Route::put('profile/save', 'HomeController@saveProfile')->name('profile.save');
     Route::post('change/password', 'HomeController@updatePassword')->name('update.password');
@@ -50,6 +51,7 @@ Route::middleware('auth:midwife')->group(function () {
     Route::prefix('midwife')->name('midwife.')->namespace('Midwife')->group(function () {
         Route::resource('users', 'UserController');
         Route::resource('appointments', 'AppointmentController')->except(['show']);
+        Route::get('appointments/received', 'AppointmentController@received')->name('appointments.received');
         Route::get('users/child/{child}', 'UserController@showChild')->name('show.child');
         Route::get('child/newborn/{child}', 'UserController@createNewborn')->name('create.newborn');
         Route::post('child/newborn/{child}', 'UserController@storeNewborn')->name('store.newborn');
