@@ -40,7 +40,7 @@
             </div>
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="{{ route('midwife.users.store') }}" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('midwife.store.newborn') }}" method="POST">
 
                     @csrf
 
@@ -52,7 +52,7 @@
                             <div class="form-group">
                                 <label for="birthday" class="col-form-label"> Birthday</label>
                                 <input
-                                    type="text"
+                                    type="date"
                                     class="form-control form-control-alt @error('birthday') is-invalid @enderror"
                                     id="birthday"
                                     placeholder="Enter Birthday"
@@ -72,9 +72,9 @@
                                     type="text"
                                     class="form-control form-control-alt @error('apgar_score') is-invalid @enderror"
                                     id="apgar_score"
-                                    placeholder="Enter Apgar_score"
+                                    placeholder="Enter Apgar score"
                                     name="apgar_score"
-                                    value="{{old('apgar Score')}}"
+                                    value="{{old('apgar_Score')}}"
                                 >
                                 @error('apgar_score')
                                 <small class="invalid-feedback">
@@ -108,7 +108,7 @@
                                     id="birth_height"
                                     placeholder="Enter birth Height"
                                     name="birth_height"
-                                    value="{{old('Birth_height')}}"
+                                    value="{{old('birth_height')}}"
                                 >
                                 @error('birth_height')
                                 <small class="invalid-feedback">
@@ -190,19 +190,27 @@
                             </div>
                             <div class="form-group">
                                 <label for="temperature" class="col-form-label">Temperature </label>
+                                <div class="input-group">
                                 <input
                                     type="text"
                                     class="form-control form-control-alt @error('temperature') is-invalid @enderror"
                                     id="temperature"
                                     placeholder="Enter temperature"
                                     name="temperature"
-                                    value="{{old('Temperature')}}"
+                                    value="{{old('temperature')}}"
                                 >
-                                @error('temperature')
-                                <small class="invalid-feedback">
-                                    {{ $message }}
-                                </small>
-                                @enderror
+                                <div class="input-group-append">
+                                    <span class="input-group-text input-group-text-alt">
+                                        celsius
+                                    </span>
+                                </div>
+                                    @error('temperature')
+                                    <small class="invalid-feedback">
+                                        {{ $message }}
+                                    </small>
+                                    @enderror
+                                </div>
+
                             </div>
 
                         </div>
@@ -210,7 +218,7 @@
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Create Parent'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Create Newborn Health Record'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>
