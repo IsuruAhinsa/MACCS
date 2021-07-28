@@ -89,11 +89,6 @@
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('midwife.appointments.create') }}">
-                                <span class="nav-main-link-name">New</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ route('midwife.appointments.received') }}">
                                 <span class="nav-main-link-name">Received</span>
                             </a>
