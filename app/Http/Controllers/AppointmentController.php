@@ -58,7 +58,7 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        //
+        return view('users.appointments.edit');
     }
 
     /**
