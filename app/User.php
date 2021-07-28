@@ -73,5 +73,12 @@ class User extends Authenticatable
     {
         return $this->morphMany(Appointment::class, 'appointmentable');
     }
+    /**
+     * Get all of the Newborns.
+     */
+    public function newborn()
+    {
+        return $this->hasOne(Newborn::class,'child_id');
+    }
 
 }
