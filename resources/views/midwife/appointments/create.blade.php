@@ -44,9 +44,11 @@
                         </div>
                         <div class="block-content">
 
-                            <form class="form-horizontal p-4" action="{{ route('appointments.store') }}" method="POST">
+                            <form class="form-horizontal p-4" action="{{ route('midwife.appointments.store') }}" method="POST">
 
                                 @csrf
+
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label text-right" for="date">Date</label>

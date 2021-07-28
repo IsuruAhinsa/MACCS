@@ -37,7 +37,7 @@
                                 <label class="custom-control-label" for="check-all"></label>
                             </div>
                         </th>
-                        <th style="width: 25%;">Midwife</th>
+                        <th style="width: 25%;">Parent</th>
                         <th class="d-none d-sm-table-cell" style="width: 15%;">Date</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Time</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Where</th>
@@ -58,7 +58,7 @@
                                 <td class="font-size-sm">
                                     <p class="font-w600 mb-1">
                                         <a href="#">
-                                            {{ \App\User::find($record->appointmentable_id)->midwife->full_name }}
+                                            {{ \App\User::find($record->user_id)->full_name }}
                                         </a>
                                     </p>
                                     <p class="text-muted mb-0">

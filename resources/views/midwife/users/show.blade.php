@@ -7,7 +7,9 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
                     {{ $user->full_name }}
-                    <span class="badge badge-pill badge-info">{{ $user->type }}</span>
+                    <a href="{{ route('midwife.appointments.create', $user->id) }}" type="button" class="btn btn-outline-primary ml-3">
+                        <i class="fas fa-calendar-check mr-1"></i> Create Appointment
+                    </a>
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -174,14 +176,14 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">
-                            <i class="fas fa-child text-muted mr-1"></i> Children (count)
+                            <i class="fas fa-child text-muted mr-1"></i> Children ({{ $user->children->count() }})
                         </h3>
                     </div>
                     @foreach($user->children as $child)
                     <div class="block-content">
                         <ul class="nav-items font-size-sm">
                             <li>
-                                <a class="media py-2" href="javascript:void(0)">
+                                <a class="media" href="javascript:void(0)">
                                     <div class="mr-3 ml-2 overlay-container overlay-bottom">
                                         <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar1.jpg') }}" alt="">
                                         <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>

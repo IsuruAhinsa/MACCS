@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Midwife;
 use App\Appointment;
 use App\Http\Controllers\Controller;
 use App\Midwife;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,11 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('midwife.appointments.sent');
+        $send = Auth::guard('midwife')->user()->appointments;
+
+        return view('users.appointments.sent', [
+            'records' => $send
+        ]);
     }
 
     public function received()
@@ -33,9 +38,9 @@ class AppointmentController extends Controller
      * Show the form for creating a new resource.
      *
      */
-    public function create()
+    public function create(User $user)
     {
-        return view('midwife.appointments.create');
+        return view('midwife.appointments.create')->with(compact('user'));
     }
 
     /**
@@ -47,7 +52,7 @@ class AppointmentController extends Controller
         $midwife = Midwife::find(Auth::guard('midwife')->id());
 
         $midwife->appointments()->create([
-            'midwife_id' => $midwife->midwife_id,
+            'user_id' => $request->input('user_id'),
             'date' => Carbon::parse($request->input('date'))->format('Y-m-d'),
             'time' => $request->input('time'),
             'venue' => $request->input('venue'),
@@ -55,17 +60,6 @@ class AppointmentController extends Controller
         ]);
 
         return redirect()->route('midwife.appointments.index')->with('success', 'Appointment Created!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appointment $appointment)
-    {
-        //
     }
 
     /**
