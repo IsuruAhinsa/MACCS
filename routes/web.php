@@ -54,6 +54,7 @@ Route::middleware('auth:midwife')->group(function () {
         Route::resource('appointments', 'AppointmentController')->except(['show', 'create']);
         Route::get('appointments/create/{user}', 'AppointmentController@create')->name('appointments.create');
         Route::get('appointments/received', 'AppointmentController@received')->name('appointments.received');
+        Route::get('appointments/approved/{appointment}', 'AppointmentController@approved')->name('appointments.approved');
         Route::get('users/child/{child}', 'UserController@showChild')->name('show.child');
         Route::get('child/newborn/{child}', 'UserController@createNewborn')->name('create.newborn');
         Route::post('child/newborn', 'UserController@storeNewborn')->name('store.newborn');

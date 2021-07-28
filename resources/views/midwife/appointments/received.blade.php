@@ -86,10 +86,10 @@
                                 <td>
                                     <div class="btn-toolbar mb-2" role="toolbar" aria-label="Icons Toolbar with button groups">
                                         <div class="btn-group btn-group-sm mr-2 mb-2" role="group" aria-label="Icons File group">
-                                            <a href="{{ route('appointments.edit', $record->id) }}" type="button" class="btn btn-primary">
+                                            <a href="{{ route('midwife.appointments.edit', $record->id) }}" type="button" class="btn btn-primary">
                                                 <i class="fa fa-fw fa-clock"></i>
                                             </a>
-                                            <a href="#" type="button" class="btn btn-success">
+                                            <a href="{{ route('midwife.appointments.approved', $record->id) }}" type="button" class="btn btn-success">
                                                 <i class="fa fa-fw fa-check"></i>
                                             </a>
                                             <button type="button" class="btn btn-danger">

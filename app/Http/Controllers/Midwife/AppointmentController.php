@@ -65,8 +65,6 @@ class AppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
      */
     public function edit(Appointment $appointment)
     {
@@ -76,9 +74,6 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Appointment $appointment)
     {
@@ -88,11 +83,16 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Appointment $appointment)
     {
         //
+    }
+
+    public function approved(Appointment $appointment)
+    {
+        $appointment->is_approved = true;
+        $appointment->save();
+        return back()->with('success', 'Appointment Approved!');
     }
 }
