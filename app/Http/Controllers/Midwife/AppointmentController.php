@@ -17,9 +17,14 @@ class AppointmentController extends Controller
      */
     public function index()
     {
+        return view('midwife.appointments.sent');
+    }
+
+    public function received()
+    {
         $inbox = Appointment::where('midwife_id', Auth::guard('midwife')->id())->get();
 
-        return view('midwife.appointments.index', [
+        return view('midwife.appointments.received', [
             'records' => $inbox
         ]);
     }
@@ -39,13 +44,15 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        $appointment = new Appointment();
-        $appointment->user_id = Auth::id();
-        $appointment->date = Carbon::parse($request->input('date'))->format('Y-m-d');
-        $appointment->time = $request->input('time');
-        $appointment->venue = $request->input('venue');
-        $appointment->notes = $request->input('notes');
-        $appointment->save();
+        $midwife = Midwife::find(Auth::guard('midwife')->id());
+
+        $midwife->appointments()->create([
+            'midwife_id' => $midwife->midwife_id,
+            'date' => Carbon::parse($request->input('date'))->format('Y-m-d'),
+            'time' => $request->input('time'),
+            'venue' => $request->input('venue'),
+            'notes' => $request->input('notes'),
+        ]);
 
         return redirect()->route('midwife.appointments.index')->with('success', 'Appointment Created!');
     }

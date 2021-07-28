@@ -31,11 +31,6 @@
             <div class="col-sm-9">
                 <div class="content">
 
-                    @if(Session::has('success'))
-                        <x-Alert type="success" :message="Session::get('success')"></x-Alert>
-                    @endif
-
-
                     <div class="block block-themed">
                         <div class="block-header bg-smooth">
                             <h3 class="block-title">
@@ -44,9 +39,10 @@
                         </div>
                         <div class="block-content">
 
-                            <form class="form-horizontal p-4" action="{{ route('appointments.store') }}" method="POST">
+                            <form class="form-horizontal p-4" action="{{ route('appointments.update', $appointment->id) }}" method="POST">
 
                                 @csrf
+                                @method('PUT')
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label text-right" for="reschedule_date">Reschedule Date</label>
@@ -109,15 +105,15 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label text-right" for="notes">Notes</label>
+                                    <label class="col-sm-3 col-form-label text-right" for="reschedule_notes">Notes</label>
                                     <div class="col-sm-9">
                                         <textarea
-                                            name="notes"
-                                            id="notes"
-                                            class="form-control form-control-alt"
+                                            name="reschedule_notes"
+                                            id="reschedule_notes"
+                                            class="form-control form-control-alt @error('reschedule_notes') is-invalid @enderror"
                                             placeholder="Drop a note"
                                         ></textarea>
-                                        @error('notes')
+                                        @error('reschedule_notes')
                                         <small class="invalid-feedback">
                                             {{ $message }}
                                         </small>

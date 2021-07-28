@@ -20,9 +20,14 @@ class AppointmentController extends Controller
     {
         $send = Auth::user()->appointments;
 
-        return view('users.appointments.index', [
+        return view('users.appointments.sent', [
             'records' => $send
         ]);
+    }
+
+    public function received()
+    {
+        return view('users.appointments.received');
     }
 
     /**
@@ -51,49 +56,40 @@ class AppointmentController extends Controller
         ]);
 
         return redirect()->route('appointments.index')->with('success', 'Appointment Created!');
-
-        /*$appointment = new Appointment();
-        $appointment->user_id = Auth::id();
-        $appointment->date = Carbon::parse($request->input('date'))->format('Y-m-d');
-        $appointment->time = $request->input('time');
-        $appointment->venue = $request->input('venue');
-        $appointment->notes = $request->input('notes');
-        $appointment->save();
-
-        */
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
      */
     public function edit(Appointment $appointment)
     {
-        return view('users.appointments.edit');
+        return view('users.appointments.edit')->with(compact('appointment'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Appointment $appointment)
     {
-        //
+        $appointment->reschedule_date = Carbon::parse($request->input('reschedule_date'))->format('Y-m-d');
+        $appointment->reschedule_time = $request->input('reschedule_time');
+        $appointment->reschedule_venue = $request->input('reschedule_venue');
+        $appointment->reschedule_notes = $request->input('reschedule_notes');
+        $appointment->save();
+
+        return redirect()->route('appointments.index')->with('success', 'Appointment Rescheduled!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(Appointment $appointment)
+    public function cancel(Appointment $appointment)
     {
-        //
+        $appointment->is_canceled = true;
+        $appointment->save();
+        return back()->with('success', 'Appointment Canceled!');
     }
 }
