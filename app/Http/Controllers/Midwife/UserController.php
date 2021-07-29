@@ -132,11 +132,12 @@ class UserController extends Controller
         return view('midwife.users.newborn')->with(compact('child'));
     }
 
-    public function storeNewborn(SaveNewbornRequest $request, Child $child)
+    public function storeNewborn(SaveNewbornRequest $request)
     {
+        $child_id = $request->input('child_id');
 
-        $newborn = new Newborn();
-        $newborn->child_id = Auth::id();
+        $newborn = Newborn::firstOrNew();
+        $newborn->child_id = $child_id;
         $newborn->birthday = $request->input('birthday');
         $newborn->apgar_score = $request->input('apgar_score');
         $newborn->birth_weight = $request->input('birth_weight');
@@ -147,6 +148,6 @@ class UserController extends Controller
         $newborn->temperature = $request->input('temperature');
         $newborn->notes = $request->input('notes');
         $newborn->save();
-        return back()->with('success', 'New Born Created Successfully!');
+        return redirect()->route('midwife.show.child', $child_id)->with('success', 'New Born Created Successfully!');
     }
 }

@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    <span class="font-weight-normal">Create Newborn Health Record for</span> {{ $child->full_name }}
+                    <span class="font-weight-normal">{{ $child->full_name }}</span>
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -27,11 +27,6 @@
 
     <div class="content">
 
-        @if(Session::has('success'))
-            <x-Alert type="success" :message="Session::get('success')"></x-Alert>
-    @endif
-
-    <!-- Your Block -->
         <div class="block block-themed">
             <div class="block-header bg-amethyst">
                 <h3 class="block-title">
@@ -44,10 +39,11 @@
 
                     @csrf
 
+                    <input type="hidden" value="{{ $child->id }}" name="child_id">
+
                     <div class="row">
 
                         <div class="col-md-6">
-
 
                             <div class="form-group">
                                 <label for="birthday" class="col-form-label"> Birthday</label>
@@ -69,12 +65,14 @@
                             <div class="form-group">
                                 <label for="apgar_score" class="col-form-label">Apgar Score</label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     class="form-control form-control-alt @error('apgar_score') is-invalid @enderror"
                                     id="apgar_score"
                                     placeholder="Enter Apgar score"
                                     name="apgar_score"
                                     value="{{old('apgar_Score')}}"
+                                    min="0"
+                                    max="10"
                                 >
                                 @error('apgar_score')
                                 <small class="invalid-feedback">
@@ -119,22 +117,18 @@
 
                             <div class="form-group">
                                 <label for="notes" class="col-form-label">Notes </label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('notes') is-invalid @enderror"
+                                <textarea
+                                    name="notes"
                                     id="notes"
                                     placeholder="Enter Notes"
-                                    name="notes"
-                                    value="{{old('notes')}}"
-                                >
+                                    class="form-control form-control-alt @error('notes') is-invalid @enderror"
+                                >{{old('notes')}}</textarea>
                                 @error('notes')
                                 <small class="invalid-feedback">
                                     {{ $message }}
                                 </small>
                                 @enderror
                             </div>
-
-
 
                         </div>
 

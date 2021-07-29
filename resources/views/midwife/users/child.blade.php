@@ -40,10 +40,18 @@
                             </div>
                             <div class="block-content">
 
-                                <a href="{{ route('midwife.create.newborn', $child->id) }}" class="btn btn-outline-success mr-1 mb-3">
-                                    <i class="fa fa-fw fa-plus mr-1"></i>
-                                    Add Newborn Health Record
-                                </a>
+                                @if(isset($child->newborn->birthday))
+
+                                    @include('midwife.users.partials.newborn')
+
+                                @else
+
+                                    <a href="{{ route('midwife.create.newborn', $child->id) }}" class="btn btn-outline-success mr-1 mb-3">
+                                        <i class="fa fa-fw fa-plus mr-1"></i>
+                                        Add Newborn Health Record
+                                    </a>
+
+                                @endif
 
                             </div>
                         </div>

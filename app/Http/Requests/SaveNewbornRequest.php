@@ -30,13 +30,13 @@ class SaveNewbornRequest extends FormRequest
             {
                 return [
                     'birthday' => ['required', 'date','before_or_equal: today'],
-                    'apgar_score' => ['required', 'string','between:0,10'],
-                    'birth_weight' => ['required', 'string'],
-                    'birth_height' => ['required', 'string'],
-                    'birth_hcm' => ['required', 'string'],
+                    'apgar_score' => ['required', 'integer','between:0,10'],
+                    'birth_weight' => ['required', 'numeric'],
+                    'birth_height' => ['required', 'numeric'],
+                    'birth_hcm' => ['required', 'numeric'],
                     'skin' => ['required', 'string'],
                     'eyes' => ['required', 'string'],
-                    'temperature' => ['required', 'string'],
+                    'temperature' => ['required', 'numeric'],
                     'notes' => ['nullable', 'string'],
 
                 ];
