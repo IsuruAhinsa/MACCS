@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Child;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveMidwifeRequest;
 use App\Mail\MidwifeAccountCreated;
@@ -110,5 +111,10 @@ class MidwifeController extends Controller
     public function showUser(User $user)
     {
         return view('admin.midwives.parent')->with(compact('user'));
+    }
+
+    public function showChild(Child $child)
+    {
+        return view('admin.midwives.child')->with(compact('child'));
     }
 }
