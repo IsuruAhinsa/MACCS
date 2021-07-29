@@ -62,7 +62,7 @@
                                         </a>
                                     </p>
                                     <p class="text-muted mb-0">
-                                        {{ $record->notes }}
+                                        {{ isset($record->reschedule_notes) ? $record->reschedule_notes : $record->notes }}
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">

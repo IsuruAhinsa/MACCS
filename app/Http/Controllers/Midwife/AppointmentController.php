@@ -97,7 +97,7 @@ class AppointmentController extends Controller
         return back()->with('success', 'Appointment Canceled!');
     }
 
-    public function approved(Appointment $appointment)
+    public function approve(Appointment $appointment)
     {
         $appointment->is_approved = true;
         $appointment->is_declined = false;

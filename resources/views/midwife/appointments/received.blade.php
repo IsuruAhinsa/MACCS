@@ -62,26 +62,28 @@
                                         </a>
                                     </p>
                                     <p class="text-muted mb-0">
-                                        {{ $record->notes }}
+                                        {{ isset($record->reschedule_notes) ? $record->reschedule_notes : $record->notes }}
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="font-size-sm text-muted">
-                                        {{ $record->date }}
+                                        {{ isset($record->reschedule_date) ? $record->reschedule_date : $record->date }}
                                     </em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="font-size-sm text-muted">
-                                        {{ \Carbon\Carbon::parse($record->time)->format('h:i A') }}
+                                        {{ isset($record->reschedule_time) ? \Carbon\Carbon::parse($record->reschedule_time)->format('h:i A') : \Carbon\Carbon::parse($record->time)->format('h:i A') }}
                                     </em>
                                 </td>
                                 <td class="font-size-sm">
                                     <p class="font-w600 mb-1">
-                                        {{ $record->venue }}
+                                        {{ isset($record->reschedule_venue) ? $record->reschedule_venue : $record->venue }}
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    @if($record->is_approved == false || $record->is_declined == false)
+                                    @if($record->is_approved == false && $record->is_declined == false && $record->is_canceled == true)
+                                        <span class="badge badge-secondary">Canceled</span>
+                                    @elseif($record->is_approved == false && $record->is_declined == false)
                                         <span class="badge badge-warning">Pending</span>
                                     @elseif($record->is_approved == true)
                                         <span class="badge badge-success">Approved</span>
@@ -92,19 +94,23 @@
                                 <td>
                                     <div class="btn-toolbar mb-2" role="toolbar" aria-label="Icons Toolbar with button groups">
                                         <div class="btn-group btn-group-sm mr-2 mb-2" role="group" aria-label="Icons File group">
-                                            <a
+                                           {{-- <a
                                                 href="{{ route('midwife.appointments.edit', $record->id) }}"
-                                                type="button" class="btn btn-primary">
+                                                type="button" class="btn btn-primary ">
                                                 <i class="fa fa-fw fa-clock"></i>
-                                            </a>
+                                            </a>--}}
                                             <a
                                                 href="{{ route('midwife.appointments.approve', $record->id) }}"
-                                                type="button" class="btn btn-success">
+                                                type="button" class="btn btn-success {{ $record->is_approved == true || $record->is_canceled == true ? 'disabled' : '' }}">
                                                 <i class="fa fa-fw fa-check"></i>
                                             </a>
-                                            <button type="button" class="btn btn-danger">
+                                            <a
+                                                onclick="return confirm('Do you want to cancel? ')"
+                                                href="{{ route('midwife.appointments.decline', $record->id) }}"
+                                                class="btn btn-danger {{ $record->is_canceled == true || $record->is_declined == true ? 'disabled' : '' }}"
+                                            >
                                                 <i class="fa fa-fw fa-times"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
