@@ -19,7 +19,7 @@ class MidwifeController extends Controller
      */
     public function index()
     {
-        $records = Midwife::all();
+        $records = Midwife::with('users')->get();
         return view('admin.midwives.index')->with(compact('records'));
     }
 
@@ -64,12 +64,10 @@ class MidwifeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Midwife  $midwife
-     * @return \Illuminate\Http\Response
      */
     public function show(Midwife $midwife)
     {
-        //
+        return view('admin.midwives.show')->with(compact('midwife'));
     }
 
     /**
