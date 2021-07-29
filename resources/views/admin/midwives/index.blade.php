@@ -136,7 +136,7 @@
                                                     <img class="img-avatar img-avatar32" src="{{ isset($user->image) ? asset('uploads/img/users/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('admin.midwives.show', $user->id) }}">
+                                                    <a href="{{ route('admin.show.user', $user->id) }}">
                                                         {{ $user->full_name }}
                                                     </a>
                                                 </td>

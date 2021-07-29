@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    {{ $midwife->full_name }}
+                    {{ $user->full_name }}
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -14,10 +14,10 @@
                             <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a class="link-fx" href="{{ route('admin.midwives.index') }}">All Midwives & Parents</a>
+                            <a class="link-fx" href="{{ route('midwife.users.index') }}">All Parents & Children</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            {{ $midwife->full_name }}
+                            {{ $user->full_name }}
                         </li>
                     </ol>
                 </nav>
@@ -45,7 +45,7 @@
                                             Name
                                         </p>
                                         <p>
-                                            {{$midwife->full_name}}
+                                            {{$user->full_name}}
 
                                         </p>
 
@@ -54,10 +54,10 @@
                                 <div class="col-6">
                                     <div class="block-content">
                                         <p class="font-w600 mb-2">
-                                            Number of Cases
+                                            Type
                                         </p>
                                         <p>
-                                            {{$midwife->cases}}
+                                            {{$user->type}}
                                         </p>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                             NIC Number
                                         </p>
                                         <p>
-                                            {{$midwife->nic}}
+                                            {{$user->nic}}
                                         </p>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                             Birthday
                                         </p>
                                         <p>
-                                            {{$midwife->birthday}}
+                                            {{$user->birthday}}
                                         </p>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                                            Phone Number
                                         </p>
                                         <p>
-                                            {{$midwife->phone}}
+                                            {{$user->phone}}
                                         </p>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                                             E-mail
                                         </p>
                                         <p>
-                                            {{$midwife->email}}
+                                            {{$user->email}}
                                         </p>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                            Province
                                         </p>
                                         <p>
-                                            {{$midwife->province}}
+                                            {{$user->province}}
                                         </p>
 
                                     </div>
@@ -135,7 +135,7 @@
                                            City
                                         </p>
                                         <p>
-                                            {{$midwife->city}}
+                                            {{$user->city}}
                                         </p>
                                     </div>
                                 </div>
@@ -147,7 +147,7 @@
                                             Address
                                         </p>
                                         <p>
-                                            {{$midwife->address}}
+                                            {{$user->address}}
                                         </p>
 
                                     </div>
@@ -158,7 +158,7 @@
                                             Postal Code
                                         </p>
                                         <p>
-                                            {{$midwife->postal}}
+                                            {{$user->postal}}
                                         </p>
                                     </div>
                                 </div>
@@ -173,22 +173,22 @@
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">
-                            <i class="fas fa-child text-muted mr-1"></i> Parents ({{ $midwife->users->count() }})
+                            <i class="fas fa-child text-muted mr-1"></i> Children ({{ $user->children->count() }})
                         </h3>
                     </div>
-                    @foreach($midwife->users as $user)
+                    @foreach($user->children as $child)
                     <div class="block-content">
                         <ul class="nav-items font-size-sm">
                             <li>
-                                <a class="media" href="{{ route('midwife.show.child', $user->id) }}">
+                                <a class="media" href="{{ route('midwife.show.child', $child->id) }}">
                                     <div class="mr-3 ml-2 overlay-container overlay-bottom">
-                                        <img class="img-avatar img-avatar32" src="{{ isset($user->image) ? asset('uploads/img/users/' . $user->image) : asset('assets/media/avatars/avatar1.jpg') }}" alt="">
+                                        <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar1.jpg') }}" alt="">
                                         <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>
                                     </div>
 
                                     <div class="media-body">
-                                        <div class="font-w600">{{ $user->full_name }}</div>
-                                        <div class="font-w400 text-muted">{{ $user->type }}</div>
+                                        <div class="font-w600">{{ $child->full_name }}</div>
+                                        <div class="font-w400 text-muted">{{ $child->birthday }}</div>
 
                                     </div>
                                 </a>

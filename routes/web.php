@@ -47,6 +47,8 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::resource('midwives', 'MidwifeController');
 
+        Route::get('midwife/user/{user}', 'MidwifeController@showUser')->name('show.user');
+
         Route::resource('admins', 'AdminController');
 
         Route::get('profile', 'AdminDashboardController@showProfile')->name('profile');

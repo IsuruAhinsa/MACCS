@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveMidwifeRequest;
 use App\Mail\MidwifeAccountCreated;
 use App\Midwife;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -104,5 +105,10 @@ class MidwifeController extends Controller
     {
         $midwife->delete();
         return back()->with('success', 'Midwife Deleted!');
+    }
+
+    public function showUser(User $user)
+    {
+        return view('admin.midwives.parent')->with(compact('user'));
     }
 }
