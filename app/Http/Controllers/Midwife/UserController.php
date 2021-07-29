@@ -6,12 +6,9 @@ use App\Child;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveNewbornRequest;
 use App\Http\Requests\SaveUserRequest;
-use App\Mail\AdminAccountCreated;
 use App\Mail\UserAccountCreated;
-use App\Midwife;
 use App\Newborn;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -25,7 +22,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $records = User::with('children')->get();
+        $records = User::with('children')
+            ->where('midwife_id', Auth::guard('midwife')->id())
+            ->get();
         return view('midwife.users.index')->with(compact('records'));
     }
 
