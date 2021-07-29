@@ -183,7 +183,7 @@
                     <div class="block-content">
                         <ul class="nav-items font-size-sm">
                             <li>
-                                <a class="media" href="javascript:void(0)">
+                                <a class="media" href="{{ route('midwife.show.child', $child->id) }}">
                                     <div class="mr-3 ml-2 overlay-container overlay-bottom">
                                         <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar1.jpg') }}" alt="">
                                         <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>

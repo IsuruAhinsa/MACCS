@@ -27,7 +27,7 @@
 
     <div class="content content-boxed">
         <div class="row">
-            <div class="col-md-7 col-xl-8">
+            <div class="col-md-12 col-xl-12">
 
                 <ul class="timeline timeline-alt py-0">
                     <li class="timeline-event">
@@ -238,57 +238,6 @@
                         </div>
                     </li>
                 </ul>
-
-            </div>
-            <div class="col-md-5 col-xl-4">
-
-                <div class="block">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">
-                            <i class="fas fa-child text-muted mr-1"></i> Children (count)
-                        </h3>
-                    </div>
-                    <div class="block-content">
-                        <ul class="nav-items font-size-sm">
-                            <li>
-                                <a class="media py-2" href="javascript:void(0)">
-                                    <div class="mr-3 ml-2 overlay-container overlay-bottom">
-                                        <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar1.jpg') }}" alt="">
-                                        <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="font-w600">Judy Ford</div>
-                                        <div class="font-w400 text-muted">Copywriter</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="media py-2" href="javascript:void(0)">
-                                    <div class="mr-3 ml-2 overlay-container overlay-bottom">
-                                        <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar13.jpg') }}" alt="">
-                                        <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="font-w600">Adam McCoy</div>
-                                        <div class="font-w400 text-muted">Web Developer</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="media py-2" href="javascript:void(0)">
-                                    <div class="mr-3 ml-2 overlay-container overlay-bottom">
-                                        <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar8.jpg') }}" alt="">
-                                        <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-warning"></span>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="font-w600">Helen Jacobs</div>
-                                        <div class="font-w400 text-muted">Web Designer</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
 
             </div>
         </div>
