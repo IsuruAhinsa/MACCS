@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Appointment;
 use App\Http\Requests\SaveAppointmentRequest;
-use App\Midwife;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -50,12 +49,15 @@ class AppointmentController extends Controller
     public function store(SaveAppointmentRequest $request)
     {
         $user = User::find(Auth::id());
+        $date = Carbon::parse($request->input('date'))->format('Y-m-d');
+        $time = $request->input('time');
+        $venue = $request->input('venue');
 
         $user->appointments()->create([
             'midwife_id' => $user->midwife_id,
-            'date' => Carbon::parse($request->input('date'))->format('Y-m-d'),
-            'time' => $request->input('time'),
-            'venue' => $request->input('venue'),
+            'date' => $date,
+            'time' => $time,
+            'venue' => $venue,
             'notes' => $request->input('notes'),
         ]);
 
@@ -95,5 +97,21 @@ class AppointmentController extends Controller
         $appointment->is_canceled = true;
         $appointment->save();
         return back()->with('success', 'Appointment Canceled!');
+    }
+
+    public function approve(Appointment $appointment)
+    {
+        $appointment->is_approved = true;
+        $appointment->is_declined = false;
+        $appointment->save();
+        return back()->with('success', 'Appointment Approved!');
+    }
+
+    public function decline(Appointment $appointment)
+    {
+        $appointment->is_declined = true;
+        $appointment->is_approved = false;
+        $appointment->save();
+        return back()->with('success', 'Appointment Declined!');
     }
 }

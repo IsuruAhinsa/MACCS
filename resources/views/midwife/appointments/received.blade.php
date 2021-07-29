@@ -7,7 +7,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Table Helpers <small class="d-block d-sm-inline-block mt-2 mt-sm-0 font-size-base font-w400 text-muted">Custom functionality to further enrich your tables.</small>
+                    Received
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -81,15 +81,25 @@
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <span class="badge badge-warning">Pending</span>
+                                    @if($record->is_approved == false || $record->is_declined == false)
+                                        <span class="badge badge-warning">Pending</span>
+                                    @elseif($record->is_approved == true)
+                                        <span class="badge badge-success">Approved</span>
+                                    @elseif($record->is_declined == true)
+                                        <span class="badge badge-danger">Declined</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="btn-toolbar mb-2" role="toolbar" aria-label="Icons Toolbar with button groups">
                                         <div class="btn-group btn-group-sm mr-2 mb-2" role="group" aria-label="Icons File group">
-                                            <a href="{{ route('midwife.appointments.edit', $record->id) }}" type="button" class="btn btn-primary">
+                                            <a
+                                                href="{{ route('midwife.appointments.edit', $record->id) }}"
+                                                type="button" class="btn btn-primary">
                                                 <i class="fa fa-fw fa-clock"></i>
                                             </a>
-                                            <a href="{{ route('midwife.appointments.approved', $record->id) }}" type="button" class="btn btn-success">
+                                            <a
+                                                href="{{ route('midwife.appointments.approve', $record->id) }}"
+                                                type="button" class="btn btn-success">
                                                 <i class="fa fa-fw fa-check"></i>
                                             </a>
                                             <button type="button" class="btn btn-danger">

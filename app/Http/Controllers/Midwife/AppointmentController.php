@@ -20,7 +20,7 @@ class AppointmentController extends Controller
     {
         $send = Auth::guard('midwife')->user()->appointments;
 
-        return view('users.appointments.sent', [
+        return view('midwife.appointments.sent', [
             'records' => $send
         ]);
     }
@@ -68,7 +68,7 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        //
+        return view('midwife.appointments.edit')->with(compact('appointment'));
     }
 
     /**
@@ -77,22 +77,39 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, Appointment $appointment)
     {
-        //
+        $appointment->reschedule_date = Carbon::parse($request->input('reschedule_date'))->format('Y-m-d');
+        $appointment->reschedule_time = $request->input('reschedule_time');
+        $appointment->reschedule_venue = $request->input('reschedule_venue');
+        $appointment->reschedule_notes = $request->input('reschedule_notes');
+        $appointment->save();
+
+        return redirect()->route('midwife.appointments.index')->with('success', 'Appointment Rescheduled!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      */
-    public function destroy(Appointment $appointment)
+    public function cancel(Appointment $appointment)
     {
-        //
+        $appointment->is_canceled = true;
+        $appointment->save();
+        return back()->with('success', 'Appointment Canceled!');
     }
 
     public function approved(Appointment $appointment)
     {
         $appointment->is_approved = true;
+        $appointment->is_declined = false;
         $appointment->save();
         return back()->with('success', 'Appointment Approved!');
+    }
+
+    public function decline(Appointment $appointment)
+    {
+        $appointment->is_declined = true;
+        $appointment->is_approved = false;
+        $appointment->save();
+        return back()->with('success', 'Appointment Declined!');
     }
 }

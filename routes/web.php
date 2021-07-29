@@ -28,7 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('children', 'ChildController')->except(['index']);
     Route::resource('appointments', 'AppointmentController')->except(['show', 'destroy']);
     Route::get('appointments/received', 'AppointmentController@received')->name('appointments.received');
-    Route::get('appointments/{appointment}', 'AppointmentController@cancel')->name('appointments.cancel');
+    Route::get('appointments/cancel/{appointment}', 'AppointmentController@cancel')->name('appointments.cancel');
+    Route::get('appointments/approve/{appointment}', 'AppointmentController@approve')->name('appointments.approve');
+    Route::get('appointments/decline/{appointment}', 'AppointmentController@decline')->name('appointments.decline');
     Route::get('profile', 'HomeController@showProfile')->name('profile');
     Route::put('profile/save', 'HomeController@saveProfile')->name('profile.save');
     Route::post('change/password', 'HomeController@updatePassword')->name('update.password');
@@ -54,7 +56,9 @@ Route::middleware('auth:midwife')->group(function () {
         Route::resource('appointments', 'AppointmentController')->except(['show', 'create']);
         Route::get('appointments/create/{user}', 'AppointmentController@create')->name('appointments.create');
         Route::get('appointments/received', 'AppointmentController@received')->name('appointments.received');
-        Route::get('appointments/approved/{appointment}', 'AppointmentController@approved')->name('appointments.approved');
+        Route::get('appointments/cancel/{appointment}', 'AppointmentController@cancel')->name('appointments.cancel');
+        Route::get('appointments/approve/{appointment}', 'AppointmentController@approve')->name('appointments.approve');
+        Route::get('appointments/decline/{appointment}', 'AppointmentController@decline')->name('appointments.decline');
         Route::get('users/child/{child}', 'UserController@showChild')->name('show.child');
         Route::get('child/newborn/{child}', 'UserController@createNewborn')->name('create.newborn');
         Route::post('child/newborn', 'UserController@storeNewborn')->name('store.newborn');

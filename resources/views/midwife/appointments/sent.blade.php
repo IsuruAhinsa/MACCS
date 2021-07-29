@@ -7,7 +7,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Table Helpers <small class="d-block d-sm-inline-block mt-2 mt-sm-0 font-size-base font-w400 text-muted">Custom functionality to further enrich your tables.</small>
+                    Sent Appointments
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -58,7 +58,7 @@
                                 <td class="font-size-sm">
                                     <p class="font-w600 mb-1">
                                         <a href="#">
-                                           {{ $record->appointmentable->full_name }}
+                                           {{ \App\User::find($record->user_id)->full_name }}
                                         </a>
                                     </p>
                                     <p class="text-muted mb-0">
@@ -67,31 +67,48 @@
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="font-size-sm text-muted">
-                                        {{ $record->date }}
+                                        {{ isset($record->reschedule_date) ? $record->reschedule_date : $record->date }}
                                     </em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="font-size-sm text-muted">
-                                        {{ \Carbon\Carbon::parse($record->time)->format('h:i A') }}
+                                        {{ isset($record->reschedule_time) ? \Carbon\Carbon::parse($record->reschedule_time)->format('h:i A') : \Carbon\Carbon::parse($record->time)->format('h:i A') }}
                                     </em>
                                 </td>
                                 <td class="font-size-sm">
                                     <p class="font-w600 mb-1">
-                                        {{ $record->venue }}
+                                        {{ isset($record->reschedule_venue) ? $record->reschedule_venue : $record->venue }}
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <span class="badge badge-warning">Pending</span>
+                                    @if($record->is_approved == false && $record->is_declined == false && $record->is_canceled == true)
+                                        <span class="badge badge-secondary">Canceled</span>
+                                    @elseif($record->is_approved == false && $record->is_declined == false)
+                                        <span class="badge badge-warning">Pending</span>
+                                    @elseif($record->is_approved == true)
+                                        <span class="badge badge-success">Approved</span>
+                                    @elseif($record->is_declined == true)
+                                        <span class="badge badge-danger">Declined</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="btn-toolbar mb-2" role="toolbar" aria-label="Icons Toolbar with button groups">
                                         <div class="btn-group btn-group-sm mr-2 mb-2" role="group" aria-label="Icons File group">
-                                            <a href="{{ route('appointments.edit', $record->id) }}" type="button" class="btn btn-primary">
+                                            <a
+                                                href="{{ route('midwife.appointments.edit', $record->id) }}"
+                                                type="button"
+                                                class="btn btn-primary {{ $record->is_approved == true || $record->is_canceled == true || $record->is_declined == true ? 'disabled' : '' }}"
+                                            >
                                                 <i class="fa fa-fw fa-clock"></i>
                                             </a>
-                                            <button type="button" class="btn btn-primary">
+                                            <a
+                                                href="{{ route('midwife.appointments.cancel', $record->id) }}"
+                                                type="button"
+                                                class="btn btn-danger {{ $record->is_approved == true || $record->is_canceled == true || $record->is_declined == true ? 'disabled' : '' }}"
+                                                onclick="return confirm('Do you want to cancel? ')"
+                                            >
                                                 <i class="fa fa-fw fa-times"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
