@@ -1,15 +1,7 @@
 <div class="col-sm-12">
     <div class="block block-rounded block-mode-loading-oneui">
         <div class="block-header">
-            <h3 class="block-title">Earnings in $</h3>
-            <div class="block-options">
-                <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                    <i class="si si-refresh"></i>
-                </button>
-                <button type="button" class="btn-block-option">
-                    <i class="si si-settings"></i>
-                </button>
-            </div>
+            <h3 class="block-title">Weights</h3>
         </div>
 
         <div class="block-content p-0 bg-body-light text-center">
