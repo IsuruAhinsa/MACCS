@@ -153,26 +153,9 @@ class UserController extends Controller
         return redirect()->route('midwife.show.child', $child_id)->with('success', 'New Born Record Created Successfully!');
     }
 
-    public function createImmunization(Child $child)
+    public function editImmunization(Immunization $immunization)
     {
-        return view('midwife.users.immunization')->with(compact('child'));
-    }
-
-    public function storeImmunization(SaveImmunizationRequest $request)
-    {
-        $child_id = $request->input('child_id');
-
-        $immunization = new Immunization();
-        $immunization->child_id = $child_id;
-        $immunization->batch_no = $request->input('batch_no');
-        $immunization->age = $request->input('age');
-        $immunization->type_of_vaccine = $request->input('type_of_vaccine');
-        $immunization->date_of_vaccine = $request->input('date_of_vaccine');
-        $immunization->adverse_effects_following_immunization = $request->input('adverse_effects_following_immunization');
-        $immunization->bcg_scare = $request->input('bcg_scare');
-        $immunization->save();
-
-        return redirect()->route('midwife.show.child', $child_id)->with('success', 'Immunization Record Created Successfully!');
+        return $immunization;
     }
 
 }

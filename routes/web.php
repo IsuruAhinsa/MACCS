@@ -23,6 +23,7 @@ Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Route::get('login/midwife', 'Auth\LoginController@showMidwifeLoginForm')->name('midwife.login');
 Route::post('/login/midwife', 'Auth\LoginController@midwifeLogin');
 
+// parent (user) routes
 Route::middleware('auth')->group(function () {
 
     Route::get('/', 'HomeController@index');
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::post('change/password', 'HomeController@updatePassword')->name('update.password');
 });
 
+// admin routes
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin', 'Admin\AdminDashboardController@index');
 
@@ -52,19 +54,23 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::resource('admins', 'AdminController');
 
+        // admin profile routes
         Route::get('profile', 'AdminDashboardController@showProfile')->name('profile');
         Route::put('profile/save', 'AdminDashboardController@saveProfile')->name('profile.save');
         Route::post('change/password', 'AdminDashboardController@updatePassword')->name('update.password');
     });
 });
 
+// midwife routes
 Route::middleware('auth:midwife')->group(function () {
     Route::get('/midwife', 'Midwife\MidwifeDashboardController@index');
 
     Route::prefix('midwife')->name('midwife.')->namespace('Midwife')->group(function () {
 
+        // parents (users) routes
         Route::resource('users', 'UserController');
 
+        // appointments routes
         Route::resource('appointments', 'AppointmentController')->except(['show', 'create']);
         Route::get('appointments/create/{user}', 'AppointmentController@create')->name('appointments.create');
         Route::get('appointments/received', 'AppointmentController@received')->name('appointments.received');
@@ -72,14 +78,17 @@ Route::middleware('auth:midwife')->group(function () {
         Route::get('appointments/approve/{appointment}', 'AppointmentController@approve')->name('appointments.approve');
         Route::get('appointments/decline/{appointment}', 'AppointmentController@decline')->name('appointments.decline');
 
+        // show child routes
         Route::get('users/child/{child}', 'UserController@showChild')->name('show.child');
 
+        // newborn record routes
         Route::get('child/newborn/{child}', 'UserController@createNewborn')->name('create.newborn');
         Route::post('child/newborn', 'UserController@storeNewborn')->name('store.newborn');
 
-        Route::get('child/immunization/{child}', 'UserController@createImmunization')->name('create.immunization');
-        Route::post('child/immunization', 'UserController@storeImmunization')->name('store.immunization');
+        // immunization routes
+        Route::resource('children.immunizations', 'ImmunizationController')->except(['index', 'show'])->shallow();
 
+        // midwife's profile routes
         Route::get('profile', 'MidwifeDashboardController@showProfile')->name('profile');
         Route::put('profile/save', 'MidwifeDashboardController@saveProfile')->name('profile.save');
         Route::post('change/password', 'MidwifeDashboardController@updatePassword')->name('update.password');

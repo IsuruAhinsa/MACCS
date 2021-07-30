@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    <span class="font-weight-normal">{{ $child->full_name }}</span>
+                    <span class="font-weight-normal">Edit Immunization Record</span>
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -17,7 +17,7 @@
                             <a class="link-fx" href="{{ route('midwife.users.index') }}">All Parents & Children</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Create Immunization
+                            Edit Immunization
                         </li>
                     </ol>
                 </nav>
@@ -35,11 +35,10 @@
             </div>
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="{{ route('midwife.store.immunization') }}" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('midwife.immunizations.update', $immunization->id) }}" method="POST">
 
                     @csrf
-
-                    <input type="hidden" value="{{ $child->id }}" name="child_id">
+                    @method('PUT')
 
                     <div class="form-group">
                         <label for="batch_no" class="col-form-label">Batch No</label>
@@ -49,7 +48,7 @@
                             id="batch_no"
                             placeholder="Enter Batch No"
                             name="batch_no"
-                            value="{{old('batch_no')}}"
+                            value="{{ $immunization->batch_no }}"
                         >
                         @error('batch_no')
                         <small class="invalid-feedback">
@@ -66,7 +65,7 @@
                             id="age"
                             placeholder="Enter Immunization Age"
                             name="age"
-                            value="{{old('age')}}"
+                            value="{{ $immunization->age }}"
                         >
                         @error('age')
                         <small class="invalid-feedback">
@@ -83,7 +82,7 @@
                             name="type_of_vaccine">
                             <option disabled selected>Please select</option>
                             @foreach(\App\Immunization::vaccines() as $key => $vaccine)
-                                <option value="{{ $key }}">{{ $vaccine }}</option>
+                                <option value="{{ $key }}" {{ $immunization->type_of_vaccine == $key ? 'selected' : '' }}>{{ $vaccine }}</option>
                             @endforeach
                         </select>
                         @error('type_of_vaccine')
@@ -101,7 +100,7 @@
                             id="date_of_vaccine"
                             placeholder="Enter Date of Vaccine"
                             name="date_of_vaccine"
-                            value="{{old('date_of_vaccine')}}"
+                            value="{{ $immunization->date_of_vaccine }}"
                         >
                         @error('date_of_vaccine')
                         <small class="invalid-feedback">
@@ -117,7 +116,7 @@
                             id="adverse_effects_following_immunization"
                             placeholder="Enter Adverse Effects Following Immunization"
                             class="form-control form-control-alt @error('adverse_effects_following_immunization') is-invalid @enderror"
-                        >{{old('adverse_effects_following_immunization')}}</textarea>
+                        >{{ $immunization->adverse_effects_following_immunization }}</textarea>
                         @error('adverse_effects_following_immunization')
                         <small class="invalid-feedback">
                             {{ $message }}
@@ -128,17 +127,17 @@
                     <div class="form-group">
                         <label class="d-block">BCG Scare</label>
                         <div class="custom-control custom-radio custom-control-inline custom-control-primary">
-                            <input type="radio" class="custom-control-input" id="bcg_scare1" name="bcg_scare" value="1">
+                            <input type="radio" class="custom-control-input" id="bcg_scare1" name="bcg_scare" value="1" {{ $immunization->bcg_scare === 1 ? 'checked' : '' }}>
                             <label class="custom-control-label" for="bcg_scare1">Yes</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline custom-control-primary">
-                            <input type="radio" class="custom-control-input" id="bcg_scare2" name="bcg_scare" value="0">
+                            <input type="radio" class="custom-control-input" id="bcg_scare2" name="bcg_scare" value="0" {{ $immunization->bcg_scare === 0 ? 'checked' : '' }}>
                             <label class="custom-control-label" for="bcg_scare2">No</label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Create Immunization'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Update Immunization'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>

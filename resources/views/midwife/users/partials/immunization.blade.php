@@ -6,7 +6,7 @@
         <div class="block-header">
             <h3 class="block-title">Immunizations</h3>
             <div class="block-options">
-                <a href="{{ route('midwife.create.immunization', $child->id) }}" type="button" class="btn btn-sm btn-outline-danger">Add Immunization</a>
+                <a href="{{ route('midwife.children.immunizations.create', $child->id) }}" type="button" class="btn btn-sm btn-outline-danger">Add Immunization</a>
             </div>
         </div>
         <div class="block-content">
@@ -51,12 +51,24 @@
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
+                                    <a href="{{ route('midwife.immunizations.edit', $immunization->id) }}" type="button" class="btn btn-sm btn-light">
                                         <i class="fa fa-fw fa-pencil-alt"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
-                                        <i class="fa fa-fw fa-times"></i>
-                                    </button>
+                                    </a>
+
+                                    <form
+                                        action="{{ route('midwife.immunizations.destroy', $immunization->id) }}"
+                                        method="POST"
+                                        onsubmit="return confirm('Do you want to delete?')"
+                                    >
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                            type="submit"
+                                            class="btn btn-sm btn-light"
+                                        >
+                                            <i class="fa fa-fw fa-times"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
