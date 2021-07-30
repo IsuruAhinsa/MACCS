@@ -77,6 +77,9 @@ Route::middleware('auth:midwife')->group(function () {
         Route::get('child/newborn/{child}', 'UserController@createNewborn')->name('create.newborn');
         Route::post('child/newborn', 'UserController@storeNewborn')->name('store.newborn');
 
+        Route::get('child/immunization/{child}', 'UserController@createImmunization')->name('create.immunization');
+        Route::post('child/immunization', 'UserController@storeImmunization')->name('store.immunization');
+
         Route::get('profile', 'MidwifeDashboardController@showProfile')->name('profile');
         Route::put('profile/save', 'MidwifeDashboardController@saveProfile')->name('profile.save');
         Route::post('change/password', 'MidwifeDashboardController@updatePassword')->name('update.password');

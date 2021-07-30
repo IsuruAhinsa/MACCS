@@ -147,6 +147,12 @@ class UserController extends Controller
         $newborn->temperature = $request->input('temperature');
         $newborn->notes = $request->input('notes');
         $newborn->save();
-        return redirect()->route('midwife.show.child', $child_id)->with('success', 'New Born Created Successfully!');
+        return redirect()->route('midwife.show.child', $child_id)->with('success', 'New Born Record Created Successfully!');
     }
+
+    public function createImmunization(Child $child)
+    {
+        return view('midwife.users.immunization')->with(compact('child'));
+    }
+
 }
