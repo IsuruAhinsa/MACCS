@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Midwife;
 
 use App\Child;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveImmunizationRequest;
 use App\Http\Requests\SaveNewbornRequest;
 use App\Http\Requests\SaveUserRequest;
 use App\Immunization;
@@ -157,7 +158,7 @@ class UserController extends Controller
         return view('midwife.users.immunization')->with(compact('child'));
     }
 
-    public function storeImmunization(Request $request)
+    public function storeImmunization(SaveImmunizationRequest $request)
     {
         $child_id = $request->input('child_id');
 
