@@ -24,7 +24,7 @@ class Child extends Model
      */
     public function getFullNameAttribute() {
 
-        if (isset($this->first_name) && isset($this->last_name)) {
+        if (isset($this->first_name) || isset($this->last_name)) {
             return "{$this->first_name} {$this->last_name}";
         }
 
@@ -41,18 +41,32 @@ class Child extends Model
     /**
      * Get the weights for a child.
      */
-
     public function weights()
     {
         return $this->hasMany(Weight::class, 'child_id');
     }
+
+    /**
+     * Get the heights for the child.
+     */
     public function heights()
     {
         return $this->hasMany(Height::class, 'child_id');
     }
 
+    /**
+     * Get the hcms for the child.
+     */
     public function headMeasurements()
     {
         return $this->hasMany(HeadMeasurement::class, 'child_id');
+    }
+
+    /**
+     * Get the immunizations for the child.
+     */
+    public function immunizations()
+    {
+        return $this->hasMany(Immunization::class, 'child_id');
     }
 }
