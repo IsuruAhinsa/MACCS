@@ -81,7 +81,7 @@
                             class="custom-select form-control-alt @error('type_of_vaccine') is-invalid @enderror"
                             id="type_of_vaccine"
                             name="type_of_vaccine">
-                            <option value="0">Please select</option>
+                            <option disabled selected>Please select</option>
                             @foreach(\App\Immunization::vaccines() as $key => $vaccine)
                                 <option value="{{ $key }}">{{ $vaccine }}</option>
                             @endforeach

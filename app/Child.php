@@ -69,4 +69,12 @@ class Child extends Model
     {
         return $this->hasMany(Immunization::class, 'child_id');
     }
+
+    public static function status(): array
+    {
+        return array(
+            'Good' => 'Good',
+            'Bad' => 'Bad',
+        );
+    }
 }
