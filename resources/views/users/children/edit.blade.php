@@ -131,15 +131,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="health_status" class="col-form-label">Health Status</label>
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('health_status') is-invalid @enderror"
+                                <label for="health_status">Health Status</label>
+                                <select
+                                    class="custom-select form-control-alt @error('health_status') is-invalid @enderror"
                                     id="health_status"
-                                    placeholder="Enter Health Status"
-                                    name="health_status"
-                                    value="{{$child->health_status}}"
-                                >
+                                    name="health_status">
+                                    <option disabled>Please select</option>
+                                    @foreach(\App\Child::status() as $key => $item)
+                                        <option value="{{ $key }}" {{ $child->health_status == $key ? 'selected' : '' }}>{{ $item }}</option>
+                                    @endforeach
+                                </select>
                                 @error('health_status')
                                 <small class="invalid-feedback">
                                     {{ $message }}
