@@ -76,7 +76,7 @@ class AppointmentController extends Controller
      * Update the specified resource in storage.
      *
      */
-    public function update(Request $request, Appointment $appointment)
+    public function update(SaveAppointmentRequest $request, Appointment $appointment)
     {
         $appointment->reschedule_date = Carbon::parse($request->input('reschedule_date'))->format('Y-m-d');
         $appointment->reschedule_time = $request->input('reschedule_time');

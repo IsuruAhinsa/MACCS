@@ -41,7 +41,10 @@ class SaveAppointmentRequest extends FormRequest
             case 'PUT':
             {
                 return [
-                   //
+                    'reschedule_date' => ['required', 'date'],
+                    'reschedule_time' => ['required', 'string'],
+                    'reschedule_venue' => ['required', 'string'],
+                    'reschedule_notes' => ['nullable', 'string'],
                 ];
 
             }
