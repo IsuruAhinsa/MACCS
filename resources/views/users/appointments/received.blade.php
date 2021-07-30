@@ -11,9 +11,11 @@
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
-                        <li class="breadcrumb-item">Tables</li>
+                        <li class="breadcrumb-item">
+                            <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
+                        </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            <a class="link-fx" href="">Helpers</a>
+                            Received Appointments
                         </li>
                     </ol>
                 </nav>
@@ -24,7 +26,7 @@
     <div class="content">
         <div class="block">
             <div class="block-header">
-                <h3 class="block-title">Checkable Table</h3>
+                <h3 class="block-title"> Received Appointments</h3>
             </div>
             <div class="block-content">
 
