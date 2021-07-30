@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Midwife;
 
 use App\Appointment;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveAppointmentRequest;
 use App\Midwife;
 use App\User;
 use Carbon\Carbon;
@@ -47,7 +48,7 @@ class AppointmentController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store(Request $request)
+    public function store(SaveAppointmentRequest $request)
     {
         $midwife = Midwife::find(Auth::guard('midwife')->id());
 
