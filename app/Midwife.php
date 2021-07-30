@@ -19,7 +19,15 @@ class Midwife extends Authenticatable
     protected $guard = 'midwife';
 
     protected $fillable = [
-        'name', 'email', 'password'
+        'first_name',
+        'last_name',
+        'phone',
+        'email',
+        'password',
+        'nic',
+        'address',
+        'cases',
+        'image',
     ];
 
     protected $hidden = [
