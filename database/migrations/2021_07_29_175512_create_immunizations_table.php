@@ -17,9 +17,9 @@ class CreateImmunizationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('child_id');
             $table->foreign('child_id')->references('id')->on('children')->onDelete('cascade');
-            $table->string('batch_no')->unique();
+            $table->string('batch_no');
             $table->string('age');
-            $table->string('type_of_vaccine')->unique();
+            $table->string('type_of_vaccine');
             $table->date('date_of_vaccine');
             $table->text('adverse_effects_following_immunization')->nullable();
             $table->boolean('bcg_scare')->nullable();
