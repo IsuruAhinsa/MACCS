@@ -46,25 +46,30 @@ class ChildController extends Controller
      */
     public function show(Child $child)
     {
-        $data = Weight::where('child_id', $child->id)
-            ->select([
-                DB::raw('YEAR(updated_at) as year, MONTH(updated_at) as month'),
-                DB::raw('weight as weight')
-            ])
-            ->orderBy('updated_at', 'asc')
-            ->get();
+        if (Weight::where('child_id', $child->id)->count()) {
 
-        foreach ($data as $var) {
-            $dates[] = $var->year . '-' . Carbon::parse($var->month)->format('M');
-            $weights[] = $var->weight;
+            $data = Weight::where('child_id', $child->id)
+                ->select([
+                    DB::raw('YEAR(updated_at) as year, MONTH(updated_at) as month'),
+                    DB::raw('weight as weight')
+                ])
+                ->orderBy('updated_at', 'asc')
+                ->get();
+
+            foreach ($data as $var) {
+                $dates[] = $var->year . '-' . Carbon::parse($var->month)->format('M');
+                $weights[] = $var->weight;
+            }
+
+            $chart = new WeightChart();
+            $chart->labels($dates);
+            $chart->dataset('Weights (KG)', 'line', $weights)
+                ->color('black')
+                ->backgroundColor('#cbc1f2');
+            $chart->displayLegend(true);
+        } else {
+            $chart = null;
         }
-
-        $chart = new WeightChart();
-        $chart->labels($dates);
-        $chart->dataset('Weights (KG)', 'line', $weights)
-            ->color('black')
-            ->backgroundColor('#cbc1f2');
-        $chart->displayLegend(true);
 
         return view('users.children.show', [
             'child' => $child,
