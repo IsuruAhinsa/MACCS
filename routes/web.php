@@ -82,8 +82,7 @@ Route::middleware('auth:midwife')->group(function () {
         Route::get('users/child/{child}', 'UserController@showChild')->name('show.child');
 
         // newborn record routes
-        Route::get('child/newborn/{child}', 'UserController@createNewborn')->name('create.newborn');
-        Route::post('child/newborn', 'UserController@storeNewborn')->name('store.newborn');
+        Route::resource('children.newborns', 'NewbornController')->except(['index', 'show'])->shallow();
 
         // immunization routes
         Route::resource('children.immunizations', 'ImmunizationController')->except(['index', 'show'])->shallow();

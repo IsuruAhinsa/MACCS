@@ -25,7 +25,7 @@
             Birth Weight
         </p>
         <p>
-            {{ $child->newborn->birth_weight ?? '-' }}
+            {{ $child->newborn->birth_weight ?? '-' }} KGs
         </p>
     </div>
     <div class="col-6">
@@ -33,7 +33,7 @@
             Birth Height
         </p>
         <p>
-            {{ $child->newborn->birth_height ?? '-' }}
+            {{ $child->newborn->birth_height ?? '-' }} Inches
         </p>
     </div>
 
@@ -45,7 +45,7 @@
             Birth HCM
         </p>
         <p>
-            {{ $child->newborn->birth_hcm ?? '-' }}
+            {{ $child->newborn->birth_hcm ?? '-' }} cm
         </p>
     </div>
     <div class="col-6">
@@ -73,7 +73,7 @@
             Temperature
         </p>
         <p>
-            {{ $child->newborn->temperature ?? '-' }}
+            {{ $child->newborn->temperature ?? '-' }} Celsius
         </p>
     </div>
 
@@ -88,6 +88,5 @@
             {{ $child->newborn->notes ?? '-' }}
         </p>
     </div>
-
 
 </div>

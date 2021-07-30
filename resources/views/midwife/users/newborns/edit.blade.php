@@ -6,7 +6,7 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    <span class="font-weight-normal">{{ $child->full_name }}</span>
+                    <span class="font-weight-normal">Edit Newborn Health Record</span>
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -17,7 +17,7 @@
                             <a class="link-fx" href="{{ route('midwife.users.index') }}">All Parents & Children</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Create Newborn Health Record
+                            Edit Newborn Record
                         </li>
                     </ol>
                 </nav>
@@ -35,11 +35,10 @@
             </div>
             <div class="block-content">
 
-                <form class="form-horizontal p-4" action="{{ route('midwife.store.newborn') }}" method="POST">
+                <form class="form-horizontal p-4" action="{{ route('midwife.newborns.update', $newborn->id) }}" method="POST">
 
                     @csrf
-
-                    <input type="hidden" value="{{ $child->id }}" name="child_id">
+                    @method('PUT')
 
                     <div class="row">
 
@@ -53,7 +52,7 @@
                                     id="birthday"
                                     placeholder="Enter Birthday"
                                     name="birthday"
-                                    value="{{old('birthday')}}"
+                                    value="{{ $newborn->birthday }}"
                                 >
                                 @error('birthday')
                                 <small class="invalid-feedback">
@@ -70,7 +69,7 @@
                                     id="apgar_score"
                                     placeholder="Enter Apgar score"
                                     name="apgar_score"
-                                    value="{{old('apgar_Score')}}"
+                                    value="{{ $newborn->apgar_score }}"
                                     min="0"
                                     max="10"
                                 >
@@ -89,7 +88,7 @@
                                     id="birth_weight"
                                     placeholder="Enter birth Weight"
                                     name="birth_weight"
-                                    value="{{old('birth_weight')}}"
+                                    value="{{ $newborn->birth_weight }}"
                                 >
                                 @error('birth_weight')
                                 <small class="invalid-feedback">
@@ -106,7 +105,7 @@
                                     id="birth_height"
                                     placeholder="Enter birth Height"
                                     name="birth_height"
-                                    value="{{old('birth_height')}}"
+                                    value="{{ $newborn->birth_height }}"
                                 >
                                 @error('birth_height')
                                 <small class="invalid-feedback">
@@ -122,7 +121,7 @@
                                     id="notes"
                                     placeholder="Enter Notes"
                                     class="form-control form-control-alt @error('notes') is-invalid @enderror"
-                                >{{old('notes')}}</textarea>
+                                >{{ $newborn->notes }}</textarea>
                                 @error('notes')
                                 <small class="invalid-feedback">
                                     {{ $message }}
@@ -142,7 +141,7 @@
                                     id="birth_hcm"
                                     placeholder="Enter Birth HCM"
                                     name="birth_hcm"
-                                    value="{{old('birth_hcm')}}"
+                                    value="{{ $newborn->birth_hcm }}"
                                 >
                                 @error('birth_hcm')
                                 <small class="invalid-feedback">
@@ -158,7 +157,7 @@
                                     id="skin"
                                     placeholder="Enter Skin"
                                     name="skin"
-                                    value="{{old('skin')}}"
+                                    value="{{ $newborn->skin }}"
                                 >
                                 @error('skin')
                                 <small class="invalid-feedback">
@@ -174,7 +173,7 @@
                                     id="eyes"
                                     placeholder="Enter Eyes"
                                     name="eyes"
-                                    value="{{old('eyes')}}"
+                                    value="{{ $newborn->eyes }}"
                                 >
                                 @error('eyes')
                                 <small class="invalid-feedback">
@@ -185,19 +184,19 @@
                             <div class="form-group">
                                 <label for="temperature" class="col-form-label">Temperature </label>
                                 <div class="input-group">
-                                <input
-                                    type="text"
-                                    class="form-control form-control-alt @error('temperature') is-invalid @enderror"
-                                    id="temperature"
-                                    placeholder="Enter temperature"
-                                    name="temperature"
-                                    value="{{old('temperature')}}"
-                                >
-                                <div class="input-group-append">
+                                    <input
+                                        type="text"
+                                        class="form-control form-control-alt @error('temperature') is-invalid @enderror"
+                                        id="temperature"
+                                        placeholder="Enter temperature"
+                                        name="temperature"
+                                        value="{{ $newborn->temperature }}"
+                                    >
+                                    <div class="input-group-append">
                                     <span class="input-group-text input-group-text-alt">
                                         celsius
                                     </span>
-                                </div>
+                                    </div>
                                     @error('temperature')
                                     <small class="invalid-feedback">
                                         {{ $message }}
@@ -212,7 +211,7 @@
                     </div>
 
                     <div class="form-group">
-                        <x-SubmitButton :btnText="'Create Newborn Health Record'" :cancelBtnRoute="url('/')"></x-SubmitButton>
+                        <x-SubmitButton :btnText="'Update Newborn Health Record'" :cancelBtnRoute="url('/')"></x-SubmitButton>
                     </div>
 
                 </form>

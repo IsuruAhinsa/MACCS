@@ -129,33 +129,4 @@ class UserController extends Controller
         return view('midwife.users.child')->with(compact('child'));
     }
 
-    public function createNewborn(Child $child)
-    {
-        return view('midwife.users.newborn')->with(compact('child'));
-    }
-
-    public function storeNewborn(SaveNewbornRequest $request)
-    {
-        $child_id = $request->input('child_id');
-
-        $newborn = Newborn::firstOrNew();
-        $newborn->child_id = $child_id;
-        $newborn->birthday = $request->input('birthday');
-        $newborn->apgar_score = $request->input('apgar_score');
-        $newborn->birth_weight = $request->input('birth_weight');
-        $newborn->birth_height = $request->input('birth_height');
-        $newborn->birth_hcm = $request->input('birth_hcm');
-        $newborn->skin = $request->input('skin');
-        $newborn->eyes = $request->input('eyes');
-        $newborn->temperature = $request->input('temperature');
-        $newborn->notes = $request->input('notes');
-        $newborn->save();
-        return redirect()->route('midwife.show.child', $child_id)->with('success', 'New Born Record Created Successfully!');
-    }
-
-    public function editImmunization(Immunization $immunization)
-    {
-        return $immunization;
-    }
-
 }
