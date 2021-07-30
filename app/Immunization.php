@@ -21,8 +21,11 @@ class Immunization extends Model
     public static function vaccines(): array
     {
         return array(
-            'bcg' => 'BCG',
-            'other' => 'Other',
+            'BCG' => 'BCG',
+            'Other' => 'Other',
+            'JE1' => 'JE1',
+            'JE2' => 'JE2',
+            'JE3' => 'JE3',
         );
     }
 }
