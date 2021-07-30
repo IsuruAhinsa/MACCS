@@ -1,6 +1,6 @@
 <li class="timeline-event">
     <div class="timeline-event-icon bg-modern">
-        <i class="si si-speedometer"></i>
+        <i class="fas fa-weight"></i>
     </div>
     <div class="timeline-event-block block invisible" data-toggle="appear">
         <div class="block-header">
@@ -8,14 +8,12 @@
         </div>
         <div class="block-content block-content-full">
             <div class="table-responsive">
-                <table class="table table-hover table-vcenter font-size-sm mb-0">
+                <table class="table table-hover table-sm table-borderless table-vcenter font-size-sm mb-0">
                     <thead>
-                    <tr class="text-uppercase">
-
+                    <tr class="text-uppercase bg-modern-lighter">
                         <th class="font-w700">Year</th>
                         <th class="font-w700">Month</th>
-                        <th class="font-w700">Weight</th>
-
+                        <th class="font-w700">Weight (Kilograms)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -23,13 +21,13 @@
                     @foreach($child->weights as $weight)
                         <tr>
                             <td class="font-w600">
-                                {{ $weight->yesr }}
+                                {{ \Illuminate\Support\Carbon::parse($weight->updated_at)->format('Y') }}
                             </td>
                             <td class="font-w600">
-                                {{ $weight->created_at }}
+                                {{ \Illuminate\Support\Carbon::parse($weight->updated_at)->format('F') }}
                             </td>
                             <td class="font-w600">
-                                {{ $weight->weight }}
+                                {{ number_format($weight->weight, 1) }}
                             </td>
                         </tr>
                     @endforeach
