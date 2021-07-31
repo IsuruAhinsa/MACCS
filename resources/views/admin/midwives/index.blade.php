@@ -86,7 +86,7 @@
 
                                                 <div class="btn-group">
                                                     <a
-                                                        href="{{ route('midwife.users.edit', [$midwife->id]) }}"
+                                                        href="{{ route('admin.midwives.edit', $midwife->id) }}"
                                                         class="btn btn-sm btn-light"
                                                         data-toggle="tooltip"
                                                         data-placement="left"
@@ -96,7 +96,7 @@
                                                     </a>
 
                                                     <form
-                                                        action="{{ route('midwife.users.destroy', $midwife->id) }}"
+                                                        action="{{ route('admin.midwives.destroy', $midwife->id) }}"
                                                         method="POST"
                                                         onsubmit="return confirm('Do you want to delete {{ $midwife->full_name }}?')"
                                                     >
