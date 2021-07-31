@@ -17,7 +17,6 @@
                     <th>Date of Vaccine</th>
                     <th class="d-none d-sm-table-cell" style="width: 15%;">Adverse Effects</th>
                     <th class="text-center">BCG Scare</th>
-                    <th class="text-center" style="width: 100px;">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,28 +44,6 @@
                                 @else
                                     -
                                 @endif
-                            </td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="{{ route('midwife.immunizations.edit', $immunization->id) }}" type="button" class="btn btn-sm btn-light">
-                                        <i class="fa fa-fw fa-pencil-alt"></i>
-                                    </a>
-
-                                    <form
-                                        action="{{ route('midwife.immunizations.destroy', $immunization->id) }}"
-                                        method="POST"
-                                        onsubmit="return confirm('Do you want to delete?')"
-                                    >
-                                        @csrf
-                                        @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-sm btn-light"
-                                        >
-                                            <i class="fa fa-fw fa-times"></i>
-                                        </button>
-                                    </form>
-                                </div>
                             </td>
                         </tr>
                     @empty
