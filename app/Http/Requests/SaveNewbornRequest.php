@@ -45,7 +45,15 @@ class SaveNewbornRequest extends FormRequest
             case 'PUT':
             {
                 return [
-                   //
+                    'birthday' => ['required', 'date','before_or_equal: today'],
+                    'apgar_score' => ['required', 'integer','between:0,10'],
+                    'birth_weight' => ['required', 'numeric'],
+                    'birth_height' => ['required', 'numeric'],
+                    'birth_hcm' => ['required', 'numeric'],
+                    'skin' => ['required', 'string'],
+                    'eyes' => ['required', 'string'],
+                    'temperature' => ['required', 'numeric'],
+                    'notes' => ['nullable', 'string'],
                 ];
             }
             default: break;
