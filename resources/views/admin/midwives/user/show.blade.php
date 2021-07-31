@@ -89,7 +89,7 @@
                                 <div class="col-6">
                                     <div class="block-content">
                                         <p class="font-w600 mb-2">
-                                           Phone Number
+                                            Phone Number
                                         </p>
                                         <p>
                                             {{$user->phone}}
@@ -121,7 +121,7 @@
                                 <div class="col-6">
                                     <div class="block-content">
                                         <p class="font-w600 mb-2">
-                                           Province
+                                            Province
                                         </p>
                                         <p>
                                             {{$user->province}}
@@ -132,7 +132,7 @@
                                 <div class="col-6">
                                     <div class="block-content">
                                         <p class="font-w600 mb-2">
-                                           City
+                                            City
                                         </p>
                                         <p>
                                             {{$user->city}}
@@ -177,25 +177,24 @@
                         </h3>
                     </div>
                     @foreach($user->children as $child)
-                    <div class="block-content">
-                        <ul class="nav-items font-size-sm">
-                            <li>
-                                <a class="media" href="{{ route('admin.show.child', $child->id) }}">
-                                    <div class="mr-3 ml-2 overlay-container overlay-bottom">
-                                        <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar1.jpg') }}" alt="">
-                                        <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>
-                                    </div>
+                        <div class="block-content">
+                            <ul class="nav-items font-size-sm">
+                                <li>
+                                    <a class="media" href="{{ route('admin.children.show', $child->id) }}">
+                                        <div class="mr-3 ml-2 overlay-container overlay-bottom">
+                                            <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar1.jpg') }}" alt="">
+                                            <span class="overlay-item item item-tiny item-circle border border-2x border-white bg-success"></span>
+                                        </div>
 
-                                    <div class="media-body">
-                                        <div class="font-w600">{{ $child->full_name }}</div>
-                                        <div class="font-w400 text-muted">{{ $child->birthday }}</div>
+                                        <div class="media-body">
+                                            <div class="font-w600">{{ $child->full_name }}</div>
+                                            <div class="font-w400 text-muted">{{ $child->birthday }}</div>
+                                        </div>
+                                    </a>
+                                </li>
 
-                                    </div>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
                     @endforeach
                 </div>
 

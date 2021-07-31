@@ -49,8 +49,9 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::resource('midwives', 'MidwifeController');
 
-        Route::get('midwife/user/{user}', 'MidwifeController@showUser')->name('show.user');
-        Route::get('midwife/user/child/{child}', 'MidwifeController@showChild')->name('show.child');
+        Route::resource('midwives.users', 'UserController')->shallow()->only('show');
+
+        Route::resource('users.children', 'ChildController')->shallow()->only('show');
 
         Route::resource('admins', 'AdminController');
 
