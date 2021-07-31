@@ -53,7 +53,7 @@ class NewbornController extends Controller
      * Update the specified resource in storage.
      *
      */
-    public function update(Request $request, Newborn $newborn)
+    public function update(SaveNewbornRequest $request, Newborn $newborn)
     {
         $newborn->birthday = $request->input('birthday');
         $newborn->apgar_score = $request->input('apgar_score');
