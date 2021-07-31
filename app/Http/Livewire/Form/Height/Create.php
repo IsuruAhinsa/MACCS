@@ -10,13 +10,13 @@ class Create extends Component
     public $height;
     public $child_id;
 
-    /*protected $rules = [
-
-];*/
+    protected $rules = [
+        'height' => ['required', 'numeric']
+    ];
 
     public function save()
     {
-        //$this->validate();
+        $this->validate();
 
         $data = [
             'child_id' => $this->child_id,
