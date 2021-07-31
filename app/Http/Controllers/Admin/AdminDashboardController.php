@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\SaveAdminRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class AdminDashboardController extends Controller
         return view('admin.profile');
     }
 
-    public function saveProfile(Request $request)
+    public function saveProfile(SaveAdminRequest $request)
     {
         $admin = Admin::findOrFail(Auth::guard('admin')->id());
 

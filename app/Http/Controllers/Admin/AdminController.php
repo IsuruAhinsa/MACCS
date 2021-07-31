@@ -65,17 +65,6 @@ class AdminController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Admin $admin)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      */
@@ -88,7 +77,7 @@ class AdminController extends Controller
      * Update the specified resource in storage.
      *
      */
-    public function update(Request $request, Admin $admin)
+    public function update(SaveAdminRequest $request, Admin $admin)
     {
         $admin->name = $request->input('name');
         $admin->email = $request->input('email');
