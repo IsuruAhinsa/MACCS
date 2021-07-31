@@ -55,12 +55,12 @@
                                     placeholder="Enter Name"
                                     name="name"
                                     value="{{$admin->name}}"
+                                >
                                 @error('name')
                                 <small class="invalid-feedback">
                                     {{ $message }}
                                 </small>
                                 @enderror
-                                >
                             </div>
                             <div class="form-group">
                                 <label for="type" class="col-form-label">Admin Type</label>
@@ -76,8 +76,6 @@
                                 </small>
                                 @enderror
                             </div>
-
-
                         </div>
 
                         <div class="col-md-6">
@@ -99,9 +97,6 @@
                                 </small>
                                 @enderror
                             </div>
-
-
-
                         </div>
 
                     </div>
