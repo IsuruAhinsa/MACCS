@@ -55,12 +55,13 @@
                                     placeholder="Enter First Name"
                                     name="first_name"
                                     value="{{$midwife->first_name}}"
+                                >
                                 @error('first_name')
                                 <small class="invalid-feedback">
                                     {{ $message }}
                                 </small>
                                 @enderror
-                                >
+
                             </div>
 
                             <div class="form-group">
