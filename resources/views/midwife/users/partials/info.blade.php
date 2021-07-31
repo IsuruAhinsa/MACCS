@@ -6,7 +6,7 @@
         <div class="block-header">
             <h3 class="block-title">Child Information</h3>
         </div>
-        <div class="block-content">
+        <div class="block-content block-content-full">
             <div class="row">
 
                 <div class="col-6">
@@ -34,7 +34,7 @@
                         Birth Weight
                     </p>
                     <p>
-                        {{$child->birth_weight}}
+                        {{$child->birth_weight}} Kg
                     </p>
                 </div>
                 <div class="col-6">

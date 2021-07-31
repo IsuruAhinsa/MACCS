@@ -30,60 +30,8 @@
             <div class="col-md-12 col-xl-12">
 
                 <ul class="timeline timeline-alt py-0">
-                    <li class="timeline-event">
-                        <div class="timeline-event-icon bg-success">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="timeline-event-block block invisible" data-toggle="appear">
-                            <div class="block-header">
-                                <h3 class="block-title">Newborn Health Record</h3>
-                                @if(!isset($child->newborn->birthday))
-
-                                    <div class="block-options">
-                                        <a href="{{ route('midwife.children.newborns.create', $child->id) }}" type="button" class="btn btn-sm btn-outline-success">Add Newborn Record</a>
-                                    </div>
-
-                                @else
-
-                                    <div class="block-options">
-
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">
-                                                <a href="{{ route('midwife.newborns.edit', $child->newborn->id) }}" type="button" class="btn btn-sm btn-outline-success">Edit Newborn Record</a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <form
-                                                    action="{{ route('midwife.newborns.destroy', $child->newborn->id) }}"
-                                                    method="POST"
-                                                    onsubmit="return confirm('Do you want to delete?')"
-                                                >
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button
-                                                        type="submit"
-                                                        class="btn btn-sm btn-outline-danger"
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </form>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-
-                                @endif
-                            </div>
-                            <div class="block-content">
-
-                                @if(isset($child->newborn->birthday))
-
-                                    @include('midwife.users.partials.newborn')
-
-                                @endif
-
-                            </div>
-                        </div>
-                    </li>
+                    @include('midwife.users.partials.info')
+                    @include('midwife.users.partials.newborn')
                     @include('midwife.users.partials.immunization')
                     @include('midwife.users.partials.weight')
                     @include('midwife.users.partials.height')

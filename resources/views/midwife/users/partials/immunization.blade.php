@@ -9,7 +9,7 @@
                 <a href="{{ route('midwife.children.immunizations.create', $child->id) }}" type="button" class="btn btn-sm btn-outline-danger">Add Immunization</a>
             </div>
         </div>
-        <div class="block-content">
+        <div class="block-content block-content-full">
             <table class="table table-sm table-vcenter table-borderless table-hover">
                 <thead>
                 <tr class="table-danger">

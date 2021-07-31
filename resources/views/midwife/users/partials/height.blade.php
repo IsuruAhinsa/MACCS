@@ -6,7 +6,7 @@
         <div class="block-header">
             <h3 class="block-title">Child Height</h3>
         </div>
-        <div class="block-content">
+        <div class="block-content block-content-full">
             <div class="table-responsive">
                 <table class="table table-hover table-sm table-borderless table-vcenter font-size-sm mb-0">
                     <thead>
