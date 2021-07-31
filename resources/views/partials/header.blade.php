@@ -74,10 +74,6 @@ if (Auth::guard('admin')->check()) {
                                 <i class="si si-user ml-1"></i>
                             </span>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                            <span>Settings</span>
-                            <i class="si si-settings"></i>
-                        </a>
                         <div role="separator" class="dropdown-divider"></div>
                         <h5 class="dropdown-header text-uppercase">Actions</h5>
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -92,7 +88,7 @@ if (Auth::guard('admin')->check()) {
                 </div>
             </div>
 
-            <div class="dropdown d-inline-block ml-2">
+            {{--<div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="si si-bell"></i>
                     <span class="badge badge-primary badge-pill">6</span>
@@ -175,7 +171,7 @@ if (Auth::guard('admin')->check()) {
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>--}}
 
         </div>
 
