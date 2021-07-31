@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Midwife;
 
+use App\Charts\WeightChart;
 use App\Child;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveImmunizationRequest;
@@ -11,8 +12,11 @@ use App\Immunization;
 use App\Mail\UserAccountCreated;
 use App\Newborn;
 use App\User;
+use App\Weight;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -126,7 +130,35 @@ class UserController extends Controller
 
     public function showChild(Child $child)
     {
-        return view('midwife.users.child')->with(compact('child'));
+        if (Weight::where('child_id', $child->id)->count()) {
+
+            $data = Weight::where('child_id', $child->id)
+                ->select([
+                    DB::raw('YEAR(updated_at) as year, MONTH(updated_at) as month'),
+                    DB::raw('weight as weight')
+                ])
+                ->orderBy('updated_at', 'asc')
+                ->get();
+
+            foreach ($data as $var) {
+                $dates[] = $var->year . '-' . Carbon::parse($var->month)->format('M');
+                $weights[] = $var->weight;
+            }
+
+            $chart = new WeightChart();
+            $chart->labels($dates);
+            $chart->dataset('Weights (KG)', 'line', $weights)
+                ->color('black')
+                ->backgroundColor('#cbc1f2');
+            $chart->displayLegend(true);
+        } else {
+            $chart = null;
+        }
+
+        return view('midwife.users.child', [
+            'child' => $child,
+            'chart' => $chart
+        ]);
     }
 
 }

@@ -36,6 +36,9 @@
                     @include('midwife.users.partials.weight')
                     @include('midwife.users.partials.height')
                     @include('midwife.users.partials.hcm')
+                    @if($chart)
+                        @include('midwife.users.partials.chart')
+                    @endif
                 </ul>
 
             </div>
