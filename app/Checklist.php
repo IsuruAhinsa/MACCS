@@ -9,6 +9,5 @@ class Checklist extends Model
     protected $fillable = [
         'category_id',
         'checklist',
-        'answer',
     ];
 }

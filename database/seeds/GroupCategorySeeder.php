@@ -24,5 +24,12 @@ class GroupCategorySeeder extends Seeder
                 ]);
             }
         }
+
+       $values = [
+           ['category_id' => 1, 'checklist' => 'Begins to smile at people'],
+           ['category_id' => 1, 'checklist' => 'Can briefly calm himself (may bring hands to mouth and suck on hand)'],
+       ];
+
+        DB::table('checklists')->insert($values);
     }
 }

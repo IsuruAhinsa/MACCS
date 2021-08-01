@@ -26,4 +26,12 @@ class Group extends Model
             60
         );
     }
+
+    /**
+     * Get the categories for the group.
+     */
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'group_id');
+    }
 }

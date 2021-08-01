@@ -53,7 +53,7 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::resource('users.children', 'ChildController')->shallow()->only('show');
 
-        Route::resource('admins', 'AdminController');
+        Route::resource('admins', 'AdminController')->except('show');
 
         // admin profile routes
         Route::get('profile', 'AdminDashboardController@showProfile')->name('profile');
