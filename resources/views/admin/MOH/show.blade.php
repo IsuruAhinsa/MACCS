@@ -33,6 +33,62 @@
                 @endif
 
 
+                    <div class="col-md-12">
+                        <div class="block">
+                            <div class="block-header ">
+                                <h3 class="block-title">MOH Information</h3>
+
+                            </div>
+                            <div class="block-content">
+                                <div class="row">
+
+                                    <div class="col-6">
+                                        <p class="font-w600 mb-2">
+                                            Division No
+                                        </p>
+                                        <p>
+                                            {{$moh->division_no}}
+
+
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="font-w600 mb-2">
+                                            Division Address
+                                        </p>
+                                        <p>
+                                            {{$moh->division_address}}
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-6">
+                                        <p class="font-w600 mb-2">
+                                            Sub Division No
+                                        </p>
+                                        <p>
+                                            {{$moh->sub_division_no}}
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="font-w600 mb-2">
+                                            Show Division Address
+                                        </p>
+                                        <p>
+                                            {{$moh->sub_division_address}}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
 
             </div>
         </div>

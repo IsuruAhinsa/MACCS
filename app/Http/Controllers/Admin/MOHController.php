@@ -10,7 +10,8 @@ class MOHController extends Controller
 {
     public function showMOH()
     {
-        return view('admin.MOH.show');
+        $moh = MOH::first();
+        return view('admin.MOH.show')->with(compact('moh'));
     }
 
     public function editMOH()
