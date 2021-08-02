@@ -39,6 +39,7 @@
                     @if($chart)
                         @include('midwife.users.partials.chart')
                     @endif
+                    @include('midwife.users.partials.checklist')
                 </ul>
 
             </div>

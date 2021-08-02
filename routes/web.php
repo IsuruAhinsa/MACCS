@@ -93,6 +93,8 @@ Route::middleware('auth:midwife')->group(function () {
         // immunization routes
         Route::resource('children.immunizations', 'ImmunizationController')->except(['index', 'show'])->shallow();
 
+        Route::get('children/{child}/group/{group}/edit', 'ChecklistController@edit')->name('children.checklist.edit');
+
         // midwife's profile routes
         Route::get('profile', 'MidwifeDashboardController@showProfile')->name('profile');
         Route::put('profile/save', 'MidwifeDashboardController@saveProfile')->name('profile.save');

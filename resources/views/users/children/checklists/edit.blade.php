@@ -34,12 +34,14 @@
                     Your Baby at {{ $group->group_name }} Months
                 </h3>
             </div>
-            <div class="block-content">
+            <div class="block-content block-content-full">
 
                 <form action="{{ route('children.checklist.update', $child->id) }}" method="POST">
 
                     @csrf
                     @method('PUT')
+
+                    <input type="hidden" name="group" value="{{ $group->id }}">
 
                     @foreach($group->categories as $category)
                         <h2 class="content-heading border-bottom mb-4 pb-2">{{ $category->category_name }}</h2>
@@ -58,8 +60,8 @@
                         @endforeach
                     @endforeach
 
-                    <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-success">
+                    <div class="form-group m-3">
+                        <input type="submit" value="Save {{ $group->group_name }} Months Checklist" class="btn btn-block btn-success">
                     </div>
 
                 </form>
