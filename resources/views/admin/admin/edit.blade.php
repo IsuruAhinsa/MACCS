@@ -33,10 +33,6 @@
 
             <div class="block-content">
 
-                @if(Session::has('password'))
-                    {{ Session::get('password') }}
-                @endif
-
                 <form class="form-horizontal p-4" action="{{ route('admin.admins.update', $admin->id) }}" method="POST">
 
                     @csrf

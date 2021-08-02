@@ -62,7 +62,7 @@
                 </li>
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('admin.mohs.index') }}">
+                    <a class="nav-main-link" href="{{ route('admin.moh.show') }}">
                         <i class="nav-main-link-icon si si-heart"></i>
                         <span class="nav-main-link-name">MOH</span>
                     </a>

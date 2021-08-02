@@ -6,7 +6,8 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Edit Admin
+                    MOH
+                    <a href="{{ route('admin.moh.edit') }}" class="btn btn-sm btn-success ml-3">Update MOH</a>
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
@@ -14,7 +15,7 @@
                             <a class="link-fx" href="{{ url('/') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Edit Admin
+                             MOH
                         </li>
                     </ol>
                 </nav>
@@ -24,27 +25,14 @@
 
     <div class="content">
 
-        <div class="block block-themed">
-            <div class="block-header">
-                <h3 class="block-title">
-                    Edit Admin
-                </h3>
-            </div>
+        <div class="row">
+            <div class="col-sm-12">
 
-            <div class="block-content">
-
-                <form class="form-horizontal p-4" action="{{ route('admin.moh.update') }}" method="POST">
-
-                    @csrf
-                    @method('PUT')
+                @if(Session::has('success'))
+                    <x-Alert type="success" :message="Session::get('success')"></x-Alert>
+                @endif
 
 
-
-                    <div class="form-group">
-                        <x-SubmitButton :btnText="'Update Admin'" :cancelBtnRoute="url('/')"></x-SubmitButton>
-                    </div>
-
-                </form>
 
             </div>
         </div>

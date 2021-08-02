@@ -58,7 +58,9 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::resource('admins', 'AdminController')->except('show');
 
-        Route::resource('mohs', 'MOHController')->only(['index', 'edit', 'update']);
+        Route::get('mohs', 'MOHController@showMOH')->name('moh.show');
+        Route::get('mohs/edit', 'MOHController@editMOH')->name('moh.edit');
+        Route::put('mohs/update', 'MOHController@updateMOH')->name('moh.update');
 
         // admin profile routes
         Route::get('profile', 'AdminDashboardController@showProfile')->name('profile');
