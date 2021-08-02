@@ -30,7 +30,7 @@ class SaveChildRequest extends FormRequest
             'birthday'=> ['required', 'date', 'before_or_equal: today', 'after_or_equal: today - 5 years'],
             'date_of_registration'=> ['nullable', 'date'],
             'birth_weight'=> ['numeric', 'between:0,99.99'],
-            'health_status'=> ['nullable', 'string'],
+            'health_status'=> ['required', 'string'],
         ];
     }
 }

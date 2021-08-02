@@ -76,6 +76,20 @@
                                     </a>
                                 </li>
                             </ul>
+
+                            <div class="text-center push">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-light dropdown-toggle" id="dropdown-default-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        My Checklist
+                                    </button>
+                                    <div class="dropdown-menu font-size-sm" aria-labelledby="dropdown-default-light" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+                                        @foreach(\App\Group::all() as $group)
+                                            <a class="dropdown-item" href="{{ route('children.checklist.edit', [$child->id, $group->id]) }}">{{ $group->group_name }} Months Checklist</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 

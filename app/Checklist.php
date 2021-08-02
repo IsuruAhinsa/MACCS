@@ -10,4 +10,12 @@ class Checklist extends Model
         'category_id',
         'checklist',
     ];
+
+    /**
+     * The children that belong to the checklist.
+     */
+    public function children()
+    {
+        return $this->belongsToMany(Child::class);
+    }
 }

@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('children', 'ChildController')->except(['index']);
 
+    Route::get('children/{child}/group/{group}/edit', 'ChecklistController@edit')->name('children.checklist.edit');
+    Route::put('children/{child}/checklist/', 'ChecklistController@update')->name('children.checklist.update');
+
     Route::resource('appointments', 'AppointmentController')->except(['show', 'destroy']);
     Route::get('appointments/received', 'AppointmentController@received')->name('appointments.received');
     Route::get('appointments/cancel/{appointment}', 'AppointmentController@cancel')->name('appointments.cancel');

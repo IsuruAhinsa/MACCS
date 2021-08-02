@@ -77,4 +77,12 @@ class Child extends Model
             'Bad' => 'Bad',
         );
     }
+
+    /**
+     * The checklists that belong to the child.
+     */
+    public function checklists()
+    {
+        return $this->belongsToMany(Checklist::class, 'checklist_child', 'child_id', 'checklist_id');
+    }
 }

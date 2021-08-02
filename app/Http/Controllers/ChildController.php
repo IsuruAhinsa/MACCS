@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Charts\WeightChart;
 use App\Child;
+use App\Group;
 use App\Http\Requests\SaveChildRequest;
+use App\Result;
 use App\Weight;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -113,4 +116,5 @@ class ChildController extends Controller
         $child->delete();
         return back()->with('success', 'Child Deleted!');
     }
+
 }
