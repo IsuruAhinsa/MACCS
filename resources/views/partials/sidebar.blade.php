@@ -61,6 +61,13 @@
                     </ul>
                 </li>
 
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('admin.mohs.index') }}">
+                        <i class="nav-main-link-icon si si-heart"></i>
+                        <span class="nav-main-link-name">MOH</span>
+                    </a>
+                </li>
+
             @elseif(Auth::guard('midwife')->check())
 
                 <li class="nav-main-item">
@@ -136,33 +143,6 @@
 
             @endisset
 
-
-            {{--
-            <li class="nav-main-heading">Settings</li>
-            <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                    <i class="nav-main-link-icon si si-wrench"></i>
-                    <span class="nav-main-link-name">User Settings</span>
-                </a>
-                <ul class="nav-main-submenu">
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">All Users</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">Create User</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">Disabled User</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>--}}
         </ul>
     </div>
-    <!-- END Side Navigation -->
 </nav>

@@ -15,6 +15,10 @@ class CreateMOHSTable extends Migration
     {
         Schema::create('m_o_h_s', function (Blueprint $table) {
             $table->id();
+            $table->string('division_no');
+            $table->text('division_address');
+            $table->string('sub_division_no');
+            $table->text('sub_division_address');
             $table->timestamps();
         });
     }

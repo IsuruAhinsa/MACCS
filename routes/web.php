@@ -58,6 +58,8 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::resource('admins', 'AdminController')->except('show');
 
+        Route::resource('mohs', 'MOHController')->only(['index', 'edit', 'update']);
+
         // admin profile routes
         Route::get('profile', 'AdminDashboardController@showProfile')->name('profile');
         Route::put('profile/save', 'AdminDashboardController@saveProfile')->name('profile.save');
