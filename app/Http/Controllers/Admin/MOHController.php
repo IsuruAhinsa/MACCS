@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\SaveMOHRequest;
 use App\MOH;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,11 @@ class MOHController extends Controller
 
     public function editMOH()
     {
-        return view('admin.MOH.edit');
+        $moh = MOH::first();
+        return view('admin.MOH.edit')->with(compact('moh'));
     }
 
-    public function updateMOH(Request $request)
+    public function updateMOH(SaveMOHRequest $request)
     {
         $mOH = MOH::firstOrNew();
         $mOH->division_no = $request->input('division_no');

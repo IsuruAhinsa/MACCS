@@ -24,7 +24,10 @@ class SaveMOHRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'division_no' => ['required', 'string'],
+            'division_address' => ['required', 'string'],
+            'sub_division_no' => ['required', 'string'],
+            'sub_division_address' => ['required', 'string'],
         ];
     }
 }

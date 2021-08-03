@@ -28,11 +28,6 @@
         <div class="row">
             <div class="col-sm-12">
 
-                @if(Session::has('success'))
-                    <x-Alert type="success" :message="Session::get('success')"></x-Alert>
-                @endif
-
-
                     <div class="col-md-12">
                         <div class="block">
                             <div class="block-header ">
@@ -47,9 +42,7 @@
                                             Division No
                                         </p>
                                         <p>
-                                            {{$moh->division_no}}
-
-
+                                            {{ $moh->division_no ?? '-' }}
                                         </p>
                                     </div>
                                     <div class="col-6">
@@ -57,7 +50,7 @@
                                             Division Address
                                         </p>
                                         <p>
-                                            {{$moh->division_address}}
+                                            {{ $moh->division_address ?? '-' }}
                                         </p>
                                     </div>
 
@@ -69,7 +62,7 @@
                                             Sub Division No
                                         </p>
                                         <p>
-                                            {{$moh->sub_division_no}}
+                                            {{ $moh->sub_division_no ?? '-' }}
                                         </p>
                                     </div>
                                     <div class="col-6">
@@ -77,7 +70,7 @@
                                             Show Division Address
                                         </p>
                                         <p>
-                                            {{$moh->sub_division_address}}
+                                            {{ $moh->sub_division_address ?? '-' }}
                                         </p>
                                     </div>
 
@@ -85,10 +78,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
 
             </div>
         </div>

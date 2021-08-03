@@ -41,7 +41,6 @@
 
                         <div class="col-md-6">
 
-
                             <div class="form-group">
                                 <label for="division_no" class="col-form-label">Division No</label>
                                 <input
@@ -50,7 +49,7 @@
                                     id="division_no"
                                     placeholder="Enter Division No"
                                     name="division_no"
-                                    value="{{old('division_no')}}"
+                                    value="{{ $moh->division_no ?? null }}"
                                 >
                                 @error('division_no')
                                 <small class="invalid-feedback">
@@ -65,9 +64,9 @@
                                         <textarea
                                             name="division_address"
                                             id="division_address"
-                                            class="form-control form-control-alt"
+                                            class="form-control form-control-alt @error('division_address') is-invalid @enderror"
                                             placeholder="Division Address"
-                                        ></textarea>
+                                        >{{ $moh->division_address ?? null }}</textarea>
                                     @error('division_address')
                                     <small class="invalid-feedback">
                                         {{ $message }}
@@ -75,7 +74,6 @@
                                     @enderror
 
                             </div>
-
 
                         </div>
 
@@ -88,7 +86,7 @@
                                     id="sub_division_no"
                                     placeholder="Enter Sub Division No"
                                     name="sub_division_no"
-                                    value="{{old('sub_division_no')}}"
+                                    value="{{ $moh->sub_division_no ?? null }}"
                                 >
                                 @error('sub_division_no')
                                 <small class="invalid-feedback">
@@ -103,9 +101,9 @@
                                 <textarea
                                     name="sub_division_address"
                                     id="sub_division_address"
-                                    class="form-control form-control-alt"
+                                    class="form-control form-control-alt @error('sub_division_address') is-invalid @enderror"
                                     placeholder="Sub Division Address"
-                                ></textarea>
+                                >{{ $moh->sub_division_address ?? null }}</textarea>
                                 @error('sub_division_address')
                                 <small class="invalid-feedback">
                                     {{ $message }}
@@ -114,13 +112,9 @@
 
                             </div>
 
-
-
                         </div>
 
                     </div>
-
-
 
                     <div class="form-group">
                         <x-SubmitButton :btnText="'Update Admin'" :cancelBtnRoute="url('/')"></x-SubmitButton>
