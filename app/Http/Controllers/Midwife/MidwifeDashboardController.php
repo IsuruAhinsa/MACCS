@@ -32,7 +32,6 @@ class MidwifeDashboardController extends Controller
         $midwife->email = e($request->input('email'));
         $midwife->phone = $request->input('phone');
         $midwife->nic = $request->input('nic');
-        $midwife->cases = $request->input('cases');
         $midwife->save();
 
         return redirect()->back()->with('success', 'Profile Saved!');

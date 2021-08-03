@@ -94,23 +94,7 @@
                                                 </small>
                                                 @enderror
                                             </div>
-                                            <div class="form-group">
-                                                <label for="image" class="col-form-label">Image</label>
-                                                <div class="custom-file">
-                                                    <input
-                                                        type="file"
-                                                        class="custom-file-input @error('image') is-invalid @enderror"
-                                                        data-toggle="custom-file-input"
-                                                        id="image"
-                                                        name="image">
-                                                    <label class="custom-file-label" for="image">Choose file</label>
-                                                    @error('image')
-                                                    <small class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </small>
-                                                    @enderror
-                                                </div>
-                                            </div>
+
 
                                         </div>
 
@@ -151,20 +135,21 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="cases" class="col-form-label">Assigned Cases</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control form-control-alt @error('cases') is-invalid @enderror"
-                                                    id="cases"
-                                                    placeholder="Enter Assigned Cases"
-                                                    name="cases"
-                                                    value="{{ Auth::guard('midwife')->user()->cases }}"
-                                                >
-                                                @error('cases')
-                                                <small class="invalid-feedback">
-                                                    {{ $message }}
-                                                </small>
-                                                @enderror
+                                                <label for="image" class="col-form-label">Image</label>
+                                                <div class="custom-file">
+                                                    <input
+                                                        type="file"
+                                                        class="custom-file-input @error('image') is-invalid @enderror"
+                                                        data-toggle="custom-file-input"
+                                                        id="image"
+                                                        name="image">
+                                                    <label class="custom-file-label" for="image">Choose file</label>
+                                                    @error('image')
+                                                    <small class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </small>
+                                                    @enderror
+                                                </div>
                                             </div>
 
                                         </div>

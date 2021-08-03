@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Child;
+use App\Http\Requests\SaveUserRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\User;
 use Illuminate\Http\Request;
