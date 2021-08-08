@@ -60,7 +60,7 @@
                                 <td class="font-size-sm">
                                     <p class="font-w600 mb-1">
                                         <a href="#">
-                                            {{ \App\User::find($record->midwife_id)->midwife->full_name }}
+                                            {{ \App\Midwife::find($record->midwife_id)->full_name }}
                                         </a>
                                     </p>
                                     <p class="text-muted mb-0">
