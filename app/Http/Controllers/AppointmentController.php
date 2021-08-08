@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Appointment;
 use App\Http\Requests\SaveAppointmentRequest;
+use App\Mail\MidwifeAppointmentScheduled;
+use App\Midwife;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
@@ -60,6 +63,10 @@ class AppointmentController extends Controller
             'venue' => $venue,
             'notes' => $request->input('notes'),
         ]);
+
+        // sending mail
+        $email = Midwife::find($user->midwife_id)->email;
+        Mail::to($email)->send(new MidwifeAppointmentScheduled($date, $time, $venue));
 
         return redirect()->route('appointments.index')->with('success', 'Appointment Created!');
     }

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Midwife;
 use App\Appointment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveAppointmentRequest;
+use App\Mail\UserAppointmentScheduled;
 use App\Midwife;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
@@ -52,13 +54,21 @@ class AppointmentController extends Controller
     {
         $midwife = Midwife::find(Auth::guard('midwife')->id());
 
+        $date = Carbon::parse($request->input('date'))->format('Y-m-d');
+        $time = $request->input('time');
+        $venue = $request->input('venue');
+
         $midwife->appointments()->create([
             'user_id' => $request->input('user_id'),
-            'date' => Carbon::parse($request->input('date'))->format('Y-m-d'),
-            'time' => $request->input('time'),
-            'venue' => $request->input('venue'),
+            'date' => $date,
+            'time' => $time,
+            'venue' => $venue,
             'notes' => $request->input('notes'),
         ]);
+
+        // sending mail
+        $email = User::find($request->input('user_id'))->email;
+        Mail::to($email)->send(new UserAppointmentScheduled($date, $time, $venue));
 
         return redirect()->route('midwife.appointments.index')->with('success', 'Appointment Created!');
     }
