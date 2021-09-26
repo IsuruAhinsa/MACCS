@@ -59,8 +59,9 @@ class ChildController extends Controller
                 ->orderBy('updated_at', 'asc')
                 ->get();
 
+
             foreach ($data as $var) {
-                $dates[] = $var->year . '-' . Carbon::parse($var->month)->format('M');
+                $dates[] = $var->year . '-' . Carbon::create()->month($var->month)->format('M');
                 $weights[] = $var->weight;
             }
 
