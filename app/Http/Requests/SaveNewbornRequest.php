@@ -47,8 +47,8 @@ class SaveNewbornRequest extends FormRequest
                 return [
                     'birthday' => ['required', 'date','before_or_equal: today'],
                     'apgar_score' => ['required', 'integer','between:0,10'],
-                    'birth_weight' => ['required', 'numeric', 'between:0.0,0.5'],
-                    'birth_height' => ['required', 'numeric', 'between:0.0,6.0'],
+                    'birth_weight' => ['required', 'numeric', 'between:0.0,5.0'],
+                    'birth_height' => ['required', 'numeric', 'between:0.0,100.0'],
                     'birth_hcm' => ['required', 'numeric', 'between:0.0,50.0'],
                     'skin' => ['required', 'string'],
                     'eyes' => ['required', 'string'],
