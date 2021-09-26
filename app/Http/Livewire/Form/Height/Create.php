@@ -11,7 +11,7 @@ class Create extends Component
     public $child_id;
 
     protected $rules = [
-        'height' => ['required', 'numeric']
+        'height' => ['required', 'numeric', 'between:0.0,6.0']
     ];
 
     public function save()
