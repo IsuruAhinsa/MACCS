@@ -11,7 +11,7 @@ class Create extends Component
     public $child_id;
 
     protected $rules = [
-        'head_circumference' => ['required', 'numeric']
+        'head_circumference' => ['required', 'numeric', 'between:0.0,50.0']
     ];
 
     public function save()
