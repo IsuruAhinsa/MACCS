@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class SaveUserRequest extends FormRequest
@@ -79,5 +80,21 @@ class SaveUserRequest extends FormRequest
             }
             default: break;
         }
+    }
+
+    public function withValidator(Validator $validator)
+    {
+        $validator->after(function (Validator $validator) {
+
+            $startDate = Carbon::today()->subYear(50)->format('Y-m-d');
+            $endDate = Carbon::today()->subYear(20)->format('Y-m-d');
+
+            if (!Carbon::parse($this->input('birthday'))->between($startDate, $endDate)) {
+
+                $validator->errors()->add('birthday', 'Normally, parent age range must be between 20 and 50 years!');
+
+            }
+
+        });
     }
 }
