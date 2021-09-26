@@ -43,7 +43,7 @@
 
                         <div class="col-md-6">
 
-                            <div class="form-group">
+                            {{--<div class="form-group">
                                 <label for="birthday" class="col-form-label"> Birthday</label>
                                 <input
                                     type="date"
@@ -58,7 +58,7 @@
                                     {{ $message }}
                                 </small>
                                 @enderror
-                            </div>
+                            </div>--}}
 
                             <div class="form-group">
                                 <label for="apgar_score" class="col-form-label">Apgar Score</label>
@@ -79,7 +79,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            {{--<div class="form-group">
                                 <label for="birth_weight" class="col-form-label">Birth Weight</label>
                                 <input
                                     type="text"
@@ -94,12 +94,12 @@
                                     {{ $message }}
                                 </small>
                                 @enderror
-                            </div>
+                            </div>--}}
 
                             <div class="form-group">
                                 <label for="birth_height" class="col-form-label">Birth Height</label>
                                 <input
-                                    type="birth_height"
+                                    type="text"
                                     class="form-control form-control-alt @error('birth_height') is-invalid @enderror"
                                     id="birth_height"
                                     placeholder="Enter birth Height"
