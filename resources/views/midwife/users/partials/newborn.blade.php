@@ -5,7 +5,7 @@
     <div class="timeline-event-block block invisible" data-toggle="appear">
         <div class="block-header">
             <h3 class="block-title">Newborn Health Record</h3>
-            @if(!isset($child->newborn->birthday))
+            @if(!isset($child->newborn->birth_height))
 
                 <div class="block-options">
                     <a href="{{ route('midwife.children.newborns.create', $child->id) }}" type="button" class="btn btn-sm btn-outline-success">Add Newborn Record</a>
@@ -43,7 +43,7 @@
         </div>
         <div class="block-content block-content-full">
 
-            @if(isset($child->newborn->birthday))
+            @if(isset($child->newborn->birth_height))
 
                 <div class="row">
 
@@ -52,7 +52,7 @@
                             Birthday
                         </p>
                         <p>
-                            {{ $child->newborn->birthday ?? '-' }}
+                            {{ $child->birthday ?? '-' }}
                         </p>
                     </div>
                     <div class="col-6">
@@ -72,7 +72,7 @@
                             Birth Weight
                         </p>
                         <p>
-                            {{ $child->newborn->birth_weight ?? '-' }} KGs
+                            {{ $child->birth_weight ?? '-' }} KGs
                         </p>
                     </div>
                     <div class="col-6">

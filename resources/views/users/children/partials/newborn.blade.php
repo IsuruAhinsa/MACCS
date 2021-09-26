@@ -12,9 +12,10 @@
                     Birthday
                 </p>
                 <p>
-                    {{ $child->newborn->birthday ?? '-' }}
+                    {{ $child->birthday ?? '-' }}
                 </p>
             </div>
+
             <div class="col-6">
                 <p class="font-w600 mb-2">
                     Apgar Score
@@ -32,7 +33,7 @@
                     Birth Weight
                 </p>
                 <p>
-                    {{ $child->newborn->birth_weight ?? '-' }}
+                    {{ $child->birth_weight ?? '-' }}
                 </p>
             </div>
             <div class="col-6">

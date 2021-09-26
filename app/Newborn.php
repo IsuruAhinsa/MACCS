@@ -15,9 +15,7 @@ class Newborn extends Model
 
     protected $fillable = [
         'child_id',
-        'birthday',
         'apgar_score',
-        'birth_weight',
         'birth_height',
         'birth_hcm',
         'skin',

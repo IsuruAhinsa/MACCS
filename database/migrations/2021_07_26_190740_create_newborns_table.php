@@ -17,9 +17,7 @@ class CreateNewbornsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('child_id');
             $table->foreign('child_id')->references('id')->on('children')->onDelete('cascade');
-            $table->date('birthday');
             $table->string('apgar_score');
-            $table->float('birth_weight');
             $table->float('birth_height');
             $table->float('birth_hcm');
             $table->string('skin');
