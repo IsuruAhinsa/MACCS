@@ -10,27 +10,6 @@
 
         </div>
 
-
-        <div class="block-content">
-            <div class="row items-push text-center py-3">
-                <div class="col-6 col-xl-3">
-                    <i class="fa fa-wallet fa-2x text-muted"></i>
-                    <div class="text-muted mt-3">$148,000</div>
-                </div>
-                <div class="col-6 col-xl-3">
-                    <i class="fa fa-angle-double-up fa-2x text-muted"></i>
-                    <div class="text-muted mt-3">+9% Earnings</div>
-                </div>
-                <div class="col-6 col-xl-3">
-                    <i class="fa fa-ticket-alt fa-2x text-muted"></i>
-                    <div class="text-muted mt-3">+20% Tickets</div>
-                </div>
-                <div class="col-6 col-xl-3">
-                    <i class="fa fa-users fa-2x text-muted"></i>
-                    <div class="text-muted mt-3">+46% Clients</div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
